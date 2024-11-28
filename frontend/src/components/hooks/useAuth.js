@@ -2,8 +2,7 @@ import { create } from 'zustand'
 import axios from 'axios'
 
 //const API_URL = import.meta.env.MODE === 'development' ? 'http://localhost:5000/api/auth' : '/api/auth'
-//const API_URL = 'http://localhost:5000/api/auth'
-const REACT_API_BASE_URL = 'https://re-evaluation-system.onrender.com/api/auth'
+const API_URL = 'http://localhost:5000/api/auth'
 
 axios.defaults.withCredentials = true
 
@@ -19,7 +18,7 @@ export const useAuth  = create((set) => ({
   register: async (username, email, password) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.post(`${ REACT_API_BASE_URL }/register`, {username, email, password})
+      const response = await axios.post(`${API_URL}/register`, {username, email, password})
       set({
         user: response.data.user,
         isAuthenticated: true,
@@ -38,7 +37,7 @@ export const useAuth  = create((set) => ({
   login: async (email, password) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.post(`${ REACT_API_BASE_URL }/login`, { email, password })
+      const response = await axios.post(`${ API_URL }/login`, { email, password })
       set({
         user: response.data.user,
         isAuthenticated: true,
@@ -59,7 +58,7 @@ export const useAuth  = create((set) => ({
     set({ isLoading: true, error: null })
 
     try {
-      await axios.post(`${ REACT_API_BASE_URL }/logout`)
+      await axios.post(`${ API_URL }/logout`)
       set({
         user: null,
         isAuthenticated: false,
@@ -73,7 +72,7 @@ export const useAuth  = create((set) => ({
   verifyEmail: async (code) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.post(`${ REACT_API_BASE_URL }/verify-email`, { code })
+      const response = await axios.post(`${ API_URL }/verify-email`, { code })
       set({
         user: response.data.user,
         isAuthenticated: true,
@@ -92,7 +91,7 @@ export const useAuth  = create((set) => ({
   forgotPassword: async (email) => {
 		set({ isLoading: true, error: null });
 		try {
-			const response = await axios.post(`${ REACT_API_BASE_URL }/forgot-password`, { email });
+			const response = await axios.post(`${API_URL}/forgot-password`, { email });
       set({ message: response.data.message, isLoading: false })
       console.log(response.data)
 		} catch (error) {
@@ -108,7 +107,7 @@ export const useAuth  = create((set) => ({
     set({ isLoading: true, error: null })
 
     try {
-      const response = await axios.post(`${ REACT_API_BASE_URL }/reset-password/${ token }`, { password })
+      const response = await axios.post(`${ API_URL }/reset-password/${ token }`, { password })
 
       set({ message: response.data.message, isLoading: false })
       console.log(response.data)
@@ -126,7 +125,7 @@ export const useAuth  = create((set) => ({
     set({ isCheckingAuth: true, error: null })
 
     try {
-      const response = await axios.get(`${ REACT_API_BASE_URL }/check-auth`)
+      const response = await axios.get(`${ API_URL }/check-auth`)
       set({
         user: response.data.user,
         isAuthenticated: true,
