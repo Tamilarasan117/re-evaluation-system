@@ -3,7 +3,8 @@ import { create } from 'zustand'
 import axios from 'axios'
 
 //const API_URL = import.meta.env.MODE === 'development' ? 'http://localhost:5000/api/student' : '/api/student'
-const API_URL = 'http://localhost:5000/api/student'
+//const API_URL = 'http://localhost:5000/api/student'
+const REACT_API_BASE_URL = 'https://re-evaluation-system.onrender.com/api/evaluator'
 
 axios.defaults.withCredentials = true
 
@@ -22,7 +23,7 @@ export const useStudent  = create((set) => ({
   getStudentProfile: async () => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.get(`${ API_URL }/get-profile`)
+      const response = await axios.get(`${ REACT_API_BASE_URL }/get-profile`)
       set({ studentProfile: response.data, isLoading: false })
       console.log('Profile: ', response.data)
     } catch (error) {
@@ -34,7 +35,7 @@ export const useStudent  = create((set) => ({
   updateStudentProfile: async (profile) => {
     set({ isLoading: true, error: null })
     try {
-      await axios.put(`${ API_URL }/update-profile`, { ...profile })
+      await axios.put(`${ REACT_API_BASE_URL }/update-profile`, { ...profile })
       set({ message: 'Admin profile updated successfully', isLoading: false })
       set(state => ({
         ...state,
@@ -49,7 +50,7 @@ export const useStudent  = create((set) => ({
   revaluationRequest: async (requestData) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.post(`${ API_URL }/revaluation-request`, { ...requestData })
+      const response = await axios.post(`${ REACT_API_BASE_URL }/revaluation-request`, { ...requestData })
       
       set({
         message: 'Revaluation request sent successfully',
@@ -68,7 +69,7 @@ export const useStudent  = create((set) => ({
   getRevaluationRequest: async () => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.get(`${ API_URL }/get-revaluation-request`)
+      const response = await axios.get(`${ REACT_API_BASE_URL }/get-revaluation-request`)
       set({ requestCart: response.data.data, isLoading: false })
       console.log('revaluation request: ', response.data.data)
     } catch (error) {
@@ -80,7 +81,7 @@ export const useStudent  = create((set) => ({
   requestPayment: async (requestData) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.post(`${ API_URL }/request-payment/${ requestData.revaluationRequestId }`, { ...requestData })
+      const response = await axios.post(`${ REACT_API_BASE_URL }/request-payment/${ requestData.revaluationRequestId }`, { ...requestData })
       set({
         paymentDetails: response.data.data,
         message: 'Payment requested successfully',
@@ -99,7 +100,7 @@ export const useStudent  = create((set) => ({
   getAllRevaluationRequest: async () => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.get(`${ API_URL }/get-all-revaluation-request` )
+      const response = await axios.get(`${ REACT_API_BASE_URL }/get-all-revaluation-request` )
       set({ allRequestList: response.data.data, isLoading: false })
       console.log('useStudent request list: ', response.data.data)
     } catch (error) {
@@ -111,7 +112,7 @@ export const useStudent  = create((set) => ({
   deleteRequest: async (requestId) => {
     set({ isLoading: true, error: null })
     try {
-      await axios.delete(`${ API_URL }/revaluation-request-delete/${ requestId }`)
+      await axios.delete(`${ REACT_API_BASE_URL }/revaluation-request-delete/${ requestId }`)
       set({ isLoading: false, message: 'Revaluation request deleted successfully' })
       set(state => ({
         ...state,

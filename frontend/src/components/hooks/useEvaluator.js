@@ -2,7 +2,8 @@ import { create } from 'zustand'
 import axios from 'axios'
 
 //const API_URL = import.meta.env.MODE === 'development' ? 'http://localhost:5000/api/evaluator' : '/api/evaluator'
-const API_URL = 'http://localhost:5000/api/evaluator'
+//const API_URL = 'http://localhost:5000/api/evaluator'
+const REACT_API_BASE_URL = 'https://re-evaluation-system.onrender.com/api/evaluator'
 
 axios.defaults.withCredentials = true
 
@@ -18,7 +19,7 @@ export const useEvaluator  = create((set) => ({
   getEvaluatorProfile: async () => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.get(`${ API_URL }/get-profile`)
+      const response = await axios.get(`${ REACT_API_BASE_URL }/get-profile`)
       set({ evaluatorProfile: response.data, isLoading: false })
       console.log('Evaluator profile fetched successfully')
     } catch (error) {
@@ -30,7 +31,7 @@ export const useEvaluator  = create((set) => ({
   updateEvaluatorProfile: async (profile) => {
     set({ isLoading: true, error: null })
     try {
-      await axios.put(`${ API_URL }/update-profile`, { ...profile })
+      await axios.put(`${ REACT_API_BASE_URL }/update-profile`, { ...profile })
       set({ message: 'Evaluator profile updated successfully', isLoading: false })
       set(state => ({
         ...state,
@@ -45,7 +46,7 @@ export const useEvaluator  = create((set) => ({
   getAssignedRequests: async () => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.get(`${ API_URL }/get-assigned-requests`)
+      const response = await axios.get(`${ REACT_API_BASE_URL }/get-assigned-requests`)
       set({ requestList: response.data.assignedRequests, isLoading: false })
       console.log('Assigned request fetched successfully')
     } catch (error) {
@@ -57,7 +58,7 @@ export const useEvaluator  = create((set) => ({
   getRequestDetails: async (requestId) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.get(`${ API_URL }/get-specific-request-details/${ requestId }`)
+      const response = await axios.get(`${ REACT_API_BASE_URL }/get-specific-request-details/${ requestId }`)
       set({
         requestDetails: response.data.assignedRevaluation,
         isLoading: false,
@@ -72,7 +73,7 @@ export const useEvaluator  = create((set) => ({
   updateRequestStatus: async (requestId, status) => {
     set({ isLoading: true, error: null })
     try {
-      await axios.put(`${ API_URL }/update-request-status/${requestId}`, { status })
+      await axios.put(`${ REACT_API_BASE_URL }/update-request-status/${requestId}`, { status })
       set(state => ({
         requestDetails: {...state.requestDetails, status },
         isLoading: false
@@ -92,7 +93,7 @@ export const useEvaluator  = create((set) => ({
   updateRequestDetails: async (evaluatedData) => {
     set({ isLoading: true, error: null })
     try {
-      await axios.put(`${ API_URL }/update-request-details/${ evaluatedData.id }`, { ...evaluatedData })
+      await axios.put(`${ REACT_API_BASE_URL }/update-request-details/${ evaluatedData.id }`, { ...evaluatedData })
       set({ message: 'Request details updated successfully', isLoading: false })
       set(state => ({
         requestDetails: {...state.requestDetails,...evaluatedData },
