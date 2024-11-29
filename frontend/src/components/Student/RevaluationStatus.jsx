@@ -48,7 +48,7 @@ const RevaluationStatus = () => {
 
   return (
     <div className='request-status-main-cont'>
-      <ul className='request-status-body-cont'>
+      <ul className='request-status-cont'>
         { requestLists.length > 0 ? requestLists : <NoResult /> }
       </ul>
     </div>

@@ -1647,14 +1647,14 @@ input[type='file'] {
   min-height: 80vh;
   padding: 0 7px;
 }
-.request-status-body-cont {
+.request-status-cont {
   width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
 }
-.request-body-list-cont {
+.request-status-list-cont {
   list-style-type: none;
   border-radius: 10px;
   padding: 15px;
@@ -1726,6 +1726,114 @@ input[type='file'] {
   &:hover {
     background: #f35e07;
   }
+}
+
+
+.request-status-main-cont {
+  width: 100%;
+  min-height: 80vh;
+  padding: 0 7px;
+}
+.request-state-cont {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.request-status-body-cont {
+  margin-top: 15px;
+  min-width: 1000px;
+  box-shadow: 0 0 15px #888;
+  border-radius: 10px;
+  padding: 15px;
+}
+.request-body-header-cont {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px 0;
+}
+.request-body-header-card1 {
+  width: 225px;
+  padding-left: 15px;
+  text-align: center;
+}
+.request-body-header-card2 {
+  width: 175px;
+  text-align: center;
+}
+.request-body-header-card3 {
+  width: 150px;
+  text-align: center;
+}
+.request-body-list-cont {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+.list-body-msg {
+  font-size: 16px;
+  color: #555;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.list-check-icon {
+  color: green;
+  margin-left: 7px;
+}
+.completed {
+  color: #008000 !important;
+}
+.process {
+  color: #7bff00 !important;
+}
+.pending {
+  color: #ff9100 !important;
+}
+.rejected {
+  color: #ff0000 !important;
+}
+.approved {
+  color: #00a2ff !important;
+}
+.request-list-header-cont {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px 10px;
+}
+.request-list-card {
+  text-align: center;
+}
+.card1 {
+  width: 190px;
+}
+.card2 {
+  width: 90px;
+}
+.card3 {
+  width: 140px;
+}
+.card4 {
+  width: 150px;
+}
+.request-list-msg {
+  color: #666;
+  font-size: 16px !important;
+  overflow-wrap: break-word;
 }
 
 

@@ -24,7 +24,7 @@ const RequestList = (props) => {
   const rejected = request.status === 'Rejected' ? 'rejected' : ''
 
   return (
-    <li className='request-body-list-cont'>
+    <li className='request-status-list-cont'>
       <div className='request-body-header-card1'>
         <p className='list-body-msg'>{ request.subject }</p>
       </div>
