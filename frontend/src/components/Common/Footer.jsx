@@ -7,7 +7,7 @@ const Footer = () => {
     <div className='footer-cont'>
       <hr className='footer-break' />
       <div className='footer-card'>
-        <p> &copy; Online Re-Evaluation System 2024 NTTF - All Rights Reserved.</p>
+        <p className='footer-para'> &copy; Online Re-Evaluation System 2024 NTTF - All Rights Reserved.</p>
       </div>
     </div>
   )

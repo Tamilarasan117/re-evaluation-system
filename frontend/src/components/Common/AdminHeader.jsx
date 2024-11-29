@@ -28,10 +28,10 @@ const AdminHeader = () => {
   return (
     <header className='header-cont'>
       <nav className='header-menu'>
-          <div>
-            <img src={ logo } alt='Logo' className='header-logo' />
-          </div>
-        <ul className={ open ? `admin-nav-menu active` :  `admin-nav-menu` }>
+        <div>
+          <img src={ logo } alt='Logo' className='header-logo' />
+        </div>
+        <ul className={ open ? `admin-nav-menu actives` :  `admin-nav-menu` }>
           <li className='admin-nav-link'>
             <NavLink to='/admin/profile' className={`link ${ activeLink }`}>Profile</NavLink>
           </li>

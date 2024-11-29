@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 import '../../styles/styles.css'
 import loginImg from '../../assets/login.svg'

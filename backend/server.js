@@ -23,7 +23,8 @@ const PORT = process.env.PORT || 5000
 const __dirname = path.resolve()
 
 app.use(cors({
-  origin: 'https://re-evaluation-system.onrender.com'  /*'http://localhost:3000'*/,
+  origin: 'https://re-evaluation-system.onrender.com',
+  //origin: 'http://localhost:3000',
   credentials: true
 }))
 

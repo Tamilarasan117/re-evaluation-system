@@ -3,22 +3,12 @@ import React, { useEffect } from 'react'
 import toast from 'react-hot-toast'
 
 import '../../styles/styles.css'
-import RevaluationStatusState from './RequestStatusState.jsx'
-import RequestBodyHeader from './RequestBodyHeader.jsx'
 import RequestBodyList from './RequestBodyList.jsx'
 import noResult from '../../assets/no-user.jpg'
 import { useStudent } from '../hooks/useStudent.js'
 
 const RevaluationStatus = () => {
   const { allRequestList, deleteRequest, getAllRevaluationRequest } = useStudent()
-
-  const requestCount = allRequestList?.length
-  const completedRequest = allRequestList?.filter( each => each.status === 'Completed')
-  const completedCount = completedRequest?.length
-  const inProgressRequest = allRequestList?.filter( each => each.status === 'InProgress')
-  const inProgressCount = inProgressRequest?.length
-  const pendingRequest = allRequestList?.filter( each => each.status === 'Pending')
-  const pendingCount = pendingRequest?.length
 
   const handleDeleteRequest = async (requestId) => {
     const confirm = window.confirm('Are you sure you want to delete this request?')
@@ -58,14 +48,7 @@ const RevaluationStatus = () => {
 
   return (
     <div className='request-status-main-cont'>
-      <RevaluationStatusState
-        requestCount={ requestCount }
-        completedCount={ completedCount }
-        inProgressCount={ inProgressCount }
-        pendingCount={ pendingCount }
-      />
       <ul className='request-status-body-cont'>
-        <RequestBodyHeader />
         { requestLists.length > 0 ? requestLists : <NoResult /> }
       </ul>
     </div>

@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
+
+import { Menu } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -7,13 +9,20 @@ import '../../styles/styles.css'
 import logo from '../../assets/logo.png'
 
 const PublicHeader = () => {
+  const [open, setOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setOpen(!open)
+  }
+
+
   return (
     <header className='header-cont'>
       <nav className='header-menu'>
-          <div>
-            <img src={ logo } alt='Logo' className='header-logo' />
-          </div>
-        <ul className='header-links'>
+        <div>
+          <img src={ logo } alt='Logo' className='header-logo' />
+        </div>
+        <ul className={ open ? `header-links actives` :  `header-links` }>
           <li className='header-link'>
             <motion.div 
               initial={{ opacity: 0, y: 5 }}
@@ -37,6 +46,9 @@ const PublicHeader = () => {
             </motion.div>
           </li>
         </ul>
+        <div className='menu-icon' onClick={ toggleMenu }>
+          <Menu color='#fff' size={ 30 } />
+        </div>
       </nav>
     </header>
   )
