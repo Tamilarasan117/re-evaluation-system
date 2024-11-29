@@ -2,7 +2,8 @@ import { create } from 'zustand'
 import axios from 'axios'
 
 //const API_URL = import.meta.env.MODE === 'development' ? 'http://localhost:5000/api/admin' : '/api/admin'
-const API_URL = 'http://localhost:5000/api/admin'
+//const API_URL = 'http://localhost:5000/api/admin'
+const API_URL = 'https://re-evaluation-system.onrender.com'
 
 axios.defaults.withCredentials = true
 
@@ -132,7 +133,7 @@ export const useAdmin  = create((set) => ({
   assignEvaluator: async (requestId, evaluatorId) => {
     set({ isLoading: true, error: null })
     try {
-      await axios.put(`${ API_URL }/assign-evaluator/${requestId}`, { evaluatorId })
+      await axios.put(`${ API_URL}/assign-evaluator/${requestId}`, { evaluatorId })
       set({ message: 'Request assigned successfully', isLoading: false })
       set(state => ({
         ...state,
