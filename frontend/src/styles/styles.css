@@ -1795,32 +1795,3 @@ input[type='file'] {
     background: #19abff;
   }
 }
-
-/*
-@property --angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-.profile-cont::after, .profile-cont::before {
-  content: '';
-  position: absolute;
-  width: 99.9%;
-  height: 99.9%;
-  background: conic-gradient(from var(--angle), #ff4500, #00a2ff, #ff4500, #00a2ff, #ff4500);
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  z-index: -1;
-  border-radius: 10px;
-  animation: 3s spin linear infinite;
-}
-@keyframes spin {
-  0% { --angle: 0deg; }
-  100% { --angle: 360deg; }
-}
-.profile-cont::before {
-  filter: blur(1.5rem);
-  opacity: 0.5;
-}
-*/

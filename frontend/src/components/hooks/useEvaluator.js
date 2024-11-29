@@ -2,8 +2,8 @@ import { create } from 'zustand'
 import axios from 'axios'
 
 //const API_URL = import.meta.env.MODE === 'development' ? 'http://localhost:5000/api/evaluator' : '/api/evaluator'
-const API_URL = 'http://localhost:5000/api/evaluator'
-//const API_URL = 'https://re-evaluation-system.onrender.com/api/evaluator'
+//const API_URL = 'http://localhost:5000/api/evaluator'
+const API_URL = 'https://re-evaluation-system.onrender.com/api/evaluator'
 
 axios.defaults.withCredentials = true
 
