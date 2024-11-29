@@ -15,7 +15,7 @@ const Register = () => {
   const [email,  setEmail] = useState('')
   const [password, setPassword] = useState('')
   
-  const { error, isLoading, register } = useAuth()
+  const { isLoading, register } = useAuth()
   const navigate = useNavigate()
 
   const [upperCase, setUpperCase] = useState(false)
@@ -45,8 +45,8 @@ const Register = () => {
       navigate('/')
       toast.success('Account created successfully')
     } catch (error) {
-      toast.error('Error creating account')
-      console.log(error)
+      toast.error(error.response.data.message)
+      console.log(error.response.data.message)
     }
   }
   
@@ -81,8 +81,6 @@ const Register = () => {
               value={ password }
               onChange={ (e) => setPassword(e.target.value) }
             />
-            { error && <p className='alert'>{ error }</p> }
-            {/* password strength */}
             <div className='auth-pass-str-card'>
               <ul className='auth-form-list'>
                 <li>{ switchIcon(upperCase)} Uppercase letter (A-Z)</li>

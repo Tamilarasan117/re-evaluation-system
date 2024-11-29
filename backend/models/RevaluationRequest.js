@@ -17,7 +17,7 @@ const RevaluationRequestSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  department: {
+  email: {
     type: String,
     required: true,
     trim: true,
@@ -42,20 +42,13 @@ const RevaluationRequestSchema = new mongoose.Schema({
   mark: {
     type: Number,
     required: true,
-    min: 0,
-    max: 100,
   },
   fees: {
     type: Number,
     required: true,
-    min: 350,
-    max: 1000,
   },
   revaluatedMark: {
     type: Number,
-    min: 0,
-    max: 100,
-    default: 0,
   },
   document: {
     type: String,
@@ -66,11 +59,10 @@ const RevaluationRequestSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    minlength: 10, // Minimum 10 characters for a valid reason
   },
   status: {
     type: String,
-    enum: ['Pending', 'InReview', 'Completed', 'Approved', 'Rejected'],
+    enum: ['Pending', 'InProgress', 'Completed', 'Approved', 'Rejected'],
     default: 'Pending',
   },
   paymentStatus: {

@@ -18,7 +18,7 @@ const RequestBodyList = (props) => {
   }
 
   const completed = request.status === 'Completed' ? 'completed' : ''
-  const process = request.status === 'InReview' ? 'process' : ''
+  const progress = request.status === 'InProgress' ? 'process' : ''
   const pending = request.status === 'Pending' ? 'pending' : ''
   const approved = request.status === 'Approved' ? 'approved' : ''
   const rejected = request.status === 'Rejected' ? 'rejected' : ''
@@ -37,7 +37,7 @@ const RequestBodyList = (props) => {
         </p>
       </div>
       <div className='request-body-header-card2'>
-        <p className={`list-body-msg ${ completed } ${ process } ${ pending } ${ rejected } ${ approved }`}>
+        <p className={`list-body-msg ${ completed } ${ progress } ${ pending } ${ rejected } ${ approved }`}>
           { request.status }
         </p>
       </div>

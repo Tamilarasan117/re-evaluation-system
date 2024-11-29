@@ -58,12 +58,12 @@ export const updateStudentProfile = async (request, response) => {
 export const revaluationRequest = async (request, response) => {
   const userId = request.user.id
   const {
-    studentName, studentTokenNo, department, course,
+    studentName, studentTokenNo, email, course,
     semester, subject, mark, fees, document, reason
   } = request.body
   
   try {
-    if (!studentName || !studentTokenNo || !department || !course || !semester || !subject || !mark || !fees || !document || !reason) {
+    if (!studentName || !studentTokenNo || !email || !course || !semester || !subject || !mark || !fees || !document || !reason) {
       console.log('Please fill all the fields')
       return response.status(400).json({ message: 'Please fill all the fields' })
     }
@@ -75,7 +75,7 @@ export const revaluationRequest = async (request, response) => {
     
     const existingRequest = await RevaluationRequest.findOne({
       studentId: userId,
-      department,
+      email,
       semester,
       subject,
     })
@@ -91,7 +91,7 @@ export const revaluationRequest = async (request, response) => {
       studentId: userId,
       studentName,
       studentTokenNo,
-      department,
+      email,
       course,
       semester,
       subject,

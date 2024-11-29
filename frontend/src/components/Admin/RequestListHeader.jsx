@@ -11,7 +11,7 @@ const RequestListHeader = () => {
           <h3 className='list-header-head'>Semester</h3>
         </div>
         <div className='request-list-card card1'>
-          <h3 className='list-header-head'>Reason</h3>
+          <h3 className='list-header-head'>Subject</h3>
         </div>
         <div className='request-list-card card4'>
           <h3 className='list-header-head'>Payment Status</h3>

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 
+import { Menu } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -12,11 +13,16 @@ const activeLink = ({ isActive }) => (isActive ? 'active' : '')
 
 const StudentHeader = () => {
   const { logout } = useAuth()
+  const [open, setOpen] = useState(false)
 
   const handleLogout = () => {
     logout()
     toast.success('User logged out successfully')
     console.log('User logged out successfully')
+  }
+
+  const toggleMenu = () => {
+    setOpen(!open)
   }
 
   return (
@@ -25,15 +31,12 @@ const StudentHeader = () => {
           <div>
             <img src={ logo } alt='Logo' className='header-logo' />
           </div>
-        <ul className='admin-nav-menu'>
+        <ul className={ open ? `admin-nav-menu active` :  `admin-nav-menu` }>
           <li className='admin-nav-link'>
             <NavLink to='/student/profile' className={`link ${ activeLink }`}>Profile</NavLink>
           </li>
           <li className='admin-nav-link'>
             <NavLink to='/student/revaluation-request'  className={`link ${ activeLink }`}>Revaluation Request</NavLink>
-          </li>
-          <li className='admin-nav-link'>
-            <NavLink to='/student/revaluation-request/payment'  className={`link ${ activeLink }`}>Payment</NavLink>
           </li>
           <li className='admin-nav-link'>
             <NavLink to='/student/revaluation-status'  className={`link ${ activeLink }`}>Revaluation Status</NavLink>
@@ -51,6 +54,9 @@ const StudentHeader = () => {
             </motion.button>
           </li>
         </ul>
+        <div className='menu-icon' onClick={ toggleMenu }>
+          <Menu color='#fff' size={ 30 } />
+        </div>
       </nav>
     </header>
   )

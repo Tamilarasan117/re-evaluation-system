@@ -33,8 +33,8 @@ export const register = async (request, response) => {
       username,
       email,
       password: hashedPassword,
-      verificationToken: verificationToken,
-      verificationTokenExpiresAt:  Date.now() + 24 * 60 * 60 * 1000 // 24 hours
+      /*verificationToken: verificationToken,
+      verificationTokenExpiresAt:  Date.now()*/
     })
     await user.save()
 

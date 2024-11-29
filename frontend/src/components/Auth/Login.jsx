@@ -14,7 +14,7 @@ import PasswordInput from '../Common/PasswordInput.jsx'
 const Login = () => {
   const [email,  setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { error, isLoading, login, user } = useAuth()
+  const { isLoading, login, user } = useAuth()
   const navigate = useNavigate()
 
   const handleLogin = async (e) => {
@@ -37,8 +37,8 @@ const Login = () => {
       toast.success('Logged in successfully!')
       console.log('User logged in successfully')
     } catch (error) {
-      toast.error('Failed to log in')
-      console.error(error)
+      toast.error(error.response.data.message)
+      console.error(error.response.data.message)
     }
   }
   
@@ -66,7 +66,6 @@ const Login = () => {
               value={ password }
               onChange={ (e) => setPassword(e.target.value) }
             />
-            { error && <p className='alert'>{ error }</p> }
             <div className='redirect-card'>
               <Link to='#' className='auth-redirect-link'>Forgot Password?</Link>
             </div>

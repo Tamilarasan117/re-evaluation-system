@@ -37,6 +37,8 @@ const RequestList = (props) => {
   const completed = requestList.paymentStatus === 'Paid' ? 'completed' : ''
   const rejected = requestList.paymentStatus === 'Unpaid' ? 'rejected' : ''
 
+  console.log(completed)
+
   return (
     <>
       <li className='request-list-header-cont'>
@@ -47,7 +49,7 @@ const RequestList = (props) => {
           <p className='request-list-msg'>{ requestList.semester }</p>
         </div>
         <div className='request-list-card card1'>
-          <p className='request-list-msg'>{ requestList.reason }</p>
+          <p className='request-list-msg'>{ requestList.subject }</p>
         </div>
         <div className='request-list-card card4'>
           <p className={`request-list-msg ${ completed } ${ rejected }`}>{ requestList.paymentStatus }</p>

@@ -12,7 +12,7 @@ const AssignedRequestDetails = () => {
   const { requestId } = useParams()
   const { getRequestDetails, requestDetails, updateRequestDetails, updateRequestStatus } = useEvaluator()
   const [comment, setComment] = useState('')
-  const [newMark, setNewMark] = useState(0)
+  const [newMark, setNewMark] = useState()
 
   const dateFormat = (date) => {
     const newDate = new Date(date)
@@ -134,7 +134,7 @@ const AssignedRequestDetails = () => {
                 <input
                   type='number'
                   id='newMark'
-                  placeholder='Enter revaluated mark'
+                  placeholder={ requestDetails?.mark || 'enter re-evaluated mark' }
                   className='update-group-field'
                   value={ newMark }
                   onChange={ (e) => setNewMark(e.target.value) }
@@ -148,7 +148,7 @@ const AssignedRequestDetails = () => {
                   onChange={(e) => handleChangeRequestStatus(requestDetails._id, e.target.value)}
                 >
                   <option value='Pending'>Pending</option>
-                  <option value='InReview'>InReview</option>
+                  <option value='InProgress'>InProgress</option>
                   <option value='Completed'>Completed</option>
                 </select>
               </div>

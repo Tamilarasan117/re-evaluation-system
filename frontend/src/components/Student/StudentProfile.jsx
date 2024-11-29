@@ -13,14 +13,21 @@ const StudentProfile = () => {
   const { studentProfile, getStudentProfile, updateStudentProfile } = useStudent()
 
   const [username, setUsername] = useState('')
-  const [phone, setPhone] = useState('')
+  const [phone, setPhone] = useState()
   const [dob, setDob] = useState('')
   const [department, setDepartment] = useState('')
   const [course, setCourse] = useState('')
-  const [sem, setSem] = useState('')
+  const [semester, setSemester] = useState()
   const [bio, setBio] = useState('')
   const [address, setAddress] = useState('')
   const [profile, setProfile] = useState('')
+
+  const handlePhoneInputChange = (e) => {
+    const value = e.target.value
+    if (value.length <= 10 && !isNaN(value) && (!/^[a-z]/.test(value))) {
+      setPhone(value)
+    }
+  }
 
   useEffect(() => {
     getStudentProfile()
@@ -42,7 +49,7 @@ const StudentProfile = () => {
         dob: dob || studentProfile?.dob,
         department: department || studentProfile?.department,
         course: course || studentProfile?.course,
-        sem: sem || studentProfile?.sem,
+        sem: semester || studentProfile?.sem,
         bio: bio || studentProfile?.bio,
         address: address || studentProfile?.address,
         profile: profile || studentProfile?.profile,
@@ -112,7 +119,7 @@ const StudentProfile = () => {
                 name='phone'
                 placeholder={ studentProfile?.phone || 'enter phone number' }
                 value={ phone }
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={ (e) => handlePhoneInputChange(e) }
               />
             </div>
             <div className='profile-input-box'>
@@ -134,22 +141,38 @@ const StudentProfile = () => {
               />
             </div>
             <div className='profile-input-box'>
-              <TwoInput
-                label='Course:'
-                type='text'
-                name='course'
-                placeholder={ studentProfile?.course || 'enter course name' }
-                value={ course }
-                onChange={(e) => setCourse(e.target.value)}
-              />
-              <TwoInput
-                label='Semester:'
-                type='number'
-                name='sem'
-                placeholder={ studentProfile?.sem || 'enter sem' }
-                value={ sem }
-                onChange={(e) => setSem(e.target.value)}
-              />
+              <div className='pro-in-box'>
+                <label htmlFor='course' className='profile-label'>Course:</label>
+                <select
+                  id='course'
+                  className='profile-input-field'
+                  value={ studentProfile?.course || course }
+                  onChange={(e) => setCourse(e.target.value)}
+                >
+                  <option value='CP01'>CP01</option>
+                  <option value='CP04'>CP04</option>
+                  <option value='CP08'>CP08</option>
+                  <option value='CP09'>CP09</option>
+                  <option value='CP15'>CP15</option>
+                  <option value='CP23'>CP23</option>
+                </select>
+              </div>
+              <div className='pro-in-box'>
+                <label htmlFor='sem' className='profile-label'>Semester:</label>
+                <select
+                  id='sem'
+                  className='profile-input-field'
+                  value={ semester || studentProfile?.sem  }
+                  onChange={(e) => setSemester(e.target.value)}
+                >
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                  <option value='3'>3</option>
+                  <option value='4'>4</option>
+                  <option value='5'>5</option>
+                  <option value='6'>6</option>
+                </select>
+              </div>
             </div>
             <div className='profile-input-box'>
               <Textarea

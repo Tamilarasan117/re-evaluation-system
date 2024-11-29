@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-
 import { CircleChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
+
+import toast from 'react-hot-toast'
 
 import '../../styles/styles.css'
 import FiveInput from '../Common/FiveInput.jsx'
 import pay from '../../assets/pay.jpg'
 import cvcImg from '../../assets/cvc.png'
-import toast from 'react-hot-toast'
+import RequestInfo from '../Evaluator/RequestInfo.jsx'
 
 import { useStudent } from '../hooks/useStudent.js'
 import { useNavigate } from 'react-router-dom'
@@ -22,6 +23,20 @@ const PaymentForm = () => {
   const navigate = useNavigate()
   
   const { getRevaluationRequest, requestCart, requestPayment } = useStudent()
+
+  const handleCardInputChange = (e) => {
+    const value = e.target.value
+    if (value.length <= 12 && !isNaN(value) && (!/^[a-z]/.test(value))) {
+      setCardNumber(value)
+    }
+  }
+
+  const handleCVCChange = (e) => {
+    const value = e.target.value
+    if (value.length <= 3 && !isNaN(value) && (!/^[a-z]/.test(value))) {
+      setCvc(value)
+    }
+  }
 
   useEffect(() => {
     getRevaluationRequest()
@@ -66,11 +81,25 @@ const PaymentForm = () => {
       >
         <h1 className='request-cart-head'>Request Details</h1>
         <div className='request-cart-body'>
-          <p className='request-cart-text'>Name: { requestCart?.studentName }</p>
-          <p className='request-cart-text'>Token No: { requestCart?.studentTokenNo }</p>
-          <p className='request-cart-text'>Subject: { requestCart?.subject }</p>
-          <p className='request-cart-text'>Reason: { requestCart?.reason }</p>
-          <p className='request-cart-text'>Request Document: </p>
+          <RequestInfo
+            label='Name: '
+            data={ requestCart?.studentName }
+          />
+          <RequestInfo
+            label='Token No: '
+            data={ requestCart?.studentTokenNo }
+          />
+          <RequestInfo
+            label='Subject: '
+            data={ requestCart?.subject }
+          />
+          <RequestInfo
+            label='Reason: '
+            data={ requestCart?.reason }
+          />
+          <RequestInfo
+            label='Request Document: '
+          />
           <img src={ requestCart?.document } className='request-cart-img' alt='request-document' />
         </div>
       </motion.div>
@@ -105,7 +134,7 @@ const PaymentForm = () => {
                     className='pay-in-field'
                     placeholder='1234 1234 1234 1234'
                     value={ cardNumber }
-                    onChange={(e) => setCardNumber(e.target.value)}
+                    onChange={ (e) => handleCardInputChange(e) }
                   />
                   <img src={ pay } className='pay-img' alt='pay-icon' />
                 </div>
@@ -127,7 +156,7 @@ const PaymentForm = () => {
                       name='cvc'
                       className='pay-in-field'
                       value={ cvc }
-                      onChange={(e) => setCvc(e.target.value)}
+                      onChange={ (e) => handleCVCChange(e) }
                     />
                     <img src={ cvcImg } className='cvc-img' alt='pay-icon' />
                   </div>

@@ -30,7 +30,7 @@ const Unauthorized = () => {
           type='submit'
           className='not-found-btn-card'
         >
-          <Link to='/home' className='not-found-link'>Go to home</Link>
+          <Link to='/' className='not-found-link'>Go to home</Link>
         </motion.button>
       </div>
     </div>

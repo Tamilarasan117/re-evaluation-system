@@ -17,9 +17,9 @@ const RevaluationForm = () => {
 
   const [studentName, setStudentName] = useState(studentProfile?.username)
   const [studentTokenNo, setStudentTokenNo] = useState(studentProfile?.tokenNo)
-  const [department, setDepartment] = useState(studentProfile?.department)
-  const [course, setCourse] = useState(studentProfile?.course)
-  const [semester, setSemester] = useState(studentProfile?.sem)
+  const [email, setEmail] = useState(studentProfile?.email)
+  const [course, setCourse] = useState('')
+  const [semester, setSemester] = useState('')
   const [subject, setSubject] = useState('')
   const [mark, setMark] = useState('')
   const [fees, setFees] = useState('')
@@ -34,10 +34,18 @@ const RevaluationForm = () => {
     setDocument(base64)
   }
 
+  const handleMark = (e) => {
+    const { value } = e.target
+    if (value => 0 && value <= 100) {
+      setMark(value)
+    }
+  }
+
   const handleSubmitRequest = async (e) => {
     e.preventDefault()
+    console.log(course, semester)
 
-    if (!studentName ||!studentTokenNo ||!department ||!course ||!semester ||!subject ||!mark ||!fees ||!reason ||!document) {
+    if (!studentName ||!studentTokenNo ||!email ||!course ||!semester ||!subject ||!mark ||!fees ||!reason ||!document) {
       toast.error('All fields are required!')
       return
     }
@@ -46,7 +54,7 @@ const RevaluationForm = () => {
       await revaluationRequest({
         studentName,
         studentTokenNo,
-        department,
+        email,
         course,
         semester,
         subject,
@@ -62,7 +70,7 @@ const RevaluationForm = () => {
       console.log('Revaluation request submitted successfully!')
       setStudentName('')
       setStudentTokenNo('')
-      setDepartment('')
+      setEmail('')
       setCourse('')
       setSemester('')
       setSubject('')
@@ -86,40 +94,59 @@ const RevaluationForm = () => {
             type='text'
             name='name'
             placeholder='Enter your name'
-            value={ studentProfile?.username }
+            value={ studentProfile?.username || studentName }
+            onChange={ e => setStudentName(e.target.value) }
           />
           <ThreeInput
             label='Token number:'
             type='text'
             name='token'
             placeholder='Enter token number'
-            value={ studentProfile?.tokenNo }
+            value={ studentProfile?.tokenNo || studentTokenNo }
+            onChange={ e => setStudentTokenNo(e.target.value) }
           />
         </div>
         <div className='revaluation-input-group'>
           <ThreeInput
-            label='Department:'
-            type='text'
-            name='dept'
-            placeholder='Enter department'
-            value={ studentProfile?.department }
+            label='Email:'
+            type='email'
+            name='email'
+            placeholder='Enter email address'
+            value={ studentProfile?.email || email }
+            onChange={ e => setEmail(e.target.value) }
           />
-          <ThreeInput
-            label='Course:'
-            type='text'
-            name='course'
-            placeholder='Enter course'
-            value={ studentProfile?.course }
-          />
+          <div className='pro-in-box'>
+            <label htmlFor='course' className='profile-label'>Course:</label>
+            <select
+              className='profile-input-field'
+              value={ studentProfile?.course || course }
+              onChange={ e => setCourse(e.target.value) }
+            >
+              <option value='CP01'>CP01</option>
+              <option value='CP04'>CP04</option>
+              <option value='CP08'>CP08</option>
+              <option value='CP09'>CP09</option>
+              <option value='CP15'>CP15</option>
+              <option value='CP23'>CP23</option>
+            </select>
+          </div>
         </div>
         <div className='revaluation-input-group'>
-          <ThreeInput
-            label='Semester:'
-            type='number'
-            name='semester'
-            placeholder='Enter semester'
-            value={ studentProfile?.sem }
-          />
+          <div className='pro-in-box'>
+            <label htmlFor='course' className='profile-label'>Course:</label>
+            <select
+              className='profile-input-field'
+              value={ studentProfile?.sem || semester }
+              onChange={ e => setSemester(e.target.value) }
+            >
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+              <option value='6'>6</option>
+            </select>
+          </div>
           <ThreeInput
             label='Subject:'
             type='text'
@@ -136,7 +163,7 @@ const RevaluationForm = () => {
             name='mark'
             placeholder='Enter current mark'
             value={ mark }
-            onChange={ (e) => setMark(e.target.value) }
+            onChange={ (e) => handleMark(e) }
           />
           <ThreeInput
             label='Request Fees:'

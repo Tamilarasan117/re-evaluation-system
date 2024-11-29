@@ -40,17 +40,10 @@ const UserSchema = new mongoose.Schema({
   },
   tokenNo: {
     type: String,
-    unique: true,
+    trim: true,
   },
   phone: {
     type: String,
-    unique: true,
-    validate: {
-      validator: function (v) {
-        return /^\d{10}$/.test(v); // Regex for phone number validation
-      },
-      message: props => `${props.value} is not a valid phone number!`
-    },
   },
   bio : {
     type: String,
@@ -71,9 +64,6 @@ const UserSchema = new mongoose.Schema({
   },
   sem: {
     type: Number,
-    min: 1,
-    max: 6,
-    default: 1,
   },
   address: {
     type: String,

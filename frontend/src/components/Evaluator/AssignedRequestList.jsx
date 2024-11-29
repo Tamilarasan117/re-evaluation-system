@@ -25,14 +25,14 @@ const AssignedRequestList = (props) => {
     <motion.div 
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition = {{ duration: 0.6 }}
+      transition = {{ duration: 0.5 }}
       className='assigned-list-item'
     >
       <div className='assigned-list-img-card'>
         <img src={ assignedRequestList.document } alt='request-pic' className='assigned-list-img' />
       </div>
       <div className='request-list-details'>
-        <h1 className='request-list-title'>{ assignedRequestList.subject }</h1>
+        <h1 className='request-list-title'>Title: { assignedRequestList.subject }</h1>
         <RequestInfo
           label='Student Name: '
           data={ assignedRequestList.studentName }

@@ -13,11 +13,18 @@ const AdminProfile = () => {
   const { adminProfile, getAdminProfile, updateAdminProfile } = useAdmin()
 
   const [username, setUsername] = useState('')
-  const [phone, setPhone] = useState('')
+  const [phone, setPhone] = useState()
   const [dob, setDob] = useState('')
   const [bio, setBio] = useState('')
   const [address, setAddress] = useState('')
   const [profile, setProfile] = useState('')
+
+  const handlePhoneInputChange = (e) => {
+    const value = e.target.value
+    if (value.length <= 10 && !isNaN(value) && (!/^[a-z]/.test(value))) {
+      setPhone(value)
+    }
+  }
 
   useEffect(() => {
     getAdminProfile()
@@ -95,7 +102,7 @@ const AdminProfile = () => {
                 name='phone'
                 placeholder={ adminProfile?.phone || 'enter phone number' }
                 value={ phone }
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={ (e) => handlePhoneInputChange(e) }
               />
               <TwoInput
                 label='Date Of Birth:'

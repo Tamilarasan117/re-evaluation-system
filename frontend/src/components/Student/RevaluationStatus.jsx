@@ -15,7 +15,7 @@ const RevaluationStatus = () => {
   const requestCount = allRequestList?.length
   const completedRequest = allRequestList?.filter( each => each.status === 'Completed')
   const completedCount = completedRequest?.length
-  const inProgressRequest = allRequestList?.filter( each => each.status === 'InReview')
+  const inProgressRequest = allRequestList?.filter( each => each.status === 'InProgress')
   const inProgressCount = inProgressRequest?.length
   const pendingRequest = allRequestList?.filter( each => each.status === 'Pending')
   const pendingCount = pendingRequest?.length

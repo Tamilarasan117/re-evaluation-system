@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 
+import { Menu } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -12,20 +13,24 @@ const activeLink = ({ isActive }) => (isActive ? 'active' : '')
 
 const EvaluatorHeader = () => {
   const { logout } = useAuth()
+  const [open, setOpen] = useState(false)
 
   const handleLogout = () => {
     logout()
     toast.success('User logged out successfully')
     console.log('User logged out successfully')
   }
+  const toggleMenu = () => {
+    setOpen(!open)
+  }
 
   return (
     <header className='header-cont'>
       <nav className='header-menu'>
-          <div>
-            <img src={ logo } alt='Logo' className='header-logo' />
-          </div>
-        <ul className='admin-nav-menu'>
+        <div>
+          <img src={ logo } alt='Logo' className='header-logo' />
+        </div>
+        <ul className={ open ? `admin-nav-menu active` :  `admin-nav-menu` }>
           <li className='admin-nav-link'>
             <NavLink to='/evaluator/profile' className={`link ${ activeLink }`}>Profile</NavLink>
           </li>
@@ -45,6 +50,9 @@ const EvaluatorHeader = () => {
             </motion.button>
           </li>
         </ul>
+        <div className='menu-icon' onClick={ toggleMenu }>
+          <Menu color='#fff' size={ 30 } />
+        </div>
       </nav>
     </header>
   )

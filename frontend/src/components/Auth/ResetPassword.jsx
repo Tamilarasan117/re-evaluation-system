@@ -15,7 +15,7 @@ const ResetPassword = () => {
 
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const { error, isLoading, message, resetPassword } = useAuth()
+  const { isLoading, resetPassword } = useAuth()
 
   const [upperCase, setUpperCase] = useState(false)
   const [lowerCase, setLowerCase] = useState(false)
@@ -68,8 +68,6 @@ const ResetPassword = () => {
       >
         <div className='auth-form-container'>
           <h1 className="auth-form-heading">Reset Password</h1>
-          { error && <p className='alert'>{ error }</p> }
-          { message && <p className='success'>{ message }</p> }
           <form onSubmit={ onHandleSubmit } method="post">
             <PasswordInput
               icon = { Lock }
@@ -85,8 +83,6 @@ const ResetPassword = () => {
               value={ confirmPassword }
               onChange={ (e) => setConfirmPassword(e.target.value) }
             />
-            { error && <p className='alert'>{ error }</p> }
-            {/* password strength */}
             <div className='auth-pass-str-card'>
               <ul className='auth-form-list'>
                 <li>{ switchIcon(upperCase)} Uppercase letter (A-Z)</li>

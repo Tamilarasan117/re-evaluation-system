@@ -13,13 +13,20 @@ const EvaluatorProfile = () => {
   const { evaluatorProfile, getEvaluatorProfile, updateEvaluatorProfile } = useEvaluator()
 
   const [username, setUsername] = useState('')
-  const [phone, setPhone] = useState('')
+  const [phone, setPhone] = useState()
   const [dob, setDob] = useState('')
   const [department, setDepartment] = useState('')
   const [course, setCourse] = useState('')
   const [bio, setBio] = useState('')
   const [address, setAddress] = useState('')
   const [profile, setProfile] = useState('')
+
+  const handlePhoneInputChange = (e) => {
+    const value = e.target.value
+    if (value.length <= 10 && !isNaN(value) && (!/^[a-z]/.test(value))) {
+      setPhone(value)
+    }
+  }
 
   useEffect(() => {
     getEvaluatorProfile()
@@ -99,7 +106,7 @@ const EvaluatorProfile = () => {
                 name='phone'
                 placeholder={ evaluatorProfile?.phone || 'enter phone number' }
                 value={ phone }
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={ (e) => handlePhoneInputChange(e) }
               />
               <TwoInput
                 label='Date Of Birth:'
@@ -119,14 +126,21 @@ const EvaluatorProfile = () => {
                 value={ department }
                 onChange={(e) => setDepartment(e.target.value)}
               />
-              <TwoInput
-                label='Course:'
-                type='text'
-                name='course'
-                placeholder={ evaluatorProfile?.course || 'enter course' }
-                value={ course }
-                onChange={(e) => setCourse(e.target.value)}
-              />
+              <div className='pro-in-box'>
+                <label htmlFor='course' className='profile-label'>Course:</label>
+                <select
+                  className='profile-input-field'
+                  value={ evaluatorProfile?.course }
+                  onChange={(e) => setCourse(e.target.value)}
+                >
+                  <option value='CP01'>CP01</option>
+                  <option value='CP04'>CP04</option>
+                  <option value='CP08'>CP08</option>
+                  <option value='CP09'>CP09</option>
+                  <option value='CP15'>CP15</option>
+                  <option value='CP23'>CP23</option>
+                </select>
+              </div>
             </div>
             <div className='profile-input-box'>
               <Textarea
