@@ -630,7 +630,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 350px;
+  width: 325px;
   border: 1px solid #7b8794;
   border-radius: 5px;
   padding: 3px;
@@ -726,7 +726,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 65vh;
+  min-height: 60vh;
 }
 .no-result-img {
   width: 250px;
