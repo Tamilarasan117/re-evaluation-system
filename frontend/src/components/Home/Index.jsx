@@ -19,6 +19,9 @@ const Index = () => {
           <li>* Email notifications for status updates</li>
           <li>* Admin and evaluator portals for managing requests</li>
         </ul>
+        <div className='hero-image-cont hero-card1'>
+          <img src={ loginImg } alt='Authentication' className='auth-img' />
+        </div>
         <div className='index-links'>
           <motion.div 
             initial={{ opacity: 0, y: 5 }}
@@ -40,7 +43,7 @@ const Index = () => {
           </motion.div>
         </div>
       </div>
-      <div className='hero-image-cont'>
+      <div className='hero-image-cont hero-card2'>
         <img src={ loginImg } alt='Authentication' className='auth-img' />
       </div>
     </section>

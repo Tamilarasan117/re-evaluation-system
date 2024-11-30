@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { CircleCheck } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useStudent } from '../hooks/useStudent.js'
@@ -16,22 +17,14 @@ const PaymentSuccess = () => {
       initial={{ opacity: 0, y: 75 }}
       animate={{ opacity: 1, y: 0 }}
       transition = {{ duration: 0.6 }}
-      className='request-cart'
+      className='pay-success-card'
     >
-      <h1 className='payment-success-head'>Payment Successful!</h1>
-      <p className='payment-success-message'>
-        Thank you for your payment! Your re-evaluation request has been successfully submitted.
-      </p>
-      <div className='payment-success-detail-cont'>
-        <h2 className='pay-success-detail-head'>Payment Details:</h2>
-        <div className='pay-success-detail-card'>
-          <p className='pay-success-card-msg'>Payment ID: { paymentDetails._id }</p>
-          <p className='pay-success-card-msg'>Amount Paid: { paymentDetails.paymentAmount } (RS)</p>
-          <p className='pay-success-card-msg'>Payment Status: { paymentDetails.paymentStatus }</p>
-          <p className='pay-success-card-msg'>Date: { new Date(paymentDetails.paymentDate).toLocaleString() }</p>
-          <p className='pay-success-card-msg'>Student ID: { paymentDetails.studentId }</p>
-          <p className='pay-success-card-msg'>Revaluation Request ID: { paymentDetails.revaluationRequestId }</p>
-        </div>
+      <div className='pay-success-box'>
+        <h1 className='payment-success-head'>Payment Successful!</h1>
+        <div className='pay-suc-icon'><CircleCheck size={ 50 } color='#4CAF50' /></div>
+        <p className='payment-success-message'>
+          Thank you for your payment! Your re-evaluation request has been successfully submitted.
+        </p>
         <motion.button 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -43,7 +36,7 @@ const PaymentSuccess = () => {
         >
           { isLoading ?
               <Loader color='#fff' className='animate-spinner' size={ 25 } aria-label="Loading Spinner" />
-            : 'Go to Dashboard'
+            : 'Back to Profile'
           }
         </motion.button>
       </div>

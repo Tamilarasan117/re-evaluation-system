@@ -111,7 +111,7 @@ const PaymentForm = () => {
       >
         <div className='pay-head-card'>
           <h1 className='pay-head'>
-            Pay with <CircleChevronRight className='pay-arrow' /> link
+            Pay with <CircleChevronRight size={ 20 } className='pay-arrow' /> link
           </h1>
         </div>
         <form onSubmit={ handleRequestPayment } className='pay-body-card'>

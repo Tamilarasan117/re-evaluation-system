@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import { Search } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 import toast from 'react-hot-toast'
 
@@ -121,11 +122,17 @@ const AdminUserManagement = () => {
     />
   )) : ''
 
-  const NoResultImg = () => {
+  const NoResult = () => {
     return (
-      <div className='no-result-card'>
-        <img src={ noResult } className='no-result-img' alt='No User Available' />
-      </div>
+      <motion.div 
+        initial={{ opacity: 0, y: 75 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition = {{ duration: 0.6 }}
+      >
+        <div className='no-result-card'>
+          <img src={ noResult } className='no-result-img' alt='No User Available' />
+        </div>
+      </motion.div>
     )
   }
 
@@ -183,7 +190,7 @@ const AdminUserManagement = () => {
           </div>
         </li>
         {
-          filteredUser.length > 0 ? filtered : NoResultImg()
+          filteredUser.length > 0 ? filtered : NoResult()
         }
       </ul>
       <ul className='page-menu'>

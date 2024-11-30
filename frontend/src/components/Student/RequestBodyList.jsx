@@ -21,50 +21,55 @@ const RequestBodyList = (props) => {
   }
 
   return (
-    <li className='request-body-list-cont'>
-      <h1 className='request-body-list-head'>Requested Card</h1>
-      <div className='request-body-list-body'>
-        <div className='request-body-list-body-top'>
-          <img src={request.document} alt='request-image' className='request-body-list-image' />
+    <motion.div 
+      initial={{ opacity: 0, y: 75 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition = {{ duration: 0.6 }}
+    >
+      <li className='request-body-list-card'>
+        <div className='request-body-list-body'>
+          <div className='request-body-list-body-top'>
+            <img src={request.document} alt='request-image' className='request-body-list-image' />
+          </div>
+          <div className='request-body-list-body-bottom'>
+            <RequestInfo
+              label='Reason: '
+              data={ request.subject }
+            />
+            <RequestInfo
+              label='Current Mark: '
+              data={ request.mark }
+            />
+            <RequestInfo
+              label='Re-Evaluated Mark: '
+              data={ request.revaluatedMark ? request.revaluatedMark: 'no update' }
+            />
+            <RequestInfo
+              label='Request Status: '
+              data={ request.status }
+            />
+            <RequestInfo
+              label='Requested Date: '
+              data={ dateFormat (request.createdAt) }
+            />
+            <RequestInfo
+              label='Comments: '
+              data={ request.comment ? request.comment : 'no update' }
+            />
+            <motion.button 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition = {{ delay: 0.3 }}
+              type='click'
+              onClick={ handleDelete }
+              className='request-delete-btn'
+            >
+              Delete Request <Trash2 size={ 17 } color='#fff' />
+            </motion.button>
+          </div>
         </div>
-        <div className='request-body-list-body-bottom'>
-          <RequestInfo
-            label='Reason: '
-            data={ request.subject }
-          />
-          <RequestInfo
-            label='Current Mark: '
-            data={ request.mark }
-          />
-          <RequestInfo
-            label='Re-Evaluated Mark: '
-            data={ request.revaluatedMark ? request.revaluatedMark: 'no update' }
-          />
-          <RequestInfo
-            label='Request Status: '
-            data={ request.status }
-          />
-          <RequestInfo
-            label='Requested Date: '
-            data={ dateFormat (request.createdAt) }
-          />
-          <RequestInfo
-            label='Comments: '
-            data={ request.comment ? request.comment : 'no update' }
-          />
-          <motion.button 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition = {{ delay: 0.3 }}
-            type='click'
-            onClick={ handleDelete }
-            className='request-delete-btn'
-          >
-            Delete Request <Trash2 color='#fff' />
-          </motion.button>
-        </div>
-      </div>
-    </li>
+      </li>
+    </motion.div>
   )
 }
 
