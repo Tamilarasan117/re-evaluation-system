@@ -230,6 +230,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #0c0c0c;
 }
 .footer-break {
   width: 95%;
@@ -237,7 +238,7 @@
 }
 .footer-card {
   margin-top: 20px;
-  color: rgb(56, 56, 56);
+  color: #fff;
 }
 .footer-para {
   font-size: 16px;
@@ -1319,7 +1320,6 @@ input[type='file'] {
 @media (max-width: 768px) {
   .request-btn {
     width: 100%;
-    height: 35px;
     font-size: 14px;
   }
 }

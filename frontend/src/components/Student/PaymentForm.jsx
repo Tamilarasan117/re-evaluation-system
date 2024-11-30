@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { CircleChevronRight } from 'lucide-react'
+import { CircleChevronRight, Loader } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 import toast from 'react-hot-toast'
@@ -22,7 +22,7 @@ const PaymentForm = () => {
   
   const navigate = useNavigate()
   
-  const { getRevaluationRequest, requestCart, requestPayment } = useStudent()
+  const { isLoading, getRevaluationRequest, requestCart, requestPayment } = useStudent()
 
   const handleCardInputChange = (e) => {
     const value = e.target.value
@@ -190,8 +190,13 @@ const PaymentForm = () => {
             transition = {{ delay: 0.3 }}
             type='submit'
             className="auth-button"
+            disabled={ isLoading }
           >
-              Pay Now
+            {
+            isLoading ?
+              <Loader color='#fff' className='animate-spinner' size={ 25 } aria-label="Loading Spinner" />
+              : 'Pay Now'
+          }
           </motion.button>
         </form>
       </motion.div>
