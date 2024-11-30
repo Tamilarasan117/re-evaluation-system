@@ -1,8 +1,12 @@
+// importing packages
 import React from 'react'
 
-import EvaluatorHeader from '../Common/EvaluatorHeader.jsx'
-import Footer from '../Common/Footer.jsx';
+// importing modules
 import '../../styles/styles.css'
+
+// importing components
+import EvaluatorHeader from '../Common/EvaluatorHeader.jsx'
+import Footer from '../Common/Footer.jsx'
 
 const EvaluatorLayout = ({ children }) => {
   return (

@@ -1,10 +1,10 @@
+// importing packages
 import React, { useState } from 'react'
-
-
 import { Menu } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
+// importing modules
 import '../../styles/styles.css'
 import logo from '../../assets/logo.png'
 
@@ -14,7 +14,6 @@ const PublicHeader = () => {
   const toggleMenu = () => {
     setOpen(!open)
   }
-
 
   return (
     <header className='header-cont'>

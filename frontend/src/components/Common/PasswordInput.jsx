@@ -1,6 +1,8 @@
+// importing packages
 import React, { useState } from 'react'
 import { Eye, EyeClosed } from 'lucide-react'
 
+// importing modules
 import '../../styles/styles.css'
 
 const PasswordInput = ({ icon: Icon, ...props }) => {

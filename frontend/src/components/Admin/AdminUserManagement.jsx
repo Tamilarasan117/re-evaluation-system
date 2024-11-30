@@ -1,16 +1,18 @@
+ // importing packages
 import React, { useEffect, useState} from 'react'
 import { Search } from 'lucide-react'
 import { motion } from 'framer-motion'
-
 import toast from 'react-hot-toast'
 
+// importing modules
+import '../../styles/styles.css'
 import { useAdmin } from './../hooks/useAdmin.js'
 import { useAuth } from '../hooks/useAuth.js'
+import noResult from '../../assets/no-user.jpg'
 
-import '../../styles/styles.css'
+// importing components
 import UsersList from './UsersList.jsx'
 import UserState from './UserState.jsx'
-import noResult from '../../assets/no-user.jpg'
 
 const AdminUserManagement = () => {
   const [searchValue, setSearchValue] = useState('')

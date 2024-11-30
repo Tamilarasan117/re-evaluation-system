@@ -1,6 +1,9 @@
+// importing packages
 import React from 'react'
-
 import { Trash2 } from 'lucide-react'
+
+// importing modules
+import '../../styles/styles.css'
 
 const RequestList = (props) => {
   const { request, handleDeleteRequest } = props

@@ -1,10 +1,11 @@
+// importing packages
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-
 import { Loader } from 'lucide-react'
 import toast from 'react-hot-toast'
 
+// importing modules
 import '../../styles/styles.css'
 import { useAuth } from '../hooks/useAuth.js'
 

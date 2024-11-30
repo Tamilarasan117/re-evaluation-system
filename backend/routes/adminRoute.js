@@ -28,7 +28,6 @@ adminRouter.put('/update-user-role/:id', adminProtectMiddleware, updateUserRole)
 adminRouter.put('/update-user-status/:id', adminProtectMiddleware, updateUserStatus)
 adminRouter.put('/update-profile', adminProtectMiddleware, updateProfile)
 adminRouter.put('/update-request-status/:id', adminProtectMiddleware, updateRequestStatus)
-
 adminRouter.put('/assign-evaluator/:id', adminProtectMiddleware, assignEvaluator)
 
 adminRouter.delete('/revaluation-request-delete/:id', adminProtectMiddleware, deleteRevaluationRequest)

@@ -1,4 +1,8 @@
+// importing packages
 import React from 'react'
+
+// importing modules
+import '../../styles/styles.css'
 
 const RequestListHeader = () => {
   return (

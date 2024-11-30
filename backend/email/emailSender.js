@@ -16,8 +16,9 @@ export const sendVerificationEmail = async (email, verificationToken) => {
     })
     console.log(`Email sent successfully: `, response)
   } catch (error) {
-    console.error(`Error sending verification: ${error}`)
-    throw new Error(`Error sending verification: ${error}`)
+    console.log('Something went wrong while sending email:')
+    console.log(error.message)
+    throw new Error(`Error sending verification: ${ error.message }`)
   }
 }
 // send welcome email functions
@@ -32,10 +33,11 @@ export const sendWelcomeEmail = async (email, username) => {
       html: EMAIL_VERIFIED_SUCCESS_TEMPLATE,
       category: 'Email Verified',
     })
-    console.log( `${username} your email verification done successfully`, response)
+    console.log( `${ username } your email verification done successfully`, response)
   } catch (error) {
-    console.error(`Error sending welcome email: ${error}`)
-    throw new Error(`Error sending welcome email: ${error}`)
+    console.log('Something went wrong while sending email:')
+    console.log(error.message)
+    throw new Error(`Error sending welcome email: ${ error.message }`)
   }
 }
 // send reset password email function
@@ -52,8 +54,9 @@ export const sendPasswordResetEmail = async (email, resetURL) => {
     })
     console.log(`Password reset email sent successfully: `, response)
   } catch (error) {
-    console.error(`Error sending password reset email: ${error}`)
-    throw new Error(`Error sending password reset email: ${error}`)
+    console.log('Something went wrong while sending email:')
+    console.log(error.message)
+    throw new Error(`Error sending password reset email: ${ error }`)
   }
 }
 // send reset success email
@@ -70,7 +73,8 @@ export const sendPasswordResetSuccessEmail = async (email) => {
     })
     console.log(`Password reset success email sent successfully: `, response)
   } catch (error) {
-    console.error(`Error sending password reset success email: ${error}`)
-    throw new Error(`Error sending password reset success email: ${error}`)
+    console.log('Something went wrong while sending email:')
+    console.log(error.message)
+    throw new Error(`Error sending password reset success email: ${ error.message }`)
   }
 }

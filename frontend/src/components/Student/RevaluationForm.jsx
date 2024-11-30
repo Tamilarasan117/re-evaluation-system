@@ -1,15 +1,18 @@
+// importing packages
 import React, { useState } from 'react'
 import { Loader } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-
 import toast from 'react-hot-toast'
 
+// importing modules
+import '../../styles/styles.css'
 import { useStudent } from '../hooks/useStudent.js'
+import fileUploadImg from '../../assets/fileUpload.jpg'
 
+// importing components
 import ThreeInput from '../Common/ThreeInput.jsx'
 import Textarea from './../Common/Textarea.jsx'
-import fileUploadImg from '../../assets/fileUpload.jpg'
 import convertToBase64 from '../helper/convertToBase64.jsx'
 
 const RevaluationForm = () => {

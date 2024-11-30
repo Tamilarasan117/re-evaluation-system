@@ -1,6 +1,9 @@
+// importing packages
 import React from 'react'
-
 import { ClockArrowDown, ListCheck, Send, TrendingUp } from 'lucide-react'
+
+// importing modules
+import '../../styles/styles.css'
 
 const AssignedRequestState = (props) => {
   const { requestCount, completedCount, processCount, pendingCount } = props

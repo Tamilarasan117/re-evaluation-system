@@ -9,7 +9,7 @@ dotenv.config()
 // import require module
 import { User } from '../models/User.js'
 import { generateTokenAndSetCookie, generateEmailVerificationToken } from '../utils/generateTokens.js'
-import { sendPasswordResetEmail, sendPasswordResetSuccessEmail, sendVerificationEmail, sendWelcomeEmail } from '../email/emailSender.js'
+import { sendPasswordResetEmail, sendPasswordResetSuccessEmail, /*sendVerificationEmail,*/ sendWelcomeEmail } from '../email/emailSender.js'
 
 // user register controller
 export const register = async (request, response) => {
@@ -28,13 +28,13 @@ export const register = async (request, response) => {
     }
     
     const hashedPassword = await bcrypt.hash(password, 10)
-    const verificationToken = generateEmailVerificationToken()
+    /*const verificationToken = */generateEmailVerificationToken()
     const user = new User({
       username,
       email,
       password: hashedPassword,
-      /*verificationToken: verificationToken,
-      verificationTokenExpiresAt:  Date.now()*/
+      verificationToken: verificationToken,
+      verificationTokenExpiresAt:  Date.now()
     })
     await user.save()
 
@@ -47,7 +47,8 @@ export const register = async (request, response) => {
     })
     console.log(`User registered successfully with email address ${email}`)
   } catch (error) {
-    console.log(error)
+    console.log('Something went wrong while registering user')
+    console.log(error.message)
     response.status(500).json({ message: error.message || 'Something went wrong' });
   }
 }
@@ -79,7 +80,8 @@ export const verifyEmail = async (request, response) => {
     })
     console.log(`Email Verified successfully for user: ${user.email}`)
   } catch (error) {
-    console.log(`Error is email verify: `, error)
+    console.log('Something went wrong while verifying email')
+    console.log(error.message)
     response.status(500).json({ message: 'Server error' });
   }
 }
@@ -112,7 +114,8 @@ export const login = async (request, response) => {
     })
     console.log(`User logged in successfully with email: ${email}`)
   } catch (error) {
-    console.error(error);
+    console.log('Something went wrong while logging in user')
+    console.log(error.message)
     response.status(500).json({ message: 'Something went wrong' });
   }
 }
@@ -123,8 +126,9 @@ export const logout = async (request, response) => {
     response.status(200).json({ message: 'Logged out successfully' })
     console.log('User logged out successfully')
   } catch (error) {
+    console.log('Something went wrong while logging out user')
+    console.log(error.message)
     response.status(400).json({ message: 'Internal server error' })
-    console.log('Error in logout: ', error)
   }
 }
 // forgot password controller
@@ -153,7 +157,8 @@ export const forgotPassword = async (request, response) => {
     response.status(200).json({ message: 'Password reset lint sent to your email' })
     console.log(`Password reset lint sent to ${user.email}`)
   } catch (error) {
-    console.error('Error in forgot password: ', error);
+    console.log('Something went wrong while sending password reset lint')
+    console.log(error.messaeg)
     response.status(400).json({ message: error.message || 'Server error'})
   }
 }
@@ -185,7 +190,8 @@ export const resetPassword = async (request, response) => {
     response.status(200).json({ message: 'Password reset successfully' })
     console.log(`Password reset successfully for ${user.email}`)
   } catch (error) {
-    console.log('Error in password reset email: ' + error.message)
+    console.log('Something went wrong while resetting password')
+    console.log(error.message)
     response.status(400).json({ message: error.message || 'Server error'})
   }
 }
@@ -201,7 +207,8 @@ export const checkAuth = async (request, response) => {
     response.status(200).json({ message: 'User authenticated successfully', user })
     console.log(`User authenticated successfully for user: ${user.email}`)
   } catch (error) {
-    console.error('Error in checkAuth: ', error);
+    console.log('Something went wrong while checking authentication')
+    console.log(error.message)
     response.status(400).json({ message: error.message || 'Server error'})
   }
 }

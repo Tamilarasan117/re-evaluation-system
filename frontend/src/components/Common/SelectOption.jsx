@@ -1,8 +1,7 @@
+// importing packages
 import React from 'react'
 
-const SelectOption = (props) => {
-  const { evaluator } = props
-  
+const SelectOption = ({ evaluator }) => {
   return (
     <>
       <option value={ evaluator.username }>{ evaluator.username }</option>

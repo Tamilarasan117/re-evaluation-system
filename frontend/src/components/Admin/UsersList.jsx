@@ -1,7 +1,8 @@
+ // importing packages
 import React from 'react'
-
 import { Trash2 } from 'lucide-react'
 
+// importing modules
 import '../../styles/styles.css'
 
 const UsersList = (props) => {
@@ -68,11 +69,3 @@ const UsersList = (props) => {
 }
 
 export default UsersList
-
-
-/*
-
-
-
-
-*/

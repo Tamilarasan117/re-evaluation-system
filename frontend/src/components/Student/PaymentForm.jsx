@@ -1,17 +1,19 @@
+// importing packages
 import React, { useEffect, useState } from 'react'
 import { CircleChevronRight, Loader } from 'lucide-react'
 import { motion } from 'framer-motion'
-
+import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
+// importing modules
 import '../../styles/styles.css'
-import FiveInput from '../Common/FiveInput.jsx'
 import pay from '../../assets/pay.jpg'
 import cvcImg from '../../assets/cvc.png'
-import RequestInfo from '../Evaluator/RequestInfo.jsx'
-
 import { useStudent } from '../hooks/useStudent.js'
-import { useNavigate } from 'react-router-dom'
+
+// importing components
+import FiveInput from '../Common/FiveInput.jsx'
+import RequestInfo from '../Evaluator/RequestInfo.jsx'
 
 const PaymentForm = () => {
   const [email, setEmail] = useState('')

@@ -14,15 +14,13 @@ export const getStudentProfile = async (request, response) => {
     if (!user) {
       return response.status(404).json({ message: 'User not found' })
     }
+
     response.status(200).json(user)
-    console.log({
-      username: user.username,
-      email: user.email,
-      tokenNo: user.email.split('@')[0].toUpperCase(),
-    })
+    console.log('Student profile fetched successfully')
   } catch (error) {
+    console.log('Something went wrong while fetching student profile')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
-    console.log(error)
   }
 }
 // update student profile information controller
@@ -41,17 +39,10 @@ export const updateStudentProfile = async (request, response) => {
 
     response.status(200).json({ message: "Student profile updated successfully", studentProfile: studentProfile })
     console.log('Student profile info updated successfully')
-    console.log({
-      username: studentProfile.username,
-      email: studentProfile.email,
-      phone: studentProfile.phone,
-      dob: studentProfile.dob,
-      bio: studentProfile.bio,
-      address: studentProfile.address,
-    })
   } catch (error) {
+    console.log('Something went wrong while updating student profile')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
-    console.log(error)
   }
 }
 // revaluation request controller
@@ -79,7 +70,6 @@ export const revaluationRequest = async (request, response) => {
       semester,
       subject,
     })
-    
     if (existingRequest) {
       console.log('You have already submitted a revaluation request for this subject')
       return response.status(400).json({
@@ -109,7 +99,8 @@ export const revaluationRequest = async (request, response) => {
     })
     console.log('Reevaluation request submitted successfully')
   } catch (error) {
-    console.log(error.errors)
+    console.log('Something went wrong while submitting revaluation request')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
   }
 }
@@ -117,7 +108,6 @@ export const revaluationRequest = async (request, response) => {
 export const getRevaluationRequest = async (request, response) => {
   try {
     const userId = request.user.id
-    
     const revaluationRequests = await RevaluationRequest.find({ studentId: userId })
     if (!revaluationRequests) {
       return response.status(404).json({ message: "No revaluation requests found" })
@@ -140,19 +130,9 @@ export const getRevaluationRequest = async (request, response) => {
       },
     })
     console.log('Revaluation requests fetched successfully')
-    console.log({
-      studentName: revaluationRequests[0].studentName,
-      studentTokenNo: revaluationRequests[0].studentTokenNo,
-      department: revaluationRequests[0].department,
-      course: revaluationRequests[0].course,
-      semester: revaluationRequests[0].semester,
-      subject: revaluationRequests[0].subject,
-      mark: revaluationRequests[0].mark,
-      fees: revaluationRequests[0].fees,
-      reason: revaluationRequests[0].reason,
-    })
   } catch (error) {
-    console.log(error)
+    console.log('Something went wrong while fetching revaluation requests')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
   }
 }
@@ -160,7 +140,7 @@ export const getRevaluationRequest = async (request, response) => {
 export const requestPayment = async (request, response) => {
   const userId = request.user.id
   const { id } = request.params
-  const { paymentAmount, paymentStatus, username, email, cardNumber, expireDate, cvc } = request.body
+  const { paymentAmount, paymentStatus, email, cardNumber, expireDate, cvc } = request.body
   try {
     const existingRequest = await RevaluationRequest.findById({ _id: id, studentId: userId})
     if (!existingRequest) {
@@ -189,9 +169,9 @@ export const requestPayment = async (request, response) => {
       data: paymentRequest,
     })
     console.log('Payment request sent successfully')
-    console.log(paymentRequest)
   } catch (error) {
-    console.log(error)
+    console.log('Something went wrong while sending payment request')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
   }
 }
@@ -211,8 +191,9 @@ export const getAllRequestedRevaluation = async (request, response) => {
     })
     console.log("Revaluation requests retrieved successfully" )
   } catch (error) {
+    console.log('Something went wrong while retrieving revaluation requests')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
-    console.log(error)
   }
 }
 // delete revaluation request controller
@@ -234,7 +215,8 @@ export const deleteRevaluationRequest = async (request, response) => {
     })
     console.log('Revaluation request deleted successfully')
   } catch (error) {
-    console.log(error.errors)
+    console.log('Something went wrong while deleting revaluation request')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
   }
 }

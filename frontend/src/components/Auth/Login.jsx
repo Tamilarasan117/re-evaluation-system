@@ -1,13 +1,15 @@
+// importing packages
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Lock, Loader } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
-
 import toast from 'react-hot-toast'
 
+// importing modules
 import '../../styles/styles.css'
 import { useAuth } from '../hooks/useAuth.js'
 
+// importing components
 import OneInput from '../Common/OneInput.jsx'
 import PasswordInput from '../Common/PasswordInput.jsx'
 

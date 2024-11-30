@@ -1,8 +1,9 @@
+// importing packages
 import React from 'react'
-
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
+// importing modules
 import '../../styles/styles.css'
 import loginImg from '../../assets/login.svg'
 

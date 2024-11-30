@@ -1,8 +1,10 @@
+// importing packages
 import React from 'react'
-
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
+// importing modules
+import '../../styles/styles.css'
 import unauthorized from '../../assets/unauthorized.jpg'
 
 const Unauthorized = () => {

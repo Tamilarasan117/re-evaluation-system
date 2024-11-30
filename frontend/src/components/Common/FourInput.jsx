@@ -1,10 +1,14 @@
+// importing packages
 import React from 'react'
 
+// importing modules
 import '../../styles/styles.css'
 import pay from '../../assets/pay.jpg'
 import cvc from '../../assets/cvc.png'
 
-const FourInput = ({ label, name, name2, placeholder2, type2, type, name3, placeholder3, ...props }) => {
+const FourInput = (props) => {
+  const { label, name, name2, placeholder2, type2, type, name3, placeholder3 } = props
+
   return (
     <div className='pro-three-in-box'>
       <label htmlFor={ name } className='profile-label'>{ label }</label>

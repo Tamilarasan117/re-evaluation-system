@@ -1,9 +1,13 @@
+// importing packages
 import React from 'react'
-
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
-import RequestInfo from './RequestInfo'
+// importing modules
+import '../../styles/styles.css'
+
+// importing components
+import RequestInfo from './RequestInfo.jsx'
 
 const AssignedRequestList = (props) => {
   const  { assignedRequestList } = props

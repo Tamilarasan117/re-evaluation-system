@@ -1,14 +1,16 @@
+// importing packages
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Lock, Loader, ArrowLeft, CheckCheck, X } from 'lucide-react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-
 import toast from 'react-hot-toast'
 
+// importing modules
 import '../../styles/styles.css'
 import { useAuth } from '../hooks/useAuth.js'
 
+// importing components
 import PasswordInput from '../Common/PasswordInput.jsx'
 
 const ResetPassword = () => {

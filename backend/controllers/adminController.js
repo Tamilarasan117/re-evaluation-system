@@ -8,9 +8,11 @@ export const getUser = async (request, response) => {
   try {
     const users = await User.find()
     response.status(200).json( users )
+    console.log('All users fetched successfully')
   } catch (error) {
+    console.log('Something went wrong while fetching all users from the server')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
-    console.log(error)
   }
 }
 // delete user controller
@@ -30,18 +32,17 @@ export const deleteUser = async (request, response) => {
     }
 
     response.status(200).json({ message: "User deleted successfully", user: user })
-    console.log('User deleted successfully.', user)
+    console.log('User deleted successfully.')
   } catch (error) {
+    console.log('Something went wrong while deleting user from the server')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
-    console.log(error)
   }
 }
 // update user role controller
 export const updateUserRole = async (request, response) => {
   try {
     const userId = request.params.id
-    console.log(userId)
-    console.log(typeof(userId))
     const { role } = request.body
     const checkAdmin = await User.findById(userId)
     if (!checkAdmin) {
@@ -60,9 +61,11 @@ export const updateUserRole = async (request, response) => {
       return response.status(400).json({ message: 'User not found' })
     }
     response.status(200).json({ message: "User role updated successfully", user: user })
+    console.log('User role updated successfully.')
   } catch (error) {
+    console.log('Something went wrong while updating user role')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
-    console.log(error)
   }
 }
 // update user status controller
@@ -84,9 +87,11 @@ export const updateUserStatus = async (request, response) => {
       return response.status(400).json({ message: 'User not found' })
     }
     response.status(200).json({ message: "User status updated successfully", user: user })
+    console.log('User status updated successfully.')
   } catch (error) {
+    console.log('Something went wrong while updating user status')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
-    console.log(error)
   }
 }
 // get profile information controller
@@ -98,17 +103,11 @@ export const getAdminProfile = async (request, response) => {
       return response.status(404).json({ message: 'User not found' })
     }
     response.status(200).json(user)
-    console.log({
-      username: user.username,
-      email: user.email,
-      phone: user.phone,
-      dob: user.dob,
-      bio: user.bio,
-      address: user.address,
-    })
+    console.log('Admin profile fetched successfully')
   } catch (error) {
+    console.log('Something went wrong while fetching admin profile')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
-    console.log(error)
   }
 }
 // update profile information controller
@@ -127,17 +126,10 @@ export const updateProfile = async (request, response) => {
 
     response.status(200).json({ message: "Admin profile updated successfully", adminProfile: adminProfile })
     console.log('admin profile info updated successfully')
-    console.log({
-      username: adminProfile.username,
-      email: adminProfile.email,
-      phone: adminProfile.phone,
-      dob: adminProfile.dob,
-      bio: adminProfile.bio,
-      address: adminProfile.address,
-    })
   } catch (error) {
+    console.log('Something went wrong while updating admin profile')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
-    console.log(error)
   }
 }
 // admin get all revaluation request list controller
@@ -155,11 +147,12 @@ export const getAllRevaluationRequest = async (request, response) => {
       return response.status(404).json({ message: 'No payments found' })
     }
     
-    console.log('Revaluation request list fetched successfully')
     response.status(200).json( revaluationRequest )
+    console.log('Revaluation request list fetched successfully')
   } catch (error) {
+    console.log('Something went wrong while fetching revaluation request list')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
-    console.log(error)
   }
 }
 // update request status
@@ -172,11 +165,13 @@ export const updateRequestStatus = async (request, response) => {
       console.log('Request not found')
       return response.status(404).json({ message: 'Request not found' })
     }
-    console.log('Request status updated successfully')
+
     response.status(200).json({ message: 'Request status updated successfully', requestStatus })
+    console.log('Request status updated successfully')
   } catch (error) {
+    console.log('Something went wrong while updating request status')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
-    console.log(error)
   }
 }
 // admin can assign request to a different evaluator controller
@@ -184,7 +179,11 @@ export const assignEvaluator = async (request, response) => {
   try {
     const requestId = request.params.id
     const evaluatorId = request.body.evaluatorId
-    const requestStatus = await RevaluationRequest.findByIdAndUpdate(requestId, { evaluatorId: evaluatorId }, { new : true })
+    const requestStatus = await RevaluationRequest.findByIdAndUpdate(
+      requestId,
+      { evaluatorId: evaluatorId },
+      { new : true }
+    )
     if (!requestStatus) {
       console.log('Request not found')
       return response.status(404).json({ message: 'Request not found' })
@@ -192,31 +191,30 @@ export const assignEvaluator = async (request, response) => {
 
     requestStatus.assignedAt = new Date()
     await requestStatus.save()
-    console.log('Request assigned to evaluator successfully')
+    
     response.status(200).json({ message: 'Request assigned to evaluator successfully', requestStatus })
+    console.log('Request assigned to evaluator successfully')
   } catch (error) {
+    console.log('Something went wrong while assigning request to evaluator')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
-    console.log(error)
   }
 }
 // delete revaluation request controller
 export const deleteRevaluationRequest = async (request, response) => {
   try {
     const { id } = request.params
-    const existingRequest = await RevaluationRequest.findOneAndDelete({
-      _id: id,
-    })
+    const existingRequest = await RevaluationRequest.findOneAndDelete({ _id: id })
     if (!existingRequest) {
       console.log('Revaluation request not found or invalid user')
       return response.status(404).json({ message: 'Revaluation request not found or invalid user' })
     }
 
-    response.status(200).json({
-      message: "Revaluation request deleted successfully"
-    })
+    response.status(200).json({ message: "Revaluation request deleted successfully" })
     console.log('Revaluation request deleted successfully')
   } catch (error) {
-    console.log(error.errors)
+    console.log('Something went wrong while deleting revaluation request')
+    console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
   }
 }

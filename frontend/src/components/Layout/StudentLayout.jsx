@@ -1,8 +1,12 @@
+// importing packages
 import React from 'react'
 
-import StudentHeader from '../Common/StudentHeader.jsx'
-import Footer from '../Common/Footer.jsx';
+// importing modules
 import '../../styles/styles.css'
+
+// importing components
+import StudentHeader from '../Common/StudentHeader.jsx'
+import Footer from '../Common/Footer.jsx'
 
 const StudentLayout = ({ children }) => {
   return (

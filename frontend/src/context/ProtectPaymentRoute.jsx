@@ -1,6 +1,8 @@
+// importing packages
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 
+// importing modules
 import { useStudent } from '../components/hooks/useStudent.js'
 
 const ProtectPaymentRoute = ({ children }) => {

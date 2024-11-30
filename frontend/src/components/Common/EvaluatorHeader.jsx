@@ -1,10 +1,11 @@
+// importing packages
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
-
 import { Menu } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
+// importing modules
 import '../../styles/styles.css'
 import logo from '../../assets/logo.png'
 import { useAuth } from '../hooks/useAuth.js'

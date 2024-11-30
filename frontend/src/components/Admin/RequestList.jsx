@@ -1,8 +1,11 @@
+// importing packages
 import React from 'react'
-
 import { Trash2 } from 'lucide-react'
 
+// importing modules
 import '../../styles/styles.css'
+
+// importing components
 import SelectOption from '../Common/SelectOption.jsx'
 
 const RequestList = (props) => {
@@ -36,8 +39,6 @@ const RequestList = (props) => {
 
   const completed = requestList.paymentStatus === 'Paid' ? 'completed' : ''
   const rejected = requestList.paymentStatus === 'Unpaid' ? 'rejected' : ''
-
-  console.log(completed)
 
   return (
     <>

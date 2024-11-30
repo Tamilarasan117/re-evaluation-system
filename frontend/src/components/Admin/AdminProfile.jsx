@@ -1,10 +1,13 @@
+// importing packages
 import React, { useEffect, useState } from 'react'
-
 import toast from 'react-hot-toast'
 
+// importing modules
+import '../../styles/styles.css'
 import { useAdmin } from '../hooks/useAdmin.js'
-
 import profileImg from '../../assets/avatar.png'
+
+// importing components
 import convertToBase64 from '../helper/convertToBase64.jsx'
 import TwoInput from '../Common/TwoInput.jsx'
 import Textarea from '../Common/Textarea.jsx'

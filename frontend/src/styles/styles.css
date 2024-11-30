@@ -1,4 +1,4 @@
-/* layout styles*/
+/* PublicLayout.jsx styles*/
 .layout-cont {
   min-width: 100vw;
   min-height: 100vh;
@@ -12,7 +12,7 @@
 
 
 
-/* header styles */
+/* AdminHeader.jsx, EvaluatorHeader.jsx, PublicHeader.jsx, StudentHeader.jsx styles */
 .header-cont {
   width: 100%;
   background-color: #04477e;
@@ -23,6 +23,7 @@
     padding: 10px 10px;
   }
 }
+
 .header-menu {
   display: flex;
   justify-content: space-between;
@@ -36,6 +37,7 @@
     width: 100px;
   }
 }
+
 .header-links {
   display: flex;
 }
@@ -63,6 +65,7 @@
     transition: all 0.1s ease-in;
   }
 }
+
 .header-link {
   list-style-type: none;
 }
@@ -104,7 +107,7 @@
 
 
 
-/* home styles */
+/* Index.jsx styles */
 .index-card {
   display: flex;
   justify-content: center;
@@ -115,6 +118,7 @@
     flex-direction: column;
   }
 }
+
 .index-cont-card {
   display: flex;
   flex-direction: column;
@@ -126,6 +130,7 @@
     flex-direction: column;
   }
 }
+
 .index-head {
   font-size: 2.3rem;
   color: rgb(56, 56, 56);
@@ -140,6 +145,7 @@
     font-size: 28px;
   }
 }
+
 .index-desc {
   color: rgb(75, 75, 75);
   font-size: 18px;
@@ -157,6 +163,7 @@
     margin-top: 5px;
   }
 }
+
 .index-desc-list {
   color: rgb(75, 75, 75);
   font-size: 18px;
@@ -175,6 +182,7 @@
     margin-top: 5px;
   }
 }
+
 .index-links {
   display: flex;
   margin-top: 25px;
@@ -184,6 +192,7 @@
     margin-top: 0;
   }
 }
+
 .hero-image-cont {
   display: flex;
   justify-content: center;
@@ -206,6 +215,7 @@
     display: block;
   }
 }
+
 .auth-img {
   width: 400px;
 }
@@ -224,7 +234,7 @@
 
 
 
-/* footer style */
+/* Footer.jsx style */
 .footer-cont {
   display: flex;
   flex-direction: column;
@@ -252,8 +262,7 @@
 
 
 
-
-/* auth form styles */
+/* EmailVerification.jsx, ForgotPassword.jsx, Login.jsx, Register.jsx, ResetPassword.jsx styles */
 .auth-form-container {
   width: 350px;
   display: flex;
@@ -289,6 +298,7 @@
 .auth-form-container::before {
   filter: blur(0.5rem);
 }
+
 .auth-form-heading {
   font-size: 28px;
   font-weight: bold;
@@ -301,6 +311,7 @@
     font-size: 24px;
   }
 }
+
 .auth-form-text {
   font-size: 18px;
   color: #2b2a2a;
@@ -310,6 +321,10 @@
 .auth-form-container form {
   width: 100%;
 }
+
+
+
+/* OneInput.jsx, PasswordInput.jsx styles */
 .auth-input-box {
   font-size: 16px;
   outline: none;
@@ -334,6 +349,7 @@
       inset 7px 7px 10px rgba(0, 0, 0, 0.200);
   }
 }
+
 .auth-input-icon {
   width: 25px;
   height: 25px;
@@ -364,6 +380,7 @@
     height: 35px;
   }
 }
+
 .auth-pass-str-card {
   font-size: 16px;
   outline: none;
@@ -407,6 +424,7 @@
     font-size: 14px;
   }
 }
+
 .auth-back-link {
   display: flex;
   color: rgb(75, 75, 75);
@@ -416,6 +434,7 @@
     font-size: 14px;
   }
 }
+
 .auth-fot-pass-link {
   color: rgb(0, 162, 255);
   text-decoration: none;
@@ -494,7 +513,7 @@
 
 
 
-/* unauthorized page style */
+/* NotFound.jsx style */
 .not-found-cont {
   display: flex;
   flex-direction: column;
@@ -528,7 +547,7 @@
 
 
 
-/* admin styles */
+/* AdminLayout.jsx, EvaluatorLayout.jsx, StudentLayout.jsx styles */
 .admin-layout-cont {
   min-width: 100vw;
   max-width: 100vw;
@@ -576,6 +595,7 @@
     transition: all 0.1s ease-in;
   }
 }
+
 .admin-nav-link {
   list-style-type: none;
   padding: 10px;
@@ -585,6 +605,7 @@
     display: block;
   }
 }
+
 .active {
   position: relative;
   color: #fff;
@@ -601,7 +622,7 @@
 
 
 
-/* user management styles */
+/* AdminUserManagement.jsx styles */
 .user-manage-cont {
   min-height: 80vh;
   width: 100%;
@@ -656,6 +677,10 @@
   display: flex;
   width: 100%;
 }
+
+
+
+/* UserList.jsx styles */
 .users-list-cell {
   list-style-type: none;
   border-left: 1px solid #a5a5a5;
@@ -739,7 +764,7 @@
 
 
 
-/* user state styles */
+/* UserState.jsx styles */
 .user-state-cont {
   width: 95%;
   margin-bottom: 25px;
@@ -754,6 +779,7 @@
     align-items: center;
   }
 }
+
 .user-state-box1 {
   display: flex;
   justify-content: space-evenly;
@@ -773,6 +799,7 @@
     gap: 20px;
   }
 }
+
 .user-state-card {
   display: flex;
   flex-direction: row;
@@ -793,6 +820,7 @@
     width: 75%;
   }
 }
+
 .total-user-box {
   background-color: #fcf7ef;
   border: 1px solid #ffa500;
@@ -823,6 +851,7 @@
   filter: blur(0.3rem);
   opacity: 0.3;
 }
+
 .active-user-box {
   background-color: #ecfcec;
   border: 1px solid #008000;
@@ -883,7 +912,7 @@
 
 
 
-/* unauthorized style */
+/* Unauthorized.jsx style */
 .unauthorized-cont {
   display: flex;
   justify-content: center;
@@ -938,7 +967,7 @@
 
 
 
-/* profile style */
+/* AdminProfile.jsx, EvaluatorProfile.jsx, StudentProfile.jsx styles */
 .profile-cont {
   border-radius: 10px;
   padding: 2em;
@@ -954,6 +983,7 @@
     padding: 10px;
   }
 }
+
 @property --angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -979,6 +1009,7 @@
 .profile-cont::before {
   filter: blur(0.3rem);
 }
+
 .profile-head {
   font-size: 28px;
   font-weight: bold;
@@ -990,6 +1021,7 @@
     font-size: 24px;
   }
 }
+
 .profile-text {
   color: #444;
   font-size: 16px;
@@ -1000,6 +1032,7 @@
     font-size: 14px;
   }
 }
+
 .profile-form {
   width: 90%;
   display: flex;
@@ -1012,6 +1045,7 @@
     margin-bottom: 20px;
   }
 }
+
 .profile-photo-card {
   width: 40%;
   display: flex;
@@ -1024,6 +1058,7 @@
     margin-bottom: 10px;
   }
 }
+
 .profile-pic {
   width: 225px;
   height: 225px;
@@ -1044,6 +1079,7 @@
     height: 130px;
   }
 }
+
 .profile-upload-btn {
   height: 35px;
   width: 120px;
@@ -1071,11 +1107,12 @@ input[type='file'] {
 }
 @media (max-width: 500px) {
   .profile-info {
-     font-size: 18px;
-     font-weight: 500;
-     margin-bottom: 5px;
-   }
- }
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+}
+
 .profile-input-card {
   width: 60%;
   border: 1px solid #d3d2d2;
@@ -1088,6 +1125,7 @@ input[type='file'] {
     padding: 10px;
   }
 }
+
 .profile-input-box {
   display: flex;
   justify-content: space-between;
@@ -1102,6 +1140,10 @@ input[type='file'] {
     flex-direction: column;
   }
 }
+
+
+
+/* Textarea.jsx, ThreeInput.jsx, TwoInput.jsx styles */
 .pro-in-box {
   width: 100%;
 }
@@ -1116,6 +1158,7 @@ input[type='file'] {
     font-size: 15px;
   }
 }
+
 .profile-input-field {
   margin-top: 7px;
   font-size: 16px;
@@ -1145,6 +1188,7 @@ input[type='file'] {
       inset 5px 5px 7px rgba(0, 0, 0, 0.200);
   }
 }
+
 .big-field {
   width: 100%;
 }
@@ -1168,7 +1212,8 @@ input[type='file'] {
 }
 
 
-/* revaluation form style */
+
+/* RevaluationForm.jsx style */
 .revaluation-cont {
   min-height: 500px;
   width: 100%;
@@ -1216,6 +1261,7 @@ input[type='file'] {
     padding: 15px;
   }
 }
+
 .revaluation-head {
   font-size: 28px;
   font-weight: bold;
@@ -1237,6 +1283,7 @@ input[type='file'] {
     flex-direction: column;
   }
 }
+
 .revaluation-in-box {
   padding: 0 10px;
   width: 100%;
@@ -1287,6 +1334,7 @@ input[type='file'] {
       inset 5px 5px 7px rgba(0, 0, 0, 0.200);
   }
 }
+
 .file-upload-img {
   cursor: pointer;
   width: 100%;
@@ -1297,6 +1345,7 @@ input[type='file'] {
     width: 200px;
   }
 }
+
 .file-upload-txt {
   font-size: 16px;
   color: #444;
@@ -1307,6 +1356,7 @@ input[type='file'] {
     font-size: 14px;
   }
 }
+
 .request-btn {
   padding: 10px 20px;
   font-size: 15px;
@@ -1325,7 +1375,8 @@ input[type='file'] {
 }
 
 
-/* payment form style */
+
+/* PaymentForm.jsx style */
 .payment-cont {
   min-height: 500px;
   width: 100%;
@@ -1339,6 +1390,7 @@ input[type='file'] {
     align-items: center;
   }
 }
+
 .request-cart {
   min-width: 400px;
   max-width: 50%;
@@ -1358,6 +1410,7 @@ input[type='file'] {
     padding: 20px;
   }
 }
+
 .request-cart-head {
   color: #00a2ff;
   font-size: 24px;
@@ -1371,6 +1424,7 @@ input[type='file'] {
     margin-bottom: 10px;
   }
 }
+
 .request-cart-body {
   display: flex;
   flex-direction: column;
@@ -1388,6 +1442,7 @@ input[type='file'] {
     width: 100%;
   }
 }
+
 .payment-card {
   padding: 20px;
   border-radius: 7px;
@@ -1404,7 +1459,8 @@ input[type='file'] {
   .payment-card {
     width: 100%;
   }
- }
+}
+
 .pay-head {
   color: #fff;
   font-size: 24px;
@@ -1423,6 +1479,7 @@ input[type='file'] {
     font-size: 18px;
   }
 }
+
 .pay-head-card {
   background-color: #00a2ff;
   padding: 12px;
@@ -1434,6 +1491,7 @@ input[type='file'] {
     padding: 8px;
   }
 }
+
 .pay-arrow {
   margin: 0 5px;
   color: orange;
@@ -1473,6 +1531,10 @@ input[type='file'] {
       inset 5px 5px 7px rgba(0, 0, 0, 0.200);
   }
 }
+
+
+
+/* FourInput.jsx, FiveInput.jsx styles */
 .pay-three-in-box {
   width: 100%;
   display: flex;
@@ -1502,6 +1564,7 @@ input[type='file'] {
       inset 5px 5px 7px rgba(0, 0, 0, 0.200);
   }
 }
+
 .in-box {
   width: 100%;
 }
@@ -1526,6 +1589,7 @@ input[type='file'] {
     font-size: 14px;
   }
 }
+
 .pay-img {
   width: 175px;
   padding: 10px;
@@ -1540,6 +1604,7 @@ input[type='file'] {
     width: 120px;
   }
 }
+
 .line {
   color: #888;
 }
@@ -1557,6 +1622,7 @@ input[type='file'] {
     padding: 8px;
   }
 }
+
 .pay-secure-card {
   border-radius: 5px;
   width: 100%;
@@ -1578,6 +1644,7 @@ input[type='file'] {
       inset 5px 5px 7px rgba(0, 0, 0, 0.200);
   }
 }
+
 .pay-secure-text {
   font-size: 16px;
   color: #4CAF50;
@@ -1590,7 +1657,7 @@ input[type='file'] {
 
 
 
-/* payment success style */
+/* PaymentSuccess.jsx style */
 .pay-success-card {
   width: 100%;
   display: flex;
@@ -1634,6 +1701,7 @@ input[type='file'] {
 .pay-success-box::before {
   filter: blur(5px);
 }
+
 .payment-success-head {
   font-size: 32px;
   text-align: center;
@@ -1651,6 +1719,7 @@ input[type='file'] {
     font-size: 26px;
   }
 }
+
 .payment-success-message {
   font-size: 18px;
   margin-bottom: 15px;
@@ -1662,6 +1731,7 @@ input[type='file'] {
     font-size: 14px;
   }
 }
+
 .payment-success-detail-cont {
   text-align: left;
   display: inline-block;
@@ -1696,7 +1766,8 @@ input[type='file'] {
 }
 
 
-/* request status styles */
+
+/* AdminRequestManagement.jsx, ViewAssignedRequest.jsx, RevaluationStatus.jsx styles */
 .request-status-main-cont {
   width: 100%;
   min-height: 80vh;
@@ -1718,6 +1789,7 @@ input[type='file'] {
     gap: 15px;
   }
 }
+
 .request-count-text {
   font-size: 20px;
   color: #666;
@@ -1734,6 +1806,10 @@ input[type='file'] {
   flex-wrap: wrap;
   gap: 20px;
 }
+
+
+
+/* RequestBodyList.jsx, RequestList.jsx styles */
 .request-body-list-card {
   list-style-type: none;
   border-radius: 10px;
@@ -1747,6 +1823,7 @@ input[type='file'] {
     width: 370px;
   }
 }
+
 @property --angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -1773,6 +1850,7 @@ input[type='file'] {
 .request-body-list-card::before {
   filter: blur(3px);
 }
+
 .request-body-list-body {
   border-radius: 5px;
 }
@@ -1830,6 +1908,10 @@ input[type='file'] {
   min-height: 80vh;
   padding: 0 7px;
 }
+
+
+
+/* RequestState.jsx, AssignedRequestState.jsx styles */
 .request-state-cont {
   width: 100%;
   display: flex;
@@ -1902,6 +1984,10 @@ input[type='file'] {
 .approved {
   color: #00a2ff !important;
 }
+
+
+
+/* RequestList.jsx, RequestListHeader.jsx */
 .request-list-header-cont {
   margin-top: 15px;
   width: 100%;
@@ -1957,6 +2043,10 @@ input[type='file'] {
     font-size: 22px;
   }
 }
+
+
+
+/* AssignedRequestList.jsx styles */
 .assigned-list-item {
   margin-bottom: 30px;
   box-shadow: 0 0 15px #999;
@@ -1987,7 +2077,8 @@ input[type='file'] {
     width: 90%;
     flex-direction: column;
   }
- }
+}
+
 .assigned-list-img-card {
   width: 400px;
   height: 220px;
@@ -2006,6 +2097,7 @@ input[type='file'] {
     height: auto;
   }
 }
+
 .assigned-list-img {
   width: 100%;
   border-radius: 10px;
@@ -2024,9 +2116,10 @@ input[type='file'] {
 }
 @media (max-width: 768px) {
   .request-list-details {
-     width: 100%;
-   }
- }
+    width: 100%;
+  }
+}
+
 .request-list-title {
   color: #00a2ff;
   font-size: 22px;
@@ -2049,6 +2142,10 @@ input[type='file'] {
     background: #19abff;
   }
 }
+
+
+
+/* AssignedRequestDetails.jsx styles */
 .request-detail-cont {
   width: 100%;
   min-height: 80vh;
@@ -2074,16 +2171,12 @@ input[type='file'] {
     width: 95%;
   }
 }
-@media (max-width: 1200px) {
- .revaluate-form {
-    width: 95%;
-  }
-}
 @media (max-width: 768px) {
  .revaluate-form {
     width: 100%;
   }
 }
+
 .revaluate-info-card {
   width: 100%;
   display: flex;
@@ -2096,6 +2189,7 @@ input[type='file'] {
     flex-direction: column;
   }
 }
+
 .revaluate-img-card {
   width: 650px;
   display: flex;
@@ -2106,6 +2200,7 @@ input[type='file'] {
     width: 100%;
   }
 }
+
 .revaluate-img {
   width: 100%;
   border-radius: 10px;
@@ -2121,11 +2216,16 @@ input[type='file'] {
     width: 100%;
   }
 }
+
 .revaluate-info-head {
   font-size: 24px;
   color: #00a2ff;
   margin-bottom: 20px;
 }
+
+
+
+/* RequestInfo.jsx styles */
 .revaluate-info-para {
   font-size: 16px;
   color: #555;
@@ -2138,6 +2238,7 @@ input[type='file'] {
     margin-bottom: 10px;
   }
 }
+
 .revaluate-update-card {
   width: 100%;
   border: 1px solid #999;

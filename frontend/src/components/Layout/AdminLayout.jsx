@@ -1,8 +1,12 @@
+// importing packages
 import React from 'react'
 
-import AdminHeader from '../Common/AdminHeader.jsx'
-import Footer from '../Common/Footer.jsx';
+// importing modules
 import '../../styles/styles.css'
+
+// importing components
+import AdminHeader from '../Common/AdminHeader.jsx'
+import Footer from '../Common/Footer.jsx'
 
 const AdminLayout = ({ children }) => {
   return (

@@ -1,6 +1,8 @@
+// importing packages
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 
+// importing modules
 import { useAuth } from '../components/hooks/useAuth'
 
 const ProtectRoute = ({ children }) => {
@@ -17,6 +19,7 @@ const ProtectRoute = ({ children }) => {
   if (isAuthenticated && user.isLoggedIn && user.role === 'student') {
     return <Navigate to='/student/profile' replace />
   }
+  
   return children
 }
 

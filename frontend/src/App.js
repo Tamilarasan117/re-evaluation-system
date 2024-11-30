@@ -1,11 +1,13 @@
-// packages
+// importing packages
 import { Route, Routes } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Toaster } from 'react-hot-toast'
-// modules
+
+// importing modules
 import './app.css'
 import { useAuth } from './components/hooks/useAuth.js'
-// protect route components
+
+// importing protect route components
 import ProtectRoute from './context/ProtectRoute.jsx'
 import ProtectedRoute from './context/ProtectedRoute.jsx'
 import ProtectPaymentRoute from './context/ProtectPaymentRoute.jsx'
@@ -13,7 +15,8 @@ import ProtectSuccessRoute from './context/ProtectSuccessRoute.jsx'
 import AdminRoute from './context/AdminRoute.jsx'
 import StudentRoute from './context/StudentRoute.jsx'
 import EvaluatorRoute from './context/EvaluatorRoute.jsx'
-// auth components
+
+// importing auth components
 import LoadingSpinner from './components/Common/LoadingSpinner.jsx'
 import PublicLayout from './components/Layout/PublicLayout.jsx'
 import Index from './components/Home/Index.jsx'
@@ -24,19 +27,22 @@ import ForgotPassword from './components/Auth/ForgotPassword.jsx'
 import ResetPassword from './components/Auth/ResetPassword.jsx'
 import NotFound from './components/Unauthorized/NotFound.jsx'
 import Unauthorized from './components/Unauthorized/Unauthorized.jsx'
-// admin components
+
+// importing admin components
 import AdminLayout from './components/Layout/AdminLayout.jsx'
 import AdminProfile from './components/Admin/AdminProfile.jsx'
 import AdminUserManagement from './components/Admin/AdminUserManagement.jsx'
 import AdminRequestManagement from './components/Admin/AdminRequestManagement.jsx'
-// student components
+
+// importing student components
 import StudentLayout from './components/Layout/StudentLayout.jsx'
 import StudentProfile from './components/Student/StudentProfile.jsx'
 import RevaluationForm from './components/Student/RevaluationForm.jsx'
 import RevaluationStatus from './components/Student/RevaluationStatus.jsx'
 import PaymentForm from './components/Student/PaymentForm.jsx'
 import PaymentSuccess from './components/Student/PaymentSuccess.jsx'
-// evaluator components
+
+// importing evaluator components
 import EvaluatorLayout from './components/Layout/EvaluatorLayout.jsx'
 import EvaluatorProfile from './components/Evaluator/EvaluatorProfile.jsx'
 import ViewAssignedRequest from './components/Evaluator/ViewAssignedRequest.jsx'
@@ -161,9 +167,12 @@ const App = () => {
           </ProtectedRoute>
         } />
 
-        {/* Page Not Found and Unauthorized Route */}
+        {/* Unauthorized Route */}
         <Route path='/unauthorized' element={ <Unauthorized /> } />
+
+        {/* Page Not Found Route */}
         <Route path='*' element={ <NotFound /> } />
+        
       </Routes>
       <Toaster />
     </>

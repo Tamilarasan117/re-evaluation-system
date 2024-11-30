@@ -24,7 +24,8 @@ export const protectMiddleware = async (request, response, next) => {
     request.userId = decoded.userId
     next()
   } catch (error) {
-    console.log(`Error in verify token: ${error}`)
+    console.log('Something went wrong while verifying token')
+    console.log(error.message)
     return response.status(401).json({ message: error.message || 'Server error' })
   }
 }
@@ -57,7 +58,8 @@ export const adminProtectMiddleware = async (request, response, next) => {
     request.user = user
     next()
   } catch (error) {
-    console.log(`Error in verify admin token: ${error}`)
+    console.log('Something went wrong while verifying token')
+    console.log(error.message)
     return response.status(401).json({ message: error.message || 'Server error' })
   }
 }
@@ -90,7 +92,8 @@ export const studentProtectMiddleware = async (request, response, next) => {
     request.user = user
     next()
   } catch (error) {
-    console.log(`Error in verify student token: ${error}`)
+    console.log('Something went wrong while verifying token')
+    console.log(error.message)
     return response.status(401).json({ message: error.message || 'Server error' })
   }
 }
@@ -123,7 +126,8 @@ export const evaluatorProtectMiddleware = async (request, response, next) => {
     request.user = user
     next()
   } catch (error) {
-    console.log(`Error in verify evaluator token: ${error}`)
+    console.log('Something went wrong while verifying token')
+    console.log(error.message)
     return response.status(401).json({ message: error.message || 'Server error' })
   }
 }

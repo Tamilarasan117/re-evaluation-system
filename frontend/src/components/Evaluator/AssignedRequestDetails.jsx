@@ -1,12 +1,15 @@
+// importing packages
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import toast from 'react-hot-toast'
 
+// importing modules
 import '../../styles/styles.css'
 import { useEvaluator } from '../hooks/useEvaluator.js'
 
+// importing components
 import RequestInfo from './RequestInfo.jsx'
-import toast from 'react-hot-toast'
 
 const AssignedRequestDetails = () => {
   const { requestId } = useParams()

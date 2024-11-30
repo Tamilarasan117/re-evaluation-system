@@ -1,8 +1,7 @@
 // import required packages
 import mongoose from 'mongoose'
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
 
-// Load .env file variables into process.env
 dotenv.config()
 
 const dbConnect = async () => {

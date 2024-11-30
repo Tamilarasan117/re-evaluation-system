@@ -1,9 +1,12 @@
+// importing packages
 import React, { useEffect } from 'react'
 
+// importing modules
 import '../../styles/styles.css'
 import { useEvaluator } from '../hooks/useEvaluator.js'
-
 import noResult from '../../assets/no-user.jpg'
+
+// importing components
 import AssignedRequestState from './AssignedRequestState.jsx'
 import AssignedRequestList from './AssignedRequestList.jsx'
 

@@ -1,16 +1,18 @@
+// importing packages
 import React from 'react'
-
 import { CircleCheck } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { useStudent } from '../hooks/useStudent.js'
 import { Loader } from 'lucide-react'
+
+// importing modules
+import '../../styles/styles.css'
+import { useStudent } from '../hooks/useStudent.js'
 
 const PaymentSuccess = () => {
   const navigate = useNavigate()
 
-  const { isLoading, paymentDetails } = useStudent()
-  console.log('payment details data: ', paymentDetails)
+  const { isLoading } = useStudent()
 
   return (
     <motion.div 

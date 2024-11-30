@@ -1,9 +1,9 @@
+// importing packages
 import React from 'react'
-
 import { Users, UserCheck, UserX } from 'lucide-react'
 
+// importing modules
 import '../../styles/styles.css'
-
 
 const UserState = (props) => {
   const { totalUserCount, activeUserCount, inactiveUserCount, studentCount } = props

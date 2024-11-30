@@ -1,15 +1,17 @@
+// importing packages
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
-
 import toast from 'react-hot-toast'
 
+// importing modules
 import '../../styles/styles.css'
 import { useAdmin } from './../hooks/useAdmin.js'
+import noResult from '../../assets/no-user.jpg'
 
+// importing components
 import RequestState from './RequestState.jsx'
 import RequestListHeader from './RequestListHeader.jsx'
 import RequestList from './RequestList.jsx'
-import noResult from '../../assets/no-user.jpg'
 
 const AdminRequestManagement = () => {
   const {
