@@ -9,7 +9,7 @@ dotenv.config()
 // import require module
 import { User } from '../models/User.js'
 import { generateTokenAndSetCookie, generateEmailVerificationToken } from '../utils/generateTokens.js'
-import { sendPasswordResetEmail, sendPasswordResetSuccessEmail, /*sendVerificationEmail,*/ sendWelcomeEmail } from '../email/emailSender.js'
+import { sendPasswordResetEmail, sendPasswordResetSuccessEmail, sendVerificationEmail, sendWelcomeEmail } from '../email/emailSender.js'
 
 // user register controller
 export const register = async (request, response) => {
@@ -28,7 +28,7 @@ export const register = async (request, response) => {
     }
     
     const hashedPassword = await bcrypt.hash(password, 10)
-    /*const verificationToken = */generateEmailVerificationToken()
+    const verificationToken = generateEmailVerificationToken()
     const user = new User({
       username,
       email,
@@ -158,7 +158,7 @@ export const forgotPassword = async (request, response) => {
     console.log(`Password reset lint sent to ${user.email}`)
   } catch (error) {
     console.log('Something went wrong while sending password reset lint')
-    console.log(error.messaeg)
+    console.log(error.message)
     response.status(400).json({ message: error.message || 'Server error'})
   }
 }

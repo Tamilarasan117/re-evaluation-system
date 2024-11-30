@@ -23,8 +23,8 @@ const PORT = process.env.PORT || 5000
 const __dirname = path.resolve()
 
 app.use(cors({
-  //origin: 'http://localhost:3000',
-  origin: 'https://re-evaluation-system.onrender.com',
+  origin: 'http://localhost:3000',
+  //origin: 'https://re-evaluation-system.onrender.com',
   credentials: true
 }))
 
@@ -50,5 +50,5 @@ if (process.env.NODE_ENV === 'production') {
 // Start the server
 app.listen(PORT, () => {
   dbConnect()
-  console.log(`Server running on port ${PORT}`)
+  console.log(`Server running on port ${ PORT }`)
 })
