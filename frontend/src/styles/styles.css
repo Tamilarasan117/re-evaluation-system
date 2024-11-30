@@ -462,8 +462,12 @@
   height: 45px;
   color: #fff;
 }
+
+
+
+/* LoadingSpinner.jsx style */
 .animate-spinner {
-  animation: animate-spinner 2s linear infinite;
+  animation: animate-spinner 1s linear infinite;
 }
 @keyframes animate-spinner {
   0% {
