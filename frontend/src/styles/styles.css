@@ -1859,6 +1859,8 @@ input[type='file'] {
 }
 .request-body-list-body-top {
   width: 100%;
+  min-height: 200px;
+  max-height: 250px;
 }
 .request-body-list-image {
   width: 100%;
