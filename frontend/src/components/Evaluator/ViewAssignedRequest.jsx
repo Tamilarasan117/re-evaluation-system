@@ -60,22 +60,16 @@ const ViewAssignedRequest = () => {
         <li className='assigned-cont-head-list'>
           <h1 className='assigned-list-head '>Assigned Request Lists</h1>
         </li>
-        <li className='assigned-cont-head-list'>
-          <div className='request-status-state-cont'>
-            <p className='request-count-text'>
-              Total Requests: 
-              <span className='request-count'>{ requestCount }</span>
-            </p>
-            <div className="user-search-container">
-              <input
-                type="search"
-                placeholder='Search by subject name or request status'
-                className="user-search-field"
-                onChange={ (e) => setSearchValue(e.target.value) }
-                value={ searchValue }
-              />
-              <Search color='grey' />
-            </div>
+        <li className='assigned-list-item'>
+          <div className="user-search-container">
+            <input
+              type="search"
+              placeholder='Search by subject name or request status'
+              className="user-search-field"
+              onChange={ (e) => setSearchValue(e.target.value) }
+              value={ searchValue }
+            />
+            <Search color='grey' />
           </div>
         </li>
         { assignedRequestList.length > 0 ? assignedRequestList  : <NoResult /> }
