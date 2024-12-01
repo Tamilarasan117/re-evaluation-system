@@ -154,6 +154,8 @@ const AssignedRequestDetails = () => {
                   <option value='Pending'>Pending</option>
                   <option value='InProgress'>InProgress</option>
                   <option value='Completed'>Completed</option>
+                  <option value="Approved">Approved</option>
+                  <option value="Rejected">Rejected</option>
                 </select>
               </div>
             </div>

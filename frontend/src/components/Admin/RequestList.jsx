@@ -65,9 +65,10 @@ const RequestList = (props) => {
             onChange={ (e) => handleChangeStatus(requestList._id, e.target.value) }
           >
             <option value="Approved">Approved</option>
-            <option value="Pending">Pending</option>
             <option value="Rejected">Rejected</option>
-            <option value="Completed">Completed</option>
+            <option value='Pending'>Pending</option>
+            <option value='InProgress'>InProgress</option>
+            <option value='Completed'>Completed</option>
           </select>
         </div>
         <div className='request-list-card card4'>
