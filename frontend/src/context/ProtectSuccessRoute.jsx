@@ -13,7 +13,6 @@ const ProtectSuccessRoute = ({ children }) => {
   }
 
   return children
-
 }
 
 export default ProtectSuccessRoute
