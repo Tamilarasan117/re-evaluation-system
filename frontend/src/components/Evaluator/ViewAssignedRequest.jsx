@@ -64,7 +64,7 @@ const ViewAssignedRequest = () => {
           <div className="user-search-container">
             <input
               type="search"
-              placeholder='Search by subject name or request status'
+              placeholder='Search by subject name'
               className="user-search-field"
               onChange={ (e) => setSearchValue(e.target.value) }
               value={ searchValue }
