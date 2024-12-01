@@ -268,7 +268,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 4px;
   background: #fff;
   position: relative;
 }
@@ -287,7 +287,7 @@
   left: 50%;
   translate: -50% -50%;
   z-index: -1;
-  border-radius: 10px;
+  border-radius: 4px;
   animation: 3s spin linear infinite;
 }
 @keyframes spin {
@@ -328,7 +328,7 @@
   font-size: 16px;
   outline: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   width: 100%;
   padding: 7px;
   display: flex;
@@ -384,7 +384,7 @@
   font-size: 16px;
   outline: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   width: 100%;
   padding: 7px;
   display: flex;
@@ -492,7 +492,7 @@
 .verify-code-box {
   outline: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   width: 50px;
   height: 50px;
   font-weight: bold;
@@ -541,7 +541,7 @@
   color: #fff;
   font-size: 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 .not-found-link {
   text-decoration: none;
@@ -645,7 +645,7 @@
 .users-list-card {
   box-shadow: 0 0 15px #888;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 4px;
   min-width: 1000px;
 }
 .users-list-head-card {
@@ -666,7 +666,7 @@
   align-items: center;
   width: 325px;
   border: 1px solid #7b8794;
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 3px;
 }
 .user-search-field {
@@ -1004,7 +1004,7 @@
 
 /* AdminProfile.jsx, EvaluatorProfile.jsx, StudentProfile.jsx styles */
 .profile-cont {
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 2em;
   display: flex;
   flex-direction: column;
@@ -1034,7 +1034,7 @@
   left: 50%;
   translate: -50% -50%;
   z-index: -1;
-  border-radius: 10px;
+  border-radius: 4px;
   animation: 3s spin linear infinite;
 }
 @keyframes spin {
@@ -1121,7 +1121,7 @@
   background-color: #333;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
 }
 input[type='file'] {
@@ -1151,7 +1151,7 @@ input[type='file'] {
 .profile-input-card {
   width: 60%;
   border: 1px solid #d3d2d2;
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 20px;
 }
 @media (max-width: 768px) {
@@ -1199,7 +1199,7 @@ input[type='file'] {
   font-size: 16px;
   outline: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   width: 95%;
   padding: 10px 15px;
   display: flex;
@@ -1232,7 +1232,7 @@ input[type='file'] {
   width: 120px;
   font-size: 15px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   background: #00a2ff;
   color: #fff;
@@ -1261,7 +1261,7 @@ input[type='file'] {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 4px;
   background: #fff;
   position: relative;
 }
@@ -1280,7 +1280,7 @@ input[type='file'] {
   left: 50%;
   translate: -50% -50%;
   z-index: -1;
-  border-radius: 10px;
+  border-radius: 4px;
   animation: 3s spin linear infinite;
   opacity: 0.5;
 }
@@ -1328,7 +1328,7 @@ input[type='file'] {
   font-size: 16px;
   outline: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   width: 100%;
   padding: 10px 15px;
   display: flex;
@@ -1348,7 +1348,7 @@ input[type='file'] {
 .file-upload-card {
   width: 100%;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1398,7 +1398,7 @@ input[type='file'] {
   color: #fff;
   background: #00a2ff;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   margin-top: 15px;
   cursor: pointer;
 }
@@ -1543,7 +1543,7 @@ input[type='file'] {
   font-size: 16px;
   outline: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   width: 100%;
   padding: 10px 15px;
   display: flex;
@@ -1577,7 +1577,7 @@ input[type='file'] {
   align-items: center;
 }
 .three-input-card {
-  border-radius: 5px;
+  border-radius: 4px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1659,7 +1659,7 @@ input[type='file'] {
 }
 
 .pay-secure-card {
-  border-radius: 5px;
+  border-radius: 4px;
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -1702,7 +1702,7 @@ input[type='file'] {
 .pay-success-box {
   width: 450px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1725,7 +1725,7 @@ input[type='file'] {
   left: 50%;
   translate: -50% -50%;
   z-index: -1;
-  border-radius: 10px;
+  border-radius: 4px;
   animation: 3s spin linear infinite;
   opacity: 0.5;
 }
@@ -1793,7 +1793,7 @@ input[type='file'] {
   width: 150px;
   height: 40px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   background: #00a2ff;
   color: #fff;
   font-size: 15px;
@@ -1812,7 +1812,7 @@ input[type='file'] {
   margin-bottom: 20px;
   padding: 20px 30px;
   box-shadow: 0 0 15px #afafaf;
-  border-radius: 10px;
+  border-radius: 4px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1848,7 +1848,7 @@ input[type='file'] {
 /* RequestBodyList.jsx, RequestList.jsx styles */
 .request-body-list-card {
   list-style-type: none;
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 15px;
   background: #fff;
   width: 300px;
@@ -1875,7 +1875,7 @@ input[type='file'] {
   left: 50%;
   translate: -50% -50%;
   z-index: -1;
-  border-radius: 10px;
+  border-radius: 4px;
   animation: 3s spin linear infinite;
   opacity: 0.5;
 }
@@ -1888,7 +1888,7 @@ input[type='file'] {
 }
 
 .request-body-list-body {
-  border-radius: 5px;
+  border-radius: 4px;
 }
 .request-body-list-body-top {
   width: 100%;
@@ -1897,14 +1897,14 @@ input[type='file'] {
 }
 .request-body-list-image {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 .request-body-list-body-bottom {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
   border: 1px solid #ececec;
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 7px;
 }
 .completed {
@@ -1932,7 +1932,7 @@ input[type='file'] {
   gap: 5px;
   background: orangered;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   color: #fff;
   margin-top: 10px;
@@ -1960,7 +1960,7 @@ input[type='file'] {
   margin-top: 15px;
   min-width: 1000px;
   box-shadow: 0 0 15px #888;
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 15px;
 }
 .request-body-header-cont {
@@ -2112,7 +2112,7 @@ input[type='file'] {
   box-shadow: 0 0 15px #999;
   width: 90%;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 4px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -2138,7 +2138,7 @@ input[type='file'] {
   box-shadow: 0 0 15px #999;
   width: 70%;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 4px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -2184,7 +2184,7 @@ input[type='file'] {
 
 .assigned-list-img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 .request-list-details {
   width: 450px;
@@ -2232,7 +2232,7 @@ input[type='file'] {
   text-decoration: none;
   background: #00a2ff;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 13px 35px;
 
   &:hover {
@@ -2265,7 +2265,7 @@ input[type='file'] {
 .revaluate-form {
   width: 90%;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 4px;
   box-shadow: 0 0 10px #999;
   display: flex;
   flex-direction: column;
@@ -2325,7 +2325,7 @@ input[type='file'] {
 
 .revaluate-img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 4px;
   box-shadow: 0 0 10px #999;
 }
 .revaluate-info {
@@ -2376,7 +2376,7 @@ input[type='file'] {
 .revaluate-update-card {
   width: 100%;
   border: 1px solid #c4c4c4;
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -2456,7 +2456,7 @@ input[type='file'] {
   font-size: 16px;
   outline: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   width: 100%;
   padding: 7px;
   margin-top: 10px;
@@ -2530,7 +2530,7 @@ input[type='file'] {
   flex-direction: column;
   box-shadow: 0 0 15px #c0c0c0;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 4px;
   background: #fff;
   margin-bottom: 20px;
 }
@@ -2673,7 +2673,7 @@ input[type='file'] {
   align-items: center;
   box-shadow: 0 0 15px #c0c0c0;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 4px;
   background: #fff;
   margin-bottom: 20px;
   gap: 20px;
@@ -2735,7 +2735,7 @@ input[type='file'] {
 .contact-form-cont {
   width: 400px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 4px;
   background: #fff;
   border: 2px solid #dadada;
 }
@@ -2743,6 +2743,6 @@ input[type='file'] {
   .contact-form-cont {
     width: 100%;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 4px;
   }
 }
