@@ -1788,6 +1788,12 @@ input[type='file'] {
   min-height: 80vh;
   padding: 20px;
 }
+@media (max-width: 768px) {
+  .request-status-main-cont {
+    padding: 10px;
+  }
+}
+
 .request-status-state-cont {
   margin-bottom: 20px;
   padding: 20px 30px;
@@ -1802,6 +1808,7 @@ input[type='file'] {
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    padding: 20px;
   }
 }
 
