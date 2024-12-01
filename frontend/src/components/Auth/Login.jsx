@@ -25,11 +25,11 @@ const Login = () => {
       await login(email, password)
 
       if (user?.role === 'admin') {
-        navigate('/admin/profile')
+        navigate('/admin/about')
       }
       
       if (user?.role === 'evaluator') {
-        navigate('/evaluator/profile')
+        navigate('/evaluator/about')
       }
 
       if (user?.role === 'student') {

@@ -127,6 +127,7 @@ const AssignedRequestDetails = () => {
                   placeholder='Write some comment about revaluation process'
                   className='update-group-field'
                   value={ comment }
+                  rows={ 5 }
                   onChange={ (e) => setComment(e.target.value) }
                 />
               </div>

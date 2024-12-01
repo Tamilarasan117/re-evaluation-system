@@ -33,6 +33,9 @@ const EvaluatorHeader = () => {
         </div>
         <ul className={ open ? `admin-nav-menu actives` :  `admin-nav-menu` }>
           <li className='admin-nav-link'>
+            <NavLink to='/evaluator/about' className={`link ${ activeLink }`}>About</NavLink>
+          </li>
+          <li className='admin-nav-link'>
             <NavLink to='/evaluator/profile' className={`link ${ activeLink }`}>Profile</NavLink>
           </li>
           <li className='admin-nav-link'>

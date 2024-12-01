@@ -84,7 +84,7 @@ const StudentAbout = () => {
 
   return (
     <div className="about-container">
-      <h1 className='about-head'>About Us</h1>
+      <h1 className='about-head'>About Section for Students</h1>
       <div className='about-cont'>
         <h1 className='about-head'>Welcome to the Online Re-evaluation System</h1>
         <p className='about-desc1'>
@@ -139,43 +139,59 @@ const StudentAbout = () => {
           </div>
         ))}
       </div>
-      <div className='auth-form-container contact-cont'>
-        <h1 className="auth-form-heading">Contact Us</h1>
-        <form onSubmit={ handleContactSubmit } method="post">
-          <ContactInput
-            type = 'text'
-            placeholder = 'Enter your name'
-          />
-          <ContactInput
-            type = 'email'
-            placeholder = 'Enter email address'
-          />
-          <ContactInput
-            type = 'text'
-            placeholder = 'Enter your department or course name'
-          />
-          <Textarea
-            label='Reason:'
-            type='text'
-            name='reason'
-            placeholder='Enter your reason'
-            row={ 5 }
-          />
-          <motion.button 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition = {{ delay: 0.3 }}
-            type='submit'
-            className="auth-button"
-            disabled={ isLoading }
-          >
-            {
-              isLoading ?
-                <Loader color='#fff' className='animate-spinner' size={ 25 } aria-label="Loading Spinner" />
-                : 'Submit'
-            }
-          </motion.button>
-        </form>
+      <div className='about-cont2'>
+        <div className='contact-cont'>
+          <h1 className="about-head">Contact Us</h1>
+          <p className="about-desc1">
+            Have questions or need help? We're here to assist you. Feel free to reach out to us 
+            through the form below or via the provided contact information.
+          </p>
+          <p className='about-desc1'>
+            If you encounter issues or need assistance with the platform, 
+            our dedicated support team is here to help:
+          </p>
+          <div className="contact-info">
+            <h1>Contact Information</h1>
+            <p><strong>Email:</strong> support@reevaluation-system.com</p>
+            <p><strong>Phone:</strong> +1 (123) 456-7890</p>
+            <p><strong>Address:</strong> Electronic City Phase - 2, Bangalore, Karnataka, India</p>
+            <p><strong>Working Hours:</strong> Monday to Friday, 9:00 AM - 5:00 PM</p>
+          </div>
+        </div>
+        <div className='contact-form-cont'>
+          <h1 className="auth-form-heading">Contact</h1>
+          <form onSubmit={ handleContactSubmit } method="post">
+            <ContactInput
+              type = 'text'
+              placeholder = 'Enter your name'
+            />
+            <ContactInput
+              type = 'email'
+              placeholder = 'Enter email address'
+            />
+            <Textarea
+              label='Reason:'
+              type='text'
+              name='reason'
+              placeholder='Enter your reason'
+              row={ 5 }
+            />
+            <motion.button 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition = {{ delay: 0.3 }}
+              type='submit'
+              className="auth-button"
+              disabled={ isLoading }
+            >
+              {
+                isLoading ?
+                  <Loader color='#fff' className='animate-spinner' size={ 25 } aria-label="Loading Spinner" />
+                  : 'Submit'
+              }
+            </motion.button>
+          </form>
+        </div>
       </div>
     </div>
   );

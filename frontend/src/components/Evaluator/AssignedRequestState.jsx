@@ -12,14 +12,14 @@ const AssignedRequestState = (props) => {
     <div className='request-state-cont'>
       <div className='user-state-box1'>
         <div className="user-state-card total-user-box">
-          <Send size={ 90 } color='#ffa500' className='users-img' />
+          <Send color='#ffa500' className='users-img' />
           <div className="user-state-content-card">
             <p className="user-state-text total-user-text">Total Requests</p>
             <span className='users-count total-count'>{ requestCount }</span>
           </div>
         </div>
         <div className="user-state-card active-user-box">
-          <ListCheck size={ 90 } color='#008000' className='users-img' />
+          <ListCheck color='#008000' className='users-img' />
           <div className="user-state-content-card">
             <p className="user-state-text active-user-text">Completed</p>
             <span className='users-count active-count'>{ completedCount }</span>
@@ -28,14 +28,14 @@ const AssignedRequestState = (props) => {
       </div>
       <div className='user-state-box1'>
         <div className="user-state-card student-box">
-          <ClockArrowDown size={ 90 } color='#00a2ff' className='users-img' />
+          <ClockArrowDown color='#00a2ff' className='users-img' />
           <div className="user-state-content-card">
             <p className="user-state-text student-text">In Progress</p>
             <span className='users-count student-count'>{ processCount }</span>
           </div>
         </div>
         <div className="user-state-card inactive-user-box">
-          <TrendingUp size={ 90 } color='#ff4500' className='users-img' />
+          <TrendingUp color='#ff4500' className='users-img' />
           <div className="user-state-content-card">
             <p className="user-state-text inactive-user-text">Pending</p>
             <span className='users-count inactive-count'>{ pendingCount }</span>

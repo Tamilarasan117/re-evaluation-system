@@ -34,6 +34,9 @@ const AdminHeader = () => {
         </div>
         <ul className={ open ? `admin-nav-menu actives` :  `admin-nav-menu` }>
           <li className='admin-nav-link'>
+            <NavLink to='/admin/about' className={`link ${ activeLink }`}>About</NavLink>
+          </li>
+          <li className='admin-nav-link'>
             <NavLink to='/admin/profile' className={`link ${ activeLink }`}>Profile</NavLink>
           </li>
           <li className='admin-nav-link'>

@@ -9,11 +9,11 @@ const ProtectRoute = ({ children }) => {
   const { isAuthenticated, user } = useAuth()
 
   if (isAuthenticated && user.isLoggedIn && user.role === 'admin') {
-    return <Navigate to='/admin/profile' replace />
+    return <Navigate to='/admin/about' replace />
   }
 
   if (isAuthenticated && user.isLoggedIn && user.role === 'evaluator') {
-    return <Navigate to='/evaluator/profile' replace />
+    return <Navigate to='/evaluator/about' replace />
   }
 
   if (isAuthenticated && user.isLoggedIn && user.role === 'student') {

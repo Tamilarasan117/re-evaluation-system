@@ -30,6 +30,7 @@ import Unauthorized from './components/Unauthorized/Unauthorized.jsx'
 
 // importing admin components
 import AdminLayout from './components/Layout/AdminLayout.jsx'
+import AdminAbout from './components/Admin/AdminAbout.jsx'
 import AdminProfile from './components/Admin/AdminProfile.jsx'
 import AdminUserManagement from './components/Admin/AdminUserManagement.jsx'
 import AdminRequestManagement from './components/Admin/AdminRequestManagement.jsx'
@@ -45,6 +46,7 @@ import PaymentSuccess from './components/Student/PaymentSuccess.jsx'
 
 // importing evaluator components
 import EvaluatorLayout from './components/Layout/EvaluatorLayout.jsx'
+import EvaluatorAbout from './components/Evaluator/EvaluatorAbout.jsx'
 import EvaluatorProfile from './components/Evaluator/EvaluatorProfile.jsx'
 import ViewAssignedRequest from './components/Evaluator/ViewAssignedRequest.jsx'
 import AssignedRequestDetails from './components/Evaluator/AssignedRequestDetails.jsx'
@@ -82,6 +84,13 @@ const App = () => {
         } />
 
         {/* Admin Protected Role Route */}
+        <Route exact path='/admin/about' element={ 
+          <ProtectedRoute> 
+            <AdminRoute requiredRole={['admin']}>
+              <AdminLayout> <AdminAbout /> </AdminLayout>
+            </AdminRoute>
+          </ProtectedRoute>
+        } />
         <Route exact path='/admin/profile' element={ 
           <ProtectedRoute> 
             <AdminRoute requiredRole={['admin']}>
@@ -153,6 +162,13 @@ const App = () => {
         } />
 
         {/* Evaluator Protected Role Route */}
+        <Route exact path='/evaluator/about' element={ 
+          <ProtectedRoute> 
+            <EvaluatorRoute requiredRole={['evaluator']}>
+              <EvaluatorLayout> <EvaluatorAbout /> </EvaluatorLayout>
+            </EvaluatorRoute>
+          </ProtectedRoute>
+        } />
         <Route exact path='/evaluator/profile' element={ 
           <ProtectedRoute> 
             <EvaluatorRoute requiredRole={['evaluator']}>
