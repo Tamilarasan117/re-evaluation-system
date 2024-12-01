@@ -36,6 +36,7 @@ import AdminRequestManagement from './components/Admin/AdminRequestManagement.js
 
 // importing student components
 import StudentLayout from './components/Layout/StudentLayout.jsx'
+import StudentAbout from './components/Student/StudentAbout.jsx'
 import StudentProfile from './components/Student/StudentProfile.jsx'
 import RevaluationForm from './components/Student/RevaluationForm.jsx'
 import RevaluationStatus from './components/Student/RevaluationStatus.jsx'
@@ -104,6 +105,13 @@ const App = () => {
         } />
 
         {/* Student Protected Role Route */}
+        <Route exact path='/student/about' element={ 
+          <ProtectedRoute>
+            <StudentRoute requiredRole={['student']}>
+              <StudentLayout> <StudentAbout /> </StudentLayout>
+            </StudentRoute>
+          </ProtectedRoute>
+        } />
         <Route exact path='/student/profile' element={ 
           <ProtectedRoute>
             <StudentRoute requiredRole={['student']}>

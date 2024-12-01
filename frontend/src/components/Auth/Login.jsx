@@ -33,7 +33,7 @@ const Login = () => {
       }
 
       if (user?.role === 'student') {
-        navigate('/student/profile')
+        navigate('/student/about')
       }
 
       toast.success('Logged in successfully!')

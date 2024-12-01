@@ -17,7 +17,7 @@ const ProtectRoute = ({ children }) => {
   }
 
   if (isAuthenticated && user.isLoggedIn && user.role === 'student') {
-    return <Navigate to='/student/profile' replace />
+    return <Navigate to='/student/about' replace />
   }
   
   return children

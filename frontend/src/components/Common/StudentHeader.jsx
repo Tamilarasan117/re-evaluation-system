@@ -29,10 +29,13 @@ const StudentHeader = () => {
   return (
     <header className='header-cont'>
       <nav className='header-menu'>
-          <div>
-            <img src={ logo } alt='Logo' className='header-logo' />
-          </div>
+        <div>
+          <img src={ logo } alt='Logo' className='header-logo' />
+        </div>
         <ul className={ open ? `admin-nav-menu actives` :  `admin-nav-menu` }>
+          <li className='admin-nav-link'>
+            <NavLink to='/student/about' className={`link ${ activeLink }`}>About</NavLink>
+          </li>
           <li className='admin-nav-link'>
             <NavLink to='/student/profile' className={`link ${ activeLink }`}>Profile</NavLink>
           </li>
