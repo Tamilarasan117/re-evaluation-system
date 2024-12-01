@@ -669,6 +669,18 @@
   font-size: 14px;
   color: #555;
 }
+@media (max-width: 768px) {
+  .user-search-container {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+ .user-search-field {
+    width: 100%;
+    margin-bottom: 0;
+    padding: 5px;
+ }
+}
+
 .user-search-icon {
   width: 25px;
   margin-right: 5px;
@@ -2427,7 +2439,6 @@ input[type='file'] {
 }
 .faq-item:hover .faq-answer {
   color: #fff;
-  transition: all 0.5s ease-in-out;
 }
 .faq-question {
   font-size: 17px;
@@ -2436,7 +2447,6 @@ input[type='file'] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.5s ease-in-out;
 }
 @media (max-width: 768px) {
   .faq-question {
@@ -2448,7 +2458,6 @@ input[type='file'] {
   margin-top: 10px;
   font-size: 1rem;
   color: #555;
-  transition: all 0.5s ease-in-out;
 }
 @media (max-width: 768px) {
   .faq-answer {
@@ -2460,20 +2469,21 @@ input[type='file'] {
   font-weight: bold;
   color: #3498db;
   margin-left: 10px;
-  transition: all 0.5s ease-in-out;
 }
 .open {
   background: #3498db !important;
-  transition: all 0.5s ease-in-out;
 }
 .open .faq-question {
   color: #fff;
-  transition: all 0.5s ease-in-out;
 }
 .open .faq-answer {
   color: #fff;
-  transition: all 0.5s ease-in-out;
 }
 .contact-cont {
-  min-width: 400px;
+  width: 400px;
+}
+@media (max-width: 768px) {
+  .contact-cont {
+    width: 350px;
+  }
 }
