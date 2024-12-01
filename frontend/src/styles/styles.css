@@ -2120,7 +2120,16 @@ input[type='file'] {
 @media (max-width: 768px) {
   .assigned-list-item {
     min-width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .assigned-list-item {
+    min-width: 100%;
+    margin-bottom: 10px;
+    gap: 10px;
   }
 }
 
