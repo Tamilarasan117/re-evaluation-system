@@ -26,6 +26,7 @@ export const useEvaluator  = create((set) => ({
     } catch (error) {
       set({ error: error.message, isLoading: false })
       console.log(error)
+      throw error
     }
   },
   // update evaluator profile function
@@ -41,6 +42,7 @@ export const useEvaluator  = create((set) => ({
     } catch (error) {
       set({ error: error.message, isLoading: false })
       console.log(error)
+      throw error
     }
   },
   // get all assigned request function
@@ -53,6 +55,7 @@ export const useEvaluator  = create((set) => ({
     } catch (error) {
       set({ requestList: [], error: error.message, isLoading: false })
       console.log(error.message)
+      throw error
     }
   },
   // get specific request function
@@ -68,6 +71,7 @@ export const useEvaluator  = create((set) => ({
     } catch (error) {
       set({ requestDetails: null, error: error.message, isLoading: false })
       console.log(error.message)
+      throw error
     }
   },
   // update user status function
@@ -88,6 +92,7 @@ export const useEvaluator  = create((set) => ({
     } catch (error) {
       set({ error: error.message, isLoading: false })
       console.log(error)
+      throw error
     }
   },
   // update request function
@@ -104,6 +109,19 @@ export const useEvaluator  = create((set) => ({
     } catch (error) {
       set({ error: error.message, isLoading: false })
       console.log(error)
+      throw error
     }
-  }
+  },
+  // change password
+  changePassword: async (oldPassword, newPassword, confirmPassword) => {
+    set({ isLoading: true, error: null })
+    try {
+      await axios.post(`${ API_URL }/change-password`, { oldPassword, newPassword, confirmPassword })
+      set({ isLoading: false, message: 'Password changed successfully' })
+    } catch (error) {
+      set({ error: error.response.data.message, isLoading: false })
+      console.log(error.response.data.message)
+      throw error
+    }
+  },
 }))

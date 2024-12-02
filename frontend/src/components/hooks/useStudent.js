@@ -18,6 +18,7 @@ export const useStudent  = create((set) => ({
   studentProfile: null,
   paymentDetails: null,
   allRequestList: null,
+  isAuthenticated: true,
   
   // get student profile information function
   getStudentProfile: async () => {
@@ -28,7 +29,7 @@ export const useStudent  = create((set) => ({
       console.log('Profile: ', response.data)
     } catch (error) {
       set({ error: error.response.data.message, isLoading: false })
-      console.log(error)
+      throw error
     }
   },
   // update student profile function
@@ -43,26 +44,24 @@ export const useStudent  = create((set) => ({
       }))
     } catch (error) {
       set({ error: error.response.data.message, isLoading: false })
-      console.log(error)
+      throw error
     }
   },
   // re evaluation request function
   revaluationRequest: async (requestData) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.post(`${ API_URL }/revaluation-request`, { ...requestData })
-      
+      await axios.post(`${ API_URL }/revaluation-request`, { ...requestData })
       set({
         message: 'Revaluation request sent successfully',
         isLoading: false,
         requested: true
       })
       console.log('Revaluation request sent successfully')
-      console.log(response.data.data)
     } catch (error) {
       set({ error: error.response.data.message, isLoading: false, requested: false })
       console.log('Error: ', error.response.data.message)
-      throw error.response.data.message
+      throw error
     }
   },
   // get revaluation request function
@@ -74,7 +73,8 @@ export const useStudent  = create((set) => ({
       console.log('revaluation request: ', response.data.data)
     } catch (error) {
       set({ error: error.response.data.message, isLoading: false })
-      console.log(error)
+      console.log(error.response.data.message)
+      throw error
     }
   },
   // request payment function
@@ -92,8 +92,14 @@ export const useStudent  = create((set) => ({
       console.log('Payment requested successfully')
       console.log('payment success data: ', response.data.data)
     } catch (error) {
-      set({ error: error.response.data.message, isLoading: false, requested: false, isPaid: false })
-      console.log(error)
+      set({
+        error: error.response.data.message,
+        isLoading: false,
+        requested: false,
+        isPaid: false
+      })
+      console.log(error.response.data.message)
+      throw error
     }  
   },
   // get all revaluation request function
@@ -105,7 +111,8 @@ export const useStudent  = create((set) => ({
       console.log('useStudent request list: ', response.data.data)
     } catch (error) {
       set({ error: error.response.data.message, isLoading: false })
-      console.log(error)
+      console.log(error.response.data.message)
+      throw error
     }
   },
   // delete revaluation request function
@@ -120,7 +127,20 @@ export const useStudent  = create((set) => ({
       }))
     } catch (error) {
       set({ error: error.response.data.message, isLoading: false })
-      console.log(error)
+      console.log(error.response.data.message)
+      throw error
     }
-  }
+  },
+  // change password
+  changePassword: async (oldPassword, newPassword, confirmPassword) => {
+    set({ isLoading: true, error: null })
+    try {
+      await axios.post(`${ API_URL }/change-password`, { oldPassword, newPassword, confirmPassword })
+      set({ isLoading: false, message: 'Password changed successfully' })
+    } catch (error) {
+      set({ error: error.response.data.message, isLoading: false })
+      console.log(error.response.data.message)
+      throw error
+    }
+  },
 }))

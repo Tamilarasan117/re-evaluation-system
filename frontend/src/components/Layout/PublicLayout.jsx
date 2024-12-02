@@ -5,7 +5,7 @@ import React from 'react'
 import '../../styles/styles.css'
 
 // importing components
-import PublicHeader from '../Common/PublicHeader.jsx'
+import PublicHeader from '../Header/PublicHeader.jsx'
 import Footer from '../Common/Footer.jsx'
 
 const PublicLayout = ({ children }) => {

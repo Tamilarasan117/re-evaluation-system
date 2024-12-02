@@ -5,7 +5,7 @@ import React from 'react'
 import '../../styles/styles.css'
 
 // importing components
-import EvaluatorHeader from '../Common/EvaluatorHeader.jsx'
+import EvaluatorHeader from '../Header/EvaluatorHeader.jsx'
 import Footer from '../Common/Footer.jsx'
 
 const EvaluatorLayout = ({ children }) => {

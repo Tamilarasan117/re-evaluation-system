@@ -1,25 +1,24 @@
 // importing packages
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { User, Mail, Lock, CheckCheck, X, Loader } from 'lucide-react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Lock, Loader, CheckCheck, X } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
 // importing modules
 import '../../styles/styles.css'
+import { useEvaluator } from '../hooks/useEvaluator.js'
 import { useAuth } from '../hooks/useAuth.js'
 
 // importing components
-import OneInput from '../Common/OneInput.jsx'
 import PasswordInput from '../Common/PasswordInput.jsx'
 
-const Register = () => {
-  const [username, setUsername] = useState('')
-  const [email,  setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  
-  const { isLoading, register } = useAuth()
-  const navigate = useNavigate()
+const EvaluatorChangePassword = () => {
+  const [oldPassword, setOldPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const { isLoading, changePassword } = useEvaluator()
+  const { logout } = useAuth()
 
   const [upperCase, setUpperCase] = useState(false)
   const [lowerCase, setLowerCase] = useState(false)
@@ -33,56 +32,61 @@ const Register = () => {
   const switchIcon = (con) => con ? correct : wrong
 
   useEffect( () => {
-    setUpperCase( /[A-Z]/.test(password))
-    setLowerCase( /[a-z]/.test(password))
-    setNumber( /[0-9]/.test(password))
-    setSpecialChar( /[!@#$%^&*]/.test(password))
-    setPasswordLength(password.length >= 6)
-  }, [password])
+    setUpperCase( /[A-Z]/.test(newPassword))
+    setLowerCase( /[a-z]/.test(newPassword))
+    setNumber( /[0-9]/.test(newPassword))
+    setSpecialChar( /[!@#$%^&*]/.test(newPassword))
+    setPasswordLength(newPassword.length >= 6)
+  }, [newPassword])
 
-  const handleRegister = async (e) => {
+  const navigate = useNavigate()
+
+  const onHandleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!username || !email || !password) {
+    if (!oldPassword || !newPassword || !confirmPassword) {
       toast.error('Please provide required fields')
       return
     }
 
+    if (newPassword !== confirmPassword) {
+      toast.error('Passwords do not match')
+      return
+    }
     if (!passwordLength) {
       toast.error('Password must be at least 6 characters long')
       return
     }
-
     if (!upperCase) {
       toast.error('Password must have at least one uppercase letter')
       return
     }
-
     if (!lowerCase) {
       toast.error('Password must have at least one lowercase letter')
       return
     }
-
     if (!number) {
       toast.error('Password must have at least one number')
       return
     }
-    
     if (!specialChar) {
       toast.error('Password must have at least one special character')
       return
     }
-
+    
     try {
-      await register(username, email, password)
-      navigate('/')
-      toast.success('Account created successfully')
+      await changePassword(oldPassword, newPassword, confirmPassword)
+      toast.success('Password changed successfully')
+      logout()
+      setTimeout(() => {
+        navigate('/login')
+      }, 1000)
     } catch (error) {
       toast.error(error.response.data.message)
       console.log(error.response.data.message)
     }
   }
-  
+
   return (
     <>
       <motion.div 
@@ -91,28 +95,28 @@ const Register = () => {
         transition = {{ duration: 0.6 }}
       >
         <div className='auth-form-container'>
-          <h1 className="auth-form-heading">Create Account</h1>
-          <form onSubmit={ handleRegister } method="post">
-            <OneInput
-              icon = { User }
-              type = 'text'
-              placeholder = 'Username'
-              value = { username }
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <OneInput
-              icon = { Mail }
-              type = 'email'
-              placeholder = 'Email Address'
-              value = { email }
-              onChange={(e) => setEmail(e.target.value)}
+          <h1 className="auth-form-heading">Change Password</h1>
+          <form onSubmit={ onHandleSubmit } method="post">
+            <PasswordInput
+              icon = { Lock }
+              type = 'password'
+              placeholder = 'Old Password'
+              value={ oldPassword }
+              onChange={ (e) => setOldPassword(e.target.value) }
             />
             <PasswordInput
               icon = { Lock }
               type = 'password'
-              placeholder = 'Password'
-              value={ password }
-              onChange={ (e) => setPassword(e.target.value) }
+              placeholder = 'New Password'
+              value={ newPassword }
+              onChange={ (e) => setNewPassword(e.target.value) }
+            />
+            <PasswordInput
+              icon = { Lock }
+              type = 'password'
+              placeholder = 'Confirm Password'
+              value={ confirmPassword }
+              onChange={ (e) => setConfirmPassword(e.target.value) }
             />
             <div className='auth-pass-str-card'>
               <ul className='auth-form-list'>
@@ -134,16 +138,9 @@ const Register = () => {
               {
                 isLoading ?
                   <Loader color='#fff' className='animate-spinner' size={ 25 } aria-label="Loading Spinner" />
-                : 'Register'
+                : 'Change Password'
               }
             </motion.button>
-            <div className='redirect-card'>
-              <Link to='/' className='auth-redirect-link'>- Home</Link>
-              <p className='auth-back-link'>
-                Already have an account?{"   "}
-                <Link to='/login' className='auth-redirect-link'>Login</Link>
-              </p>
-            </div>
           </form>
         </div>
       </motion.div>
@@ -151,4 +148,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default EvaluatorChangePassword

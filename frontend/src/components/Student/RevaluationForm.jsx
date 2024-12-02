@@ -47,11 +47,6 @@ const RevaluationForm = () => {
   const handleSubmitRequest = async (e) => {
     e.preventDefault()
 
-    if (!studentName ||!studentTokenNo ||!email ||!course ||!semester ||!subject ||!mark ||!fees ||!reason ||!document) {
-      toast.error('All fields are required!')
-      return
-    }
-
     try {
       await revaluationRequest({
         studentName,

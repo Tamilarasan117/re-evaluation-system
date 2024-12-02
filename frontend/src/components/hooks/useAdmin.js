@@ -159,5 +159,17 @@ export const useAdmin  = create((set) => ({
       set({ error: error.response.data.message, isLoading: false })
       console.log(error)
     }
-  }
+  },
+  // change password
+  changePassword: async (oldPassword, newPassword, confirmPassword) => {
+    set({ isLoading: true, error: null })
+    try {
+      await axios.post(`${ API_URL }/change-password`, { oldPassword, newPassword, confirmPassword })
+      set({ isLoading: false, message: 'Password changed successfully' })
+    } catch (error) {
+      set({ error: error.response.data.message, isLoading: false })
+      console.log(error.response.data.message)
+      throw error
+    }
+  },
 }))

@@ -68,6 +68,7 @@ export const useAuth  = create((set) => ({
       })
     } catch (error) {
       set({ error: 'Error logging out', isLoading: false })
+      throw error
     }
   },
   // email verification function

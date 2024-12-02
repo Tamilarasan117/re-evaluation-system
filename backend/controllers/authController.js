@@ -16,11 +16,6 @@ export const register = async (request, response) => {
   const { username, email, password } = request.body
   
   try {
-    if (!username || !email || !password) {
-      console.log('All input fields are required')
-      return response.status(400).json({ message: 'All input fields are required' })
-    }
-
     const existingUser = await User.findOne({ email })
     if (existingUser) {
       console.log('User already exists')

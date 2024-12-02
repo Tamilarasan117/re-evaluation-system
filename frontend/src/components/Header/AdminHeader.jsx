@@ -8,11 +8,11 @@ import { motion } from 'framer-motion'
 // importing modules
 import '../../styles/styles.css'
 import logo from '../../assets/logo.png'
-import { useAuth } from '../hooks/useAuth.js'
+import { useAuth } from '../hooks/useAuth'
 
 const activeLink = ({ isActive }) => (isActive ? 'active' : '')
 
-const EvaluatorHeader = () => {
+const AdminHeader = () => {
   const { logout } = useAuth()
   const [open, setOpen] = useState(false)
 
@@ -21,6 +21,7 @@ const EvaluatorHeader = () => {
     toast.success('User logged out successfully')
     console.log('User logged out successfully')
   }
+
   const toggleMenu = () => {
     setOpen(!open)
   }
@@ -33,13 +34,19 @@ const EvaluatorHeader = () => {
         </div>
         <ul className={ open ? `admin-nav-menu actives` :  `admin-nav-menu` }>
           <li className='admin-nav-link'>
-            <NavLink to='/evaluator/about' className={`link ${ activeLink }`}>About</NavLink>
+            <NavLink to='/admin/about' className={`link ${ activeLink }`}>About</NavLink>
           </li>
           <li className='admin-nav-link'>
-            <NavLink to='/evaluator/profile' className={`link ${ activeLink }`}>Profile</NavLink>
+            <NavLink to='/admin/profile' className={`link ${ activeLink }`}>Profile</NavLink>
           </li>
           <li className='admin-nav-link'>
-            <NavLink to='/evaluator/view-assigned-request' className={`link ${ activeLink }`}>View Assigned Requests</NavLink>
+            <NavLink to='/admin/user-management'  className={`link ${ activeLink }`}>Manage Users</NavLink>
+          </li>
+          <li className='admin-nav-link'>
+            <NavLink to='/admin/re-evaluation-requests'  className={`link ${ activeLink }`}>Manage Requests</NavLink>
+          </li>
+          <li className='admin-nav-link'>
+            <NavLink to='/admin/change-password'  className={`link ${ activeLink }`}>Change Password</NavLink>
           </li>
           <li className='admin-nav-link'>
             <motion.button 
@@ -62,4 +69,4 @@ const EvaluatorHeader = () => {
   )
 }
 
-export default EvaluatorHeader
+export default AdminHeader

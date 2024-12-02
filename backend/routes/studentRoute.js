@@ -4,6 +4,7 @@ import express from 'express'
 // import required modules
 import { studentProtectMiddleware } from '../middleware/verifyTokenMiddleware.js'
 import {
+  changePassword,
   deleteRevaluationRequest,
   getAllRequestedRevaluation,
   getRevaluationRequest,
@@ -23,6 +24,7 @@ studentRouter.get('/get-all-revaluation-request', studentProtectMiddleware, getA
 
 studentRouter.post('/revaluation-request', studentProtectMiddleware, revaluationRequest)
 studentRouter.post('/request-payment/:id', studentProtectMiddleware, requestPayment)
+studentRouter.post('/change-password', studentProtectMiddleware, changePassword)
 
 studentRouter.put('/update-profile', studentProtectMiddleware, updateStudentProfile)
 

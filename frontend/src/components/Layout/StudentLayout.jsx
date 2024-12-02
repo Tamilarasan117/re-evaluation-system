@@ -5,7 +5,7 @@ import React from 'react'
 import '../../styles/styles.css'
 
 // importing components
-import StudentHeader from '../Common/StudentHeader.jsx'
+import StudentHeader from '../Header/StudentHeader.jsx'
 import Footer from '../Common/Footer.jsx'
 
 const StudentLayout = ({ children }) => {

@@ -34,6 +34,7 @@ import AdminAbout from './components/Admin/AdminAbout.jsx'
 import AdminProfile from './components/Admin/AdminProfile.jsx'
 import AdminUserManagement from './components/Admin/AdminUserManagement.jsx'
 import AdminRequestManagement from './components/Admin/AdminRequestManagement.jsx'
+import AdminChangePassword from './components/Admin/AdminChangePassword.jsx'
 
 // importing student components
 import StudentLayout from './components/Layout/StudentLayout.jsx'
@@ -43,6 +44,7 @@ import RevaluationForm from './components/Student/RevaluationForm.jsx'
 import RevaluationStatus from './components/Student/RevaluationStatus.jsx'
 import PaymentForm from './components/Student/PaymentForm.jsx'
 import PaymentSuccess from './components/Student/PaymentSuccess.jsx'
+import StudentChangePassword from './components/Student/StudentChangePassword.jsx'
 
 // importing evaluator components
 import EvaluatorLayout from './components/Layout/EvaluatorLayout.jsx'
@@ -50,6 +52,7 @@ import EvaluatorAbout from './components/Evaluator/EvaluatorAbout.jsx'
 import EvaluatorProfile from './components/Evaluator/EvaluatorProfile.jsx'
 import ViewAssignedRequest from './components/Evaluator/ViewAssignedRequest.jsx'
 import AssignedRequestDetails from './components/Evaluator/AssignedRequestDetails.jsx'
+import EvaluatorChangePassword from './components/Evaluator/EvaluatorChangePassword.jsx'
 
 const App = () => {
   const { checkAuth, isCheckingAuth } = useAuth()
@@ -112,6 +115,13 @@ const App = () => {
             </AdminRoute>
           </ProtectedRoute>
         } />
+        <Route exact path='/admin/change-password' element={ 
+          <ProtectedRoute> 
+            <AdminRoute requiredRole={['admin']}>
+              <AdminLayout> <AdminChangePassword /> </AdminLayout>
+            </AdminRoute>
+          </ProtectedRoute>
+        } />
 
         {/* Student Protected Role Route */}
         <Route exact path='/student/about' element={ 
@@ -160,6 +170,13 @@ const App = () => {
             </StudentRoute>
           </ProtectedRoute>
         } />
+        <Route exact path='/student/change-password' element={ 
+          <ProtectedRoute>
+            <StudentRoute requiredRole={['student']}>
+              <StudentLayout> <StudentChangePassword /> </StudentLayout>
+            </StudentRoute>
+          </ProtectedRoute>
+        } />
 
         {/* Evaluator Protected Role Route */}
         <Route exact path='/evaluator/about' element={ 
@@ -187,6 +204,13 @@ const App = () => {
           <ProtectedRoute> 
               <EvaluatorRoute requiredRole={['evaluator']}>
                 <EvaluatorLayout> <AssignedRequestDetails /> </EvaluatorLayout>
+              </EvaluatorRoute>
+          </ProtectedRoute>
+        } />
+        <Route exact path='/evaluator/change-password' element={ 
+          <ProtectedRoute> 
+              <EvaluatorRoute requiredRole={['evaluator']}>
+                <EvaluatorLayout> <EvaluatorChangePassword /> </EvaluatorLayout>
               </EvaluatorRoute>
           </ProtectedRoute>
         } />

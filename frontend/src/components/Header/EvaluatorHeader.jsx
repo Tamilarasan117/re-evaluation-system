@@ -8,11 +8,11 @@ import { motion } from 'framer-motion'
 // importing modules
 import '../../styles/styles.css'
 import logo from '../../assets/logo.png'
-import { useAuth } from '../hooks/useAuth'
+import { useAuth } from '../hooks/useAuth.js'
 
 const activeLink = ({ isActive }) => (isActive ? 'active' : '')
 
-const StudentHeader = () => {
+const EvaluatorHeader = () => {
   const { logout } = useAuth()
   const [open, setOpen] = useState(false)
 
@@ -21,7 +21,6 @@ const StudentHeader = () => {
     toast.success('User logged out successfully')
     console.log('User logged out successfully')
   }
-
   const toggleMenu = () => {
     setOpen(!open)
   }
@@ -34,16 +33,16 @@ const StudentHeader = () => {
         </div>
         <ul className={ open ? `admin-nav-menu actives` :  `admin-nav-menu` }>
           <li className='admin-nav-link'>
-            <NavLink to='/student/about' className={`link ${ activeLink }`}>About</NavLink>
+            <NavLink to='/evaluator/about' className={`link ${ activeLink }`}>About</NavLink>
           </li>
           <li className='admin-nav-link'>
-            <NavLink to='/student/profile' className={`link ${ activeLink }`}>Profile</NavLink>
+            <NavLink to='/evaluator/profile' className={`link ${ activeLink }`}>Profile</NavLink>
           </li>
           <li className='admin-nav-link'>
-            <NavLink to='/student/revaluation-request'  className={`link ${ activeLink }`}>Revaluation Request</NavLink>
+            <NavLink to='/evaluator/view-assigned-request' className={`link ${ activeLink }`}>View Assigned Requests</NavLink>
           </li>
           <li className='admin-nav-link'>
-            <NavLink to='/student/revaluation-status'  className={`link ${ activeLink }`}>Revaluation Status</NavLink>
+            <NavLink to='/evaluator/change-password'  className={`link ${ activeLink }`}>Change Password</NavLink>
           </li>
           <li className='admin-nav-link'>
             <motion.button 
@@ -66,4 +65,4 @@ const StudentHeader = () => {
   )
 }
 
-export default StudentHeader
+export default EvaluatorHeader

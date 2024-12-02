@@ -1,4 +1,7 @@
-// import required package
+// importing package
+import bcrypt from 'bcryptjs'
+
+// importing modules
 import { Payment } from "../models/Payment.js"
 import { RevaluationRequest } from "../models/RevaluationRequest.js"
 import { User } from "../models/User.js"
@@ -54,7 +57,7 @@ export const revaluationRequest = async (request, response) => {
   } = request.body
   
   try {
-    if (!studentName || !studentTokenNo || !email || !course || !semester || !subject || !mark || !fees || !document || !reason) {
+    if (!studentName || !studentTokenNo || !email || !course || !semester || !subject || !mark || !fees || !reason) {
       console.log('Please fill all the fields')
       return response.status(400).json({ message: 'Please fill all the fields' })
     }
@@ -216,6 +219,46 @@ export const deleteRevaluationRequest = async (request, response) => {
     console.log('Revaluation request deleted successfully')
   } catch (error) {
     console.log('Something went wrong while deleting revaluation request')
+    console.log(error.message)
+    response.status(500).json({ message: "Internal server error" })
+  }
+}
+// change password controller  
+export const changePassword = async (request, response) => {
+  const { oldPassword, newPassword, confirmPassword } = request.body
+  const userId = request.user.id
+
+  try {
+    if (!oldPassword || !newPassword || !confirmPassword) {
+      console.log('Please provide required fields')
+      return response.status(400).json({ message: 'Please provide required fields' })
+    }
+
+    if (newPassword !== confirmPassword) {
+      console.log('Passwords do not match')
+      return response.status(400).json({ message: 'Passwords do not match' })
+    }
+
+    const user = await User.findOne({ _id: userId })
+    if (!user) {
+      console.log('User not found')
+      return response.status(404).json({ message: 'User not found' })
+    }
+
+    const isValidPassword = await bcrypt.compare(oldPassword, user.password)
+    if (!isValidPassword) {
+      console.log('Invalid old password')
+      return response.status(401).json({ message: 'Invalid old password' })
+    }
+    
+    const hashedPassword = await bcrypt.hash(newPassword, 10)
+    user.password = hashedPassword
+    await user.save()
+
+    response.status(200).json({ message: "Password changed successfully" })
+    console.log('Password changed successfully')
+  } catch (error) {
+    console.log('Something went wrong while changing password')
     console.log(error.message)
     response.status(500).json({ message: "Internal server error" })
   }

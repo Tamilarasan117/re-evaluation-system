@@ -5,7 +5,7 @@ import React from 'react'
 import '../../styles/styles.css'
 
 // importing components
-import AdminHeader from '../Common/AdminHeader.jsx'
+import AdminHeader from '../Header/AdminHeader.jsx'
 import Footer from '../Common/Footer.jsx'
 
 const AdminLayout = ({ children }) => {

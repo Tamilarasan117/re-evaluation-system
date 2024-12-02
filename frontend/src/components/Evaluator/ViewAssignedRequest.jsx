@@ -1,6 +1,7 @@
 // importing packages
 import React, { useEffect, useState } from 'react'
 import { Search } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 // importing modules
 import '../../styles/styles.css'
@@ -38,9 +39,15 @@ const ViewAssignedRequest = () => {
 
   const NoResult = () => {
     return (
-      <div className='no-result-card'>
-        <img src={ noResult } className='no-result-img' alt='No User Available' />
-      </div>
+      <motion.div 
+        initial={{ opacity: 0, y: 75 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition = {{ duration: 0.6 }}
+      >
+        <div className='no-result-card'>
+          <img src={ noResult } className='no-result-img' alt='No User Available' />
+        </div>
+      </motion.div>
     )
   }
 
