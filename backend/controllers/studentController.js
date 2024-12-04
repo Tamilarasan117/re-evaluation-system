@@ -9,6 +9,10 @@ import { User } from "../models/User.js"
 import { Payment } from "../models/Payment.js"
 import { stripe } from '../config/stripe.js'
 
+// frontend URL
+//const URL = process.env.CLIENT_URL
+const URL = 'https://re-evaluation-system.onrender.com'
+
 // get student profile information controller
 export const getStudentProfile = async (request, response) => {
   try {
@@ -259,8 +263,8 @@ export const createCheckoutSession = async (request, response) => {
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
-      success_url: `${ process.env.CLIENT_URL }/student/request-payment-success`,
-			cancel_url: `${ process.env.CLIENT_URL }//student/request-payment-cancel`,
+      success_url: `${ URL }/student/request-payment-success`,
+			cancel_url: `${ URL }//student/request-payment-cancel`,
       metadata: {
         userId: request.user._id.toString(),
         requestsItem: JSON.stringify(
