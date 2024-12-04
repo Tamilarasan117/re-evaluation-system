@@ -52,7 +52,6 @@ const RevaluationRequestSchema = new mongoose.Schema({
   },
   document: {
     type: String,
-    required: true,
     trim: true,
   },
   reason: {

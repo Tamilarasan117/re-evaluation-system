@@ -12,6 +12,10 @@ const PaymentSchema = new mongoose.Schema({
     ref: 'RevaluationRequest',
     required: true,
   },
+  transactionId: {
+    type: String,
+    required: true,
+  },
   paymentAmount: {
     type: Number,
     required: true,
@@ -30,28 +34,11 @@ const PaymentSchema = new mongoose.Schema({
     maxLength: 50,
     lowercase: true,
   },
-  cardNumber: {
-    type: String,
-    required: true,
-    minLength: 12,
-    maxLength: 12,
-    pattern: /^[0-9]{16}$/,
-  },
-  cvc: {
-    type: String,
-    required: true,
-    minLength: 3,
-    maxLength: 3,
-    pattern: /^[0-9]{3}$/,
-  },
   email: {
     type: String,
     required: true,
     trim: true,
     match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-  },
-  expireDate: {
-    type: String,
   },
   paymentDate: {
     type: Date,
@@ -60,10 +47,6 @@ const PaymentSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: null,
   },
 }, {
   timestamps: true

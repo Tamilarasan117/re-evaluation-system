@@ -109,7 +109,7 @@ const ResetPassword = () => {
               }
             </motion.button>
             <div className='redirect-card'>
-              <Link to='/' className='auth-redirect-link'>- Home</Link>
+              <Link to='/' className='auth-redirect-link'>Home</Link>
               <Link to={'/login'} className='auth-fot-pass-link'>
                 <ArrowLeft size={ 20 } /> {' '} Back to Login
               </Link>

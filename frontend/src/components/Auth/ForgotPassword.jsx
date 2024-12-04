@@ -88,7 +88,7 @@ const ForgotPassword = () => {
             )
           }
           <div className='redirect-card'>
-            <Link to='/' className='auth-redirect-link'>- Home</Link>
+            <Link to='/' className='auth-redirect-link'>Home</Link>
             <Link to={'/login'} className='auth-redirect-link'>
               <ArrowLeft className='link-arrow' />
               Back to Login

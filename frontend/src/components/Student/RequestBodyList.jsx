@@ -53,6 +53,10 @@ const RequestBodyList = (props) => {
               data={ request.status }
             />
             <RequestInfo
+              label='Payment Status: '
+              data={ request.paymentStatus }
+            />
+            <RequestInfo
               label='Requested Date: '
               data={ dateFormat (request.createdAt) }
             />

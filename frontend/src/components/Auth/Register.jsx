@@ -17,6 +17,7 @@ const Register = () => {
   const [username, setUsername] = useState('')
   const [email,  setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   
   const { isLoading, register } = useAuth()
   const navigate = useNavigate()
@@ -43,7 +44,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault()
 
-    if (!username || !email || !password) {
+    if (!username || !email || !password || !confirmPassword) {
       toast.error('Please provide required fields')
       return
     }
@@ -74,7 +75,7 @@ const Register = () => {
     }
 
     try {
-      await register(username, email, password)
+      await register(username, email, password, confirmPassword)
       navigate('/')
       toast.success('Account created successfully')
     } catch (error) {
@@ -114,7 +115,15 @@ const Register = () => {
               value={ password }
               onChange={ (e) => setPassword(e.target.value) }
             />
+            <PasswordInput
+              icon = { Lock }
+              type = 'password'
+              placeholder = 'Confirm Password'
+              value={ confirmPassword }
+              onChange={ (e) => setConfirmPassword(e.target.value) }
+            />
             <div className='auth-pass-str-card'>
+              <p className='auth-password-strength-text'>Password Strength Checker</p>
               <ul className='auth-form-list'>
                 <li>{ switchIcon(upperCase)} Uppercase letter (A-Z)</li>
                 <li>{ switchIcon(lowerCase) } Lowercase letter (a-z)</li>
@@ -138,7 +147,7 @@ const Register = () => {
               }
             </motion.button>
             <div className='redirect-card'>
-              <Link to='/' className='auth-redirect-link'>- Home</Link>
+              <Link to='/' className='auth-redirect-link'>Home</Link>
               <p className='auth-back-link'>
                 Already have an account?{"   "}
                 <Link to='/login' className='auth-redirect-link'>Login</Link>

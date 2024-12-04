@@ -10,8 +10,6 @@ import { useAuth } from './components/hooks/useAuth.js'
 // importing protect route components
 import ProtectRoute from './context/ProtectRoute.jsx'
 import ProtectedRoute from './context/ProtectedRoute.jsx'
-import ProtectPaymentRoute from './context/ProtectPaymentRoute.jsx'
-import ProtectSuccessRoute from './context/ProtectSuccessRoute.jsx'
 import AdminRoute from './context/AdminRoute.jsx'
 import StudentRoute from './context/StudentRoute.jsx'
 import EvaluatorRoute from './context/EvaluatorRoute.jsx'
@@ -44,6 +42,7 @@ import RevaluationForm from './components/Student/RevaluationForm.jsx'
 import RevaluationStatus from './components/Student/RevaluationStatus.jsx'
 import PaymentForm from './components/Student/PaymentForm.jsx'
 import PaymentSuccess from './components/Student/PaymentSuccess.jsx'
+import PaymentCancel from './components/Student/PaymentCancel.jsx'
 import StudentChangePassword from './components/Student/StudentChangePassword.jsx'
 
 // importing evaluator components
@@ -147,20 +146,23 @@ const App = () => {
         } />
         <Route exact path='/student/revaluation-request/payment' element={ 
           <ProtectedRoute>
-            <ProtectPaymentRoute>
               <StudentRoute requiredRole={['student']}>
                 <StudentLayout> <PaymentForm /> </StudentLayout>
               </StudentRoute>
-            </ProtectPaymentRoute>
           </ProtectedRoute>
         } />
-        <Route exact path='/student/revaluation-payment-success' element={ 
+        <Route exact path='/student/request-payment-success' element={ 
           <ProtectedRoute>
-            <ProtectSuccessRoute>
               <StudentRoute requiredRole={['student']}>
-                <StudentLayout> <PaymentSuccess /> </StudentLayout>
+                <PaymentSuccess />
               </StudentRoute>
-            </ProtectSuccessRoute>
+          </ProtectedRoute>
+        } />
+        <Route exact path='/student/request-payment-cancel' element={ 
+          <ProtectedRoute>
+              <StudentRoute requiredRole={['student']}>
+                <PaymentCancel />
+              </StudentRoute>
           </ProtectedRoute>
         } />
         <Route exact path='/student/revaluation-status' element={ 

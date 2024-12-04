@@ -1,48 +1,60 @@
 // importing packages
-import React from 'react'
-import { CircleCheck } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { Loader } from 'lucide-react'
+import React, { useEffect } from 'react'
+import { ArrowLeft, CheckCircle, HandHeart } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import Confetti from "react-confetti"
 
 // importing modules
 import '../../styles/styles.css'
-import { useStudent } from '../hooks/useStudent.js'
+import { useStudent } from './../hooks/useStudent'
+import toast from 'react-hot-toast'
 
 const PaymentSuccess = () => {
-  const navigate = useNavigate()
+  const { getRevaluationRequest, paymentSuccess, requestCart } = useStudent()
 
-  const { isLoading } = useStudent()
+	const handlePaymentSuccess = async () => {
+		try {
+			const requestId = requestCart?.revaluationRequestId
+			await paymentSuccess(requestId)
+			toast.success('Payment successful')
+			console.log('Payment success')
+		} catch (error) {
+			toast.error(error.response.data.message)
+			console.error(error.response.data.message)
+		}
+	}
 
+	useEffect(() => {
+		getRevaluationRequest()
+	}, [getRevaluationRequest])
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 75 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition = {{ duration: 0.6 }}
-      className='pay-success-card'
-    >
-      <div className='pay-success-box'>
-        <h1 className='payment-success-head'>Payment Successful!</h1>
-        <div className='pay-suc-icon'><CircleCheck size={ 50 } color='#4CAF50' /></div>
-        <p className='payment-success-message'>
-          Thank you for your payment! Your re-evaluation request has been successfully submitted.
-        </p>
-        <motion.button 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition = {{ delay: 0.3 }}
-          type='submit'
-          className="request-btn"
-          disabled={ isLoading }
-          onClick={ () => navigate('/student/profile') }
-        >
-          { isLoading ?
-              <Loader color='#fff' className='animate-spinner' size={ 25 } aria-label="Loading Spinner" />
-            : 'Back to Profile'
-          }
-        </motion.button>
-      </div>
-    </motion.div>
+    <div className='payment-success-cont'>
+			<Confetti
+				width={ window.innerWidth }
+				height={ window.innerHeight }
+				gravity={ 0.1 }
+				style={{ zIndex: 99 }}
+				numberOfPieces={ 1000 }
+				recycle={ false }
+			/>
+			<div className='payment-success-box '>
+        <CheckCircle className='payment-success-icon' />
+        <h1 className='payment-success-head'>Requested Successful!</h1>
+				<p className='payment-success-text'>Thank you for your request.</p>
+				<p className='payment-success-text'>Check your email for request details and updates.</p>
+				<button className='payment-success-heart'>
+					<HandHeart size={ 20 } />
+					Thanks for trusting us!
+				</button>
+				<Link
+					to="/student/revaluation-request"
+					onClick={ handlePaymentSuccess }
+					className='payment-success-link'
+				>
+					<ArrowLeft size={ 18 } /> Go Back
+				</Link>
+			</div>
+		</div>
   )
 }
 

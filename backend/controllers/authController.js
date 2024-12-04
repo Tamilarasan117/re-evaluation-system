@@ -13,9 +13,19 @@ import { sendPasswordResetEmail, sendPasswordResetSuccessEmail, sendVerification
 
 // user register controller
 export const register = async (request, response) => {
-  const { username, email, password } = request.body
+  const { username, email, password, confirmPassword } = request.body
   
   try {
+    if (!username || !password || !confirmPassword || !email) {
+      console.log('Please provide required fields')
+      return response.status(400).json({ message: 'Please provide required fields' })
+    }
+    
+    if (password!== confirmPassword) {
+      console.log('Passwords do not match')
+      return response.status(400).json({ message: 'Passwords do not match' })
+    }
+    
     const existingUser = await User.findOne({ email })
     if (existingUser) {
       console.log('User already exists')

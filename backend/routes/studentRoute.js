@@ -5,11 +5,12 @@ import express from 'express'
 import { studentProtectMiddleware } from '../middleware/verifyTokenMiddleware.js'
 import {
   changePassword,
+  createCheckoutSession,
   deleteRevaluationRequest,
   getAllRequestedRevaluation,
   getRevaluationRequest,
   getStudentProfile,
-  requestPayment,
+  paymentSuccess,
   revaluationRequest,
   updateStudentProfile
 } from '../controllers/studentController.js'
@@ -23,8 +24,9 @@ studentRouter.get('/get-revaluation-request', studentProtectMiddleware, getReval
 studentRouter.get('/get-all-revaluation-request', studentProtectMiddleware, getAllRequestedRevaluation)
 
 studentRouter.post('/revaluation-request', studentProtectMiddleware, revaluationRequest)
-studentRouter.post('/request-payment/:id', studentProtectMiddleware, requestPayment)
 studentRouter.post('/change-password', studentProtectMiddleware, changePassword)
+studentRouter.post("/create-checkout-session", studentProtectMiddleware, createCheckoutSession)
+studentRouter.post("/payment-success/:id", studentProtectMiddleware, paymentSuccess)
 
 studentRouter.put('/update-profile', studentProtectMiddleware, updateStudentProfile)
 

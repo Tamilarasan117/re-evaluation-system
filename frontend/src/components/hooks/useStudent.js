@@ -2,7 +2,6 @@
 import { create } from 'zustand'
 import axios from 'axios'
 
-//const API_URL = import.meta.env.MODE === 'development' ? 'http://localhost:5000/api/student' : '/api/student'
 //const API_URL = 'http://localhost:5000/api/student'
 const API_URL = 'https://re-evaluation-system.onrender.com/api/student'
 
@@ -18,7 +17,7 @@ export const useStudent  = create((set) => ({
   studentProfile: null,
   paymentDetails: null,
   allRequestList: null,
-  isAuthenticated: true,
+  total: 0,
   
   // get student profile information function
   getStudentProfile: async () => {
@@ -53,6 +52,7 @@ export const useStudent  = create((set) => ({
     try {
       await axios.post(`${ API_URL }/revaluation-request`, { ...requestData })
       set({
+        requestCart: { ...requestData },
         message: 'Revaluation request sent successfully',
         isLoading: false,
         requested: true
@@ -77,31 +77,6 @@ export const useStudent  = create((set) => ({
       throw error
     }
   },
-  // request payment function
-  requestPayment: async (requestData) => {
-    set({ isLoading: true, error: null })
-    try {
-      const response = await axios.post(`${ API_URL }/request-payment/${ requestData.revaluationRequestId }`, { ...requestData })
-      set({
-        paymentDetails: response.data.data,
-        message: 'Payment requested successfully',
-        isLoading: false,
-        requested: false,
-        isPaid: true,
-      })
-      console.log('Payment requested successfully')
-      console.log('payment success data: ', response.data.data)
-    } catch (error) {
-      set({
-        error: error.response.data.message,
-        isLoading: false,
-        requested: false,
-        isPaid: false
-      })
-      console.log(error.response.data.message)
-      throw error
-    }  
-  },
   // get all revaluation request function
   getAllRevaluationRequest: async () => {
     set({ isLoading: true, error: null })
@@ -109,6 +84,19 @@ export const useStudent  = create((set) => ({
       const response = await axios.get(`${ API_URL }/get-all-revaluation-request` )
       set({ allRequestList: response.data.data, isLoading: false })
       console.log('useStudent request list: ', response.data.data)
+    } catch (error) {
+      set({ error: error.response.data.message, isLoading: false })
+      console.log(error.response.data.message)
+      throw error
+    }
+  },
+  // checkout success
+  paymentSuccess: async (requestId) => {
+    set({ isLoading: true, error: null })
+    try {
+      await axios.post(`${ API_URL }/payment-success/${ requestId }`)
+      set({ message: 'Payment success', isLoading: false, requested: false })
+      console.log('Payment success')
     } catch (error) {
       set({ error: error.response.data.message, isLoading: false })
       console.log(error.response.data.message)
@@ -144,3 +132,34 @@ export const useStudent  = create((set) => ({
     }
   },
 }))
+
+
+
+
+/*
+// request payment function
+  requestPayment: async (requestData) => {
+    set({ isLoading: true, error: null })
+    try {
+      const response = await axios.post(`${ API_URL }/request-payment/${ requestData.revaluationRequestId }`, { ...requestData })
+      set({
+        paymentDetails: response.data.data,
+        message: 'Payment requested successfully',
+        isLoading: false,
+        requested: false,
+        isPaid: true,
+      })
+      console.log('Payment requested successfully')
+      console.log('payment success data: ', response.data.data)
+    } catch (error) {
+      set({
+        error: error.response.data.message,
+        isLoading: false,
+        requested: false,
+        isPaid: false
+      })
+      console.log(error.response.data.message)
+      throw error
+    }  
+  },
+*/

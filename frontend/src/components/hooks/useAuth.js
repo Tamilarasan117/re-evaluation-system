@@ -2,7 +2,6 @@
 import { create } from 'zustand'
 import axios from 'axios'
 
-//const API_URL = import.meta.env.MODE === 'development' ? 'http://localhost:5000/api/auth' : '/api/auth'
 //const API_URL = 'http://localhost:5000/api/auth'
 const API_URL = 'https://re-evaluation-system.onrender.com/api/auth'
 
@@ -17,10 +16,12 @@ export const useAuth  = create((set) => ({
   message: null,
 
   // register function
-  register: async (username, email, password) => {
+  register: async (username, email, password, confirmPassword) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.post(`${ API_URL }/register`, {username, email, password})
+      const response = await axios.post(`${ API_URL }/register`, {
+        username, email, password, confirmPassword
+      })
       set({
         user: response.data.user,
         isAuthenticated: true,

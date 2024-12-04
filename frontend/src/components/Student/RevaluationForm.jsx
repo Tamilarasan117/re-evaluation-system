@@ -76,8 +76,8 @@ const RevaluationForm = () => {
       setReason('')
       setDocument('')
     } catch (error) {
-      toast.error(error)
-      console.error('Failed to submit revaluation request:', error)
+      toast.error(error.response.data.message)
+      console.error('Failed to submit revaluation request:', error.response.data.message)
     }
   }
 
@@ -116,7 +116,7 @@ const RevaluationForm = () => {
             <label htmlFor='course' className='profile-label'>Course:</label>
             <select
               className='profile-input-field'
-              value={ studentProfile?.course || course }
+              value={ course }
               onChange={ e => setCourse(e.target.value) }
             >
               <option value='CP01'>CP01</option>
@@ -133,7 +133,7 @@ const RevaluationForm = () => {
             <label htmlFor='course' className='profile-label'>Course:</label>
             <select
               className='profile-input-field'
-              value={ studentProfile?.sem || semester }
+              value={ semester }
               onChange={ e => setSemester(e.target.value) }
             >
               <option value='1'>1</option>

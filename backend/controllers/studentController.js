@@ -1,10 +1,13 @@
 // importing package
 import bcrypt from 'bcryptjs'
+import crypto from 'crypto'
+import mongoose from "mongoose"
 
 // importing modules
-import { Payment } from "../models/Payment.js"
 import { RevaluationRequest } from "../models/RevaluationRequest.js"
 import { User } from "../models/User.js"
+import { Payment } from "../models/Payment.js"
+import { stripe } from '../config/stripe.js'
 
 // get student profile information controller
 export const getStudentProfile = async (request, response) => {
@@ -139,45 +142,6 @@ export const getRevaluationRequest = async (request, response) => {
     response.status(500).json({ message: "Internal server error" })
   }
 }
-// request payment controller
-export const requestPayment = async (request, response) => {
-  const userId = request.user.id
-  const { id } = request.params
-  const { paymentAmount, paymentStatus, email, cardNumber, expireDate, cvc } = request.body
-  try {
-    const existingRequest = await RevaluationRequest.findById({ _id: id, studentId: userId})
-    if (!existingRequest) {
-      console.log('Revaluation request not found')
-      return response.status(404).json({ message: 'Revaluation request not found' })
-    }
-
-    const paymentRequest = await Payment.create({
-      revaluationRequestId: existingRequest._id,
-      studentId: existingRequest.studentId,
-      paymentAmount: paymentAmount,
-      username: existingRequest.studentName,
-      email: email,
-      cvc: cvc,
-      cardNumber: cardNumber,
-      expireDate: expireDate,
-      paymentStatus: paymentStatus,
-    })
-
-    existingRequest.paymentStatus = 'Paid'
-    await existingRequest.save()
-    await paymentRequest.save()
-    
-    response.status(200).json({
-      message: "Payment request sent successfully",
-      data: paymentRequest,
-    })
-    console.log('Payment request sent successfully')
-  } catch (error) {
-    console.log('Something went wrong while sending payment request')
-    console.log(error.message)
-    response.status(500).json({ message: "Internal server error" })
-  }
-}
 // get student requested revaluation controller
 export const getAllRequestedRevaluation = async (request, response) => {
   const userId = request.user.id
@@ -260,6 +224,97 @@ export const changePassword = async (request, response) => {
   } catch (error) {
     console.log('Something went wrong while changing password')
     console.log(error.message)
+    response.status(500).json({ message: "Internal server error" })
+  }
+}
+// create checkout session controller
+export const createCheckoutSession = async (request, response) => {
+  try {
+    const { requestCart } = request.body
+    const requestsItem = [ requestCart ]
+    if (!Array.isArray(requestsItem) || requestsItem.length === 0) {
+      console.log('Invalid or empty request items array')
+      return response.status(400).json({ error: 'Invalid or empty request items array' })
+    }
+    
+    let totalAmount = 0
+    const lineItems = requestsItem.map((item) => {
+      const amount = Math.round(item.fees * 100)
+      totalAmount += amount * 1
+      
+      return {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: item.subject,
+            description: item.reason,
+          },
+          unit_amount: amount
+        },
+        "quantity": 1
+      }
+    })
+    
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: lineItems,
+      mode: 'payment',
+      success_url: `${ process.env.CLIENT_URL }/student/request-payment-success`,
+			cancel_url: `${ process.env.CLIENT_URL }//student/request-payment-cancel`,
+      metadata: {
+        userId: request.user._id.toString(),
+        requestsItem: JSON.stringify(
+					requestsItem.map((item) => ({
+						id: item._id,
+						quantity: 1,
+						price: item.fees,
+					}))
+				),
+      }
+    })
+
+    response.status(200).json({ sessionId: session.id, totalAmount: totalAmount / 100 })
+    console.log('Payment checkout session created successful')
+  } catch (error) {
+    console.log('Something went wrong while creating checkout session')
+    console.error(error)
+    response.status(500).json({ message: "Internal server error" })
+  }
+}
+// payment success controller
+export const paymentSuccess = async (request, response) => {
+  const userId = request.user.id
+  const { id } = request.params
+  try {
+    const existingRequest = await RevaluationRequest.findById({
+      _id: id,
+      studentId: userId
+    })
+    if (!existingRequest) {
+      console.log('Revaluation request not found')
+      return response.status(404).json({ message: 'Revaluation request not found' })
+    }
+
+    const transactionId = crypto.randomBytes(10).toString('hex')
+    const updatePayment = new Payment({
+      studentId: userId,
+      revaluationRequestId: id,
+      transactionId: transactionId,
+      paymentAmount: existingRequest.fees,
+      paymentStatus: 'Paid',
+      username: request.user.username,
+      email: request.user.email,
+      paymentDate: new Date()
+    })
+    await updatePayment.save()
+    existingRequest.paymentStatus = 'Paid'
+    await existingRequest.save()
+
+    console.log('Payment success')
+    response.status(200).json({ message: 'Payment success' })
+  } catch (error) {
+    console.log('Something went wrong while updating payment status')
+    console.error(error)
     response.status(500).json({ message: "Internal server error" })
   }
 }

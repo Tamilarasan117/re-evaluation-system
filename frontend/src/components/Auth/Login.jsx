@@ -86,7 +86,7 @@ const Login = () => {
               }
             </motion.button>
             <div className='redirect-card'>
-              <Link to='/' className='auth-redirect-link'>- Home</Link>
+              <Link to='/' className='auth-redirect-link'>Home</Link>
               <p className='auth-back-link'>
                 Don't have an account?{"  "}
                 <Link to='/register' className='auth-redirect-link'>Register</Link>
