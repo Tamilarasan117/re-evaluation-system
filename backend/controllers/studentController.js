@@ -10,8 +10,8 @@ import { Payment } from "../models/Payment.js"
 import { stripe } from '../config/stripe.js'
 
 // frontend URL
-const URL = process.env.CLIENT_URL
-//const URL = 'https://re-evaluation-system.onrender.com'
+//const URL = process.env.CLIENT_URL
+const URL = 'https://re-evaluation-system.onrender.com'
 
 // get student profile information controller
 export const getStudentProfile = async (request, response) => {
