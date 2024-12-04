@@ -86,7 +86,7 @@ const StudentAbout = () => {
     <div className="about-container">
       <h1 className='about-head'>About Section for Students</h1>
       <div className='about-cont'>
-        <h1 className='about-head'>Welcome to the Online Re-evaluation System</h1>
+        <h1 className='about-head'>Welcome to the Online Re-evaluation System Students</h1>
         <p className='about-desc1'>
           Welcome to our re-evaluation system. We strive to make academic processes 
           more transparent and efficient for all stakeholders. 

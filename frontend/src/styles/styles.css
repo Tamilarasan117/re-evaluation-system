@@ -41,7 +41,7 @@
 .header-links {
   display: flex;
 }
-@media (max-width: 768px) {
+@media (max-width: 756px) {
   .menu-icon {
     display: block;
   }
@@ -1734,6 +1734,7 @@ input[type='file'] {
   width: 100%;
   min-height: 80vh;
   padding: 20px;
+  text-align: center;
 }
 .request-status-state-cont {
   margin-bottom: 20px;
@@ -1765,6 +1766,7 @@ input[type='file'] {
 .request-status-cont {
   width: 100%;
   display: flex;
+  text-align: left;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
@@ -2672,4 +2674,68 @@ input[type='file'] {
     padding: 10px;
     border-radius: 4px;
   }
+}
+
+.contact-input-field {
+  font-size: 16px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  padding: 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+  box-shadow: -5px -5px 10px rgba(255,255,255,0.1),
+    10px 10px 10px rgba(0, 0, 0, 0.200),
+    inset -10px -10px 10px rgba(255,255,255,0.1),
+    inset 10px 10px 15px rgba(0, 0, 0, 0.200);
+}
+@media (max-width: 768px) {
+  .contact-input-field {
+    font-size: 14px;
+    margin-bottom: 12px;
+    box-shadow: -3px -3px 5px rgba(255,255,255,0.1),
+      5px 5px 5px rgba(0, 0, 0, 0.200),
+      inset -5px -5px 5px rgba(255,255,255,0.1),
+      inset 5px 5px 5px rgba(0, 0, 0, 0.200);
+  }
+}
+
+
+
+/* PaymentHistory.jsx styles */
+.payment-history-head {
+  font-size: 24px;
+  color: #3498db;
+  margin-bottom: 15px;
+}
+@media (max-width: 768px) {
+  .payment-history-head {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 500px) {
+  .payment-history-head {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+}
+
+.history-list-card {
+  border: 2px solid #dadada;
+  width: 350px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 0 0 15px #bdbdbd;
+  background: #fff;
+}
+.history-head {
+  font-size: 20px;
+  color: #3498db;
+  margin-bottom: 10px;
 }

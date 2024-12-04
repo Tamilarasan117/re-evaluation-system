@@ -166,7 +166,7 @@ const RevaluationForm = () => {
             label='Request Fees:'
             type='text'
             name='fees'
-            placeholder='Enter request fees minimum RS:-350'
+            placeholder='Enter request fees minimum RS:- 50'
             value={ fees }
             onChange={ (e) => setFees(e.target.value) }
           />

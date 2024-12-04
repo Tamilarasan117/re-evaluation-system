@@ -19,7 +19,7 @@ const ViewAssignedRequest = () => {
   const requestCount = requestList?.length
   const completedRequest = requestList?.filter( each => each.status === 'Completed')
   const completedCount = completedRequest?.length
-  const processRequest = requestList?.filter( each => each.status === 'InReview')
+  const processRequest = requestList?.filter( each => each.status === 'InProgress')
   const processCount = processRequest?.length
   const pendingRequest = requestList?.filter( each => each.status === 'Pending')
   const pendingCount = pendingRequest?.length

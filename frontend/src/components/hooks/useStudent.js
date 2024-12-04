@@ -15,7 +15,7 @@ export const useStudent  = create((set) => ({
   isPaid: false,
   requestCart: null,
   studentProfile: null,
-  paymentDetails: null,
+  paymentHistory: null,
   allRequestList: null,
   total: 0,
   
@@ -125,6 +125,19 @@ export const useStudent  = create((set) => ({
     try {
       await axios.post(`${ API_URL }/change-password`, { oldPassword, newPassword, confirmPassword })
       set({ isLoading: false, message: 'Password changed successfully' })
+    } catch (error) {
+      set({ error: error.response.data.message, isLoading: false })
+      console.log(error.response.data.message)
+      throw error
+    }
+  },
+  // get payment history
+  getPaymentHistory: async () => {
+    set({ isLoading: true, error: null })
+    try {
+      const response = await axios.get(`${ API_URL }/get-payment-history`)
+      set({ isLoading: false, paymentHistory: response.data })
+      console.log('Payment history details fetched successfully')
     } catch (error) {
       set({ error: error.response.data.message, isLoading: false })
       console.log(error.response.data.message)

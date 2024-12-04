@@ -44,6 +44,7 @@ import PaymentForm from './components/Student/PaymentForm.jsx'
 import PaymentSuccess from './components/Student/PaymentSuccess.jsx'
 import PaymentCancel from './components/Student/PaymentCancel.jsx'
 import StudentChangePassword from './components/Student/StudentChangePassword.jsx'
+import PaymentHistory from './components/Student/PaymentHistory.jsx'
 
 // importing evaluator components
 import EvaluatorLayout from './components/Layout/EvaluatorLayout.jsx'
@@ -169,6 +170,13 @@ const App = () => {
           <ProtectedRoute>
             <StudentRoute requiredRole={['student']}>
               <StudentLayout> <RevaluationStatus /> </StudentLayout>
+            </StudentRoute>
+          </ProtectedRoute>
+        } />
+        <Route exact path='/student/payment-history' element={ 
+          <ProtectedRoute>
+            <StudentRoute requiredRole={['student']}>
+              <StudentLayout> <PaymentHistory /> </StudentLayout>
             </StudentRoute>
           </ProtectedRoute>
         } />

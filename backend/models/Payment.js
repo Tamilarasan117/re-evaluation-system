@@ -30,15 +30,16 @@ const PaymentSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    minlength: 5,
-    maxLength: 50,
-    lowercase: true,
   },
   email: {
     type: String,
     required: true,
     trim: true,
     match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+  },
+  subject: {
+    type: String,
+    required: true,
   },
   paymentDate: {
     type: Date,

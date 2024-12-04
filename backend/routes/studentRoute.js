@@ -8,6 +8,7 @@ import {
   createCheckoutSession,
   deleteRevaluationRequest,
   getAllRequestedRevaluation,
+  getPaymentHistory,
   getRevaluationRequest,
   getStudentProfile,
   paymentSuccess,
@@ -22,6 +23,7 @@ const studentRouter = express.Router()
 studentRouter.get('/get-profile', studentProtectMiddleware, getStudentProfile)
 studentRouter.get('/get-revaluation-request', studentProtectMiddleware, getRevaluationRequest)
 studentRouter.get('/get-all-revaluation-request', studentProtectMiddleware, getAllRequestedRevaluation)
+studentRouter.get('/get-payment-history', studentProtectMiddleware, getPaymentHistory)
 
 studentRouter.post('/revaluation-request', studentProtectMiddleware, revaluationRequest)
 studentRouter.post('/change-password', studentProtectMiddleware, changePassword)

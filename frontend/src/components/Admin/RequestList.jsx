@@ -37,9 +37,6 @@ const RequestList = (props) => {
     handleDeleteRequest(requestList._id)
   }
 
-  const completed = requestList.paymentStatus === 'Paid' ? 'completed' : ''
-  const rejected = requestList.paymentStatus === 'Unpaid' ? 'rejected' : ''
-
   return (
     <>
       <li className='request-list-header-cont'>
@@ -53,7 +50,7 @@ const RequestList = (props) => {
           <p className='request-list-msg'>{ requestList.subject }</p>
         </div>
         <div className='request-list-card card4'>
-          <p className={`request-list-msg ${ completed } ${ rejected }`}>{ requestList.paymentStatus }</p>
+          <p className='request-list-msg'>{ requestList.course }</p>
         </div>
         <div className='request-list-card card4'>
           <p className='request-list-msg'>{ dateFormat(requestList.createdAt) }</p>
@@ -77,7 +74,7 @@ const RequestList = (props) => {
             
             onChange={ (e) => handleAssignEvaluators( requestList._id, e.target.value ) }
           >
-            <option className=''>-- Assign Staff --</option>
+            <option className=''>-- Assign --</option>
             {
               evaluatorList ? evaluatorList.map((each, index) => {
                 return (

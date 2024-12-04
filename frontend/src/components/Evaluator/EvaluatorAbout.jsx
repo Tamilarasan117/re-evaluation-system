@@ -5,44 +5,11 @@ import { motion } from 'framer-motion'
 
 // importing modules
 import '../../styles/styles.css'
-import { useAuth } from '../hooks/useAuth.js'
 import { useEvaluator } from '../hooks/useEvaluator.js'
 
 // importing components
 import ContactInput from '../Common/ContactInput.jsx'
 import Textarea from '../Common/Textarea.jsx'
-
-// key features data
-const keyFeatures = [
-  {
-    topic: "Centralized Dashboard",
-    data1:
-      "Access all assigned re-evaluation requests in one place.",
-    data2:
-      "View detailed student information, such as subject, marks, and re-evaluation reason.",
-  },
-  {
-    topic: "Streamlined Evaluation Process",
-    data1:
-      "Submit updated marks directly through the platform.",
-    data2:
-      "Provide comments and feedback for transparency.",
-  },
-  {
-    topic: "Secure and Transparent System",
-    data1:
-      "Ensure confidentiality of student data.",
-    data2:
-      "Keep an auditable record of re-evaluation actions and outcomes.",
-  },
-  {
-    topic: "Flexible Workflows",
-    data1:
-      "Manage your workload with clearly assigned tasks and deadlines.",
-    data2:
-      "Notify the admin if additional resources or clarification are required.",
-  },
-]
 
 // key responsibility data
 const keyResponsibility = [
@@ -109,7 +76,6 @@ const howwork = [
 
 
 const EvaluatorAbout = () => {
-  const { user } = useAuth()
   const { isLoading } = useEvaluator()
 
   const handleContactSubmit = (e) => {
@@ -120,7 +86,7 @@ const EvaluatorAbout = () => {
     <div className="about-container">
       <h1 className='about-head'>About Section for Evaluator</h1>
       <div className='about-cont'>
-        <h1 className='about-head'>Welcome, Esteemed Evaluators</h1>
+        <h1 className='about-head'>Welcome to the Online Re-Evaluation System Evaluators</h1>
         <p className='about-desc1'>
           The <strong>Online Re-evaluation System</strong> values your 
           expertise and dedication in ensuring fairness and accuracy in 
@@ -130,27 +96,13 @@ const EvaluatorAbout = () => {
         </p>
       </div>
       <div className='about-cont'>
-        <h1 className='about-head'>{ user.username } your Role in the Re-evaluation System</h1>
+        <h1 className='about-head'>Your Role in the Re-evaluation System</h1>
         <p className='about-desc1'>
           As an evaluator, you are entrusted with the critical task of reassessing student 
           submissions, ensuring that every score reflects the student's actual performance. 
           This platform simplifies your responsibilities by providing a centralized and 
           organized system to review requests efficiently.
         </p>
-      </div>
-      <div className='about-cont'>
-        <h1 className='about-head'>Key Features for Evaluators</h1>
-        <ol className='about-order-list-cont'>
-          { keyFeatures.map((work, index) => (
-            <div key={ index }>
-              <li>{ work.topic }</li>
-              <ul className='about-unorder-list-cont'>
-                <li>{ work.data1 }</li>
-                <li>{ work.data2 }</li>
-              </ul>
-            </div>
-          ))}
-        </ol>
       </div>
       <div className='about-cont'>
         <h1 className='about-head'>Responsibilities of Evaluators</h1>
@@ -167,7 +119,7 @@ const EvaluatorAbout = () => {
         </ol>
       </div>
       <div className='about-cont'>
-        <h1 className='about-head'>How the System Helps You</h1>
+        <h1 className='about-head'>How the System Helps You?</h1>
         <ol className='about-order-list-cont'>
           { howwork.map((work, index) => (
             <div key={ index }>

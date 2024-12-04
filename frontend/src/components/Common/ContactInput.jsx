@@ -7,7 +7,7 @@ import '../../styles/styles.css'
 const ContactInput = (props) => {
   return (
     <div className='pro-three-in-box'>
-      <input { ...props } className='pay-input-field' />
+      <input { ...props } className='contact-input-field' />
     </div>
   )
 }

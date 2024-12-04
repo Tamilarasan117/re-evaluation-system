@@ -46,6 +46,9 @@ const StudentHeader = () => {
             <NavLink to='/student/revaluation-status'  className={`link ${ activeLink }`}>Revaluation Status</NavLink>
           </li>
           <li className='admin-nav-link'>
+            <NavLink to='/student/payment-history'  className={`link ${ activeLink }`}>Payment History</NavLink>
+          </li>
+          <li className='admin-nav-link'>
             <NavLink to='/student/change-password'  className={`link ${ activeLink }`}>Change Password</NavLink>
           </li>
           <li className='admin-nav-link'>

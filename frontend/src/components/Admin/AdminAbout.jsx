@@ -11,38 +11,6 @@ import { useStudent } from '../hooks/useStudent.js'
 import ContactInput from '../Common/ContactInput.jsx'
 import Textarea from '../Common/Textarea.jsx'
 
-// key responsibility data
-const keyResponsibility = [
-  {
-    topic: "Manage Re-evaluation Requests",
-    data1:
-      "Review and validate re-evaluation requests submitted by students.",
-    data2:
-      "Approve or reject requests based on institutional guidelines.",
-  },
-  {
-    topic: "Assign Requests to Evaluators",
-    data1:
-      "Assign qualified evaluators to handle specific requests efficiently.",
-    data2:
-      "Monitor the progress of each assigned request.",
-  },
-  {
-    topic: "Monitor Payments",
-    data1:
-      "Verify payment records for re-evaluation requests via the integrated Stripe payment gateway.",
-    data2:
-      "Generate payment reports for auditing purposes.",
-  },
-  {
-    topic: "Oversee the Entire Process",
-    data1:
-      "Ensure that requests are processed within the stipulated timeline.",
-    data2:
-      "Resolve escalations and maintain communication with students and evaluators.",
-  },
-]
-
 // how work data
 const howwork = [
   {
@@ -83,7 +51,7 @@ const AdminAbout = () => {
     <div className="about-container">
       <h1 className='about-head'>About Section for Admin</h1>
       <div className='about-cont'>
-        <h1 className='about-head'>Welcome to the Administrator Dashboard</h1>
+        <h1 className='about-head'>Welcome to the Online Re-Evaluation System Administrator</h1>
         <p className='about-desc1'>
           The <strong>Online Re-evaluation System</strong> empowers 
           administrators to efficiently manage, monitor, and streamline the academic 
@@ -93,7 +61,7 @@ const AdminAbout = () => {
         </p>
       </div>
       <div className='about-cont'>
-        <h1 className='about-head'>Why This System is Important for Admins</h1>
+        <h1 className='about-head'>Why This System is Important for Admins?</h1>
         <p className='about-desc1'>
           The re-evaluation process can often be complex and time-consuming. 
           As an administrator, you play a vital role in ensuring accuracy, 
@@ -101,20 +69,6 @@ const AdminAbout = () => {
           repetitive tasks, centralize data, and provide you with actionable 
           insights, so you can focus on making informed decisions.
         </p>
-      </div>
-      <div className='about-cont'>
-        <h1 className='about-head'>Key Responsibilities of Admins</h1>
-        <ol className='about-order-list-cont'>
-          { keyResponsibility.map((work, index) => (
-            <div key={ index }>
-              <li>{ work.topic }</li>
-              <ul className='about-unorder-list-cont'>
-                <li>{ work.data1 }</li>
-                <li>{ work.data2 }</li>
-              </ul>
-            </div>
-          ))}
-        </ol>
       </div>
       <div className='about-cont'>
         <h1 className='about-head'>How It Works for Admins</h1>

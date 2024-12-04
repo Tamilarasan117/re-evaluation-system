@@ -10,8 +10,8 @@ import { Payment } from "../models/Payment.js"
 import { stripe } from '../config/stripe.js'
 
 // frontend URL
-//const URL = process.env.CLIENT_URL
-const URL = 'https://re-evaluation-system.onrender.com'
+const URL = process.env.CLIENT_URL
+//const URL = 'https://re-evaluation-system.onrender.com'
 
 // get student profile information controller
 export const getStudentProfile = async (request, response) => {
@@ -69,9 +69,9 @@ export const revaluationRequest = async (request, response) => {
       return response.status(400).json({ message: 'Please fill all the fields' })
     }
     
-    if (fees < 350) {
-      console.log('Fees should be at least 350')
-      return response.status(400).json({ message: 'Fees should be at least 350' })
+    if (fees < 50) {
+      console.log('Fees should be at least 50')
+      return response.status(400).json({ message: 'Fees should be at least 50' })
     }
     
     const existingRequest = await RevaluationRequest.findOne({
@@ -308,6 +308,7 @@ export const paymentSuccess = async (request, response) => {
       paymentStatus: 'Paid',
       username: request.user.username,
       email: request.user.email,
+      subject: existingRequest.subject,
       paymentDate: new Date()
     })
     await updatePayment.save()
@@ -319,6 +320,23 @@ export const paymentSuccess = async (request, response) => {
   } catch (error) {
     console.log('Something went wrong while updating payment status')
     console.error(error)
+    response.status(500).json({ message: "Internal server error" })
+  }
+}
+// get request payment history controller
+export const getPaymentHistory = async (request, response) => {
+  const userId = request.user.id
+  try {
+    const paymentHistory = await Payment.find({ studentId: userId })
+    if (!paymentHistory) {
+      console.log('Payment history not found')
+      return response.status(404).json({ message: 'Payment history not found' })
+    }
+
+    console.log('Payment history found')
+    response.status(200).json(paymentHistory)
+  } catch (error) {
+    console.log('Something went wrong while fetching payment history')
     response.status(500).json({ message: "Internal server error" })
   }
 }
