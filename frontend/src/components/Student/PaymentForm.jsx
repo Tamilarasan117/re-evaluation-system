@@ -13,8 +13,8 @@ import { useStudent } from '../hooks/useStudent.js'
 // importing components
 import RequestInfo from '../Evaluator/RequestInfo.jsx'
 
-//const API_URL = 'http://localhost:5000/api/student'
-const API_URL = 'https://re-evaluation-system.onrender.com/api/student'
+const API_URL = 'http://localhost:5000/api/student'
+//const API_URL = 'https://re-evaluation-system.onrender.com/api/student'
 const stripePromise = loadStripe('pk_test_51QNbo5KnEShZpXMA7FhbjUtj9zZLtXBvQraFMl1SVnEGdJu4EnRB0iJNsSdC1AjZ8wjNErd1HAz69iTYl6bhyXMG00oCpDcCMi')
 
 const PaymentForm = () => {

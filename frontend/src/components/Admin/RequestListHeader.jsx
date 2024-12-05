@@ -17,11 +17,14 @@ const RequestListHeader = () => {
         <div className='request-list-card card1'>
           <h3 className='list-header-head'>Subject</h3>
         </div>
-        <div className='request-list-card card4'>
+        <div className='request-list-card card2'>
           <h3 className='list-header-head'>Course</h3>
         </div>
         <div className='request-list-card card4'>
           <h3 className='list-header-head'>Requested Date</h3>
+        </div>
+        <div className='request-list-card card2'>
+          <h3 className='list-header-head'>Payment</h3>
         </div>
         <div className='request-list-card card4'>
           <h3 className='list-header-head'>Request Status</h3>

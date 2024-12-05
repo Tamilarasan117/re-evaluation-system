@@ -49,11 +49,14 @@ const RequestList = (props) => {
         <div className='request-list-card card1'>
           <p className='request-list-msg'>{ requestList.subject }</p>
         </div>
-        <div className='request-list-card card4'>
+        <div className='request-list-card card2'>
           <p className='request-list-msg'>{ requestList.course }</p>
         </div>
         <div className='request-list-card card4'>
           <p className='request-list-msg'>{ dateFormat(requestList.createdAt) }</p>
+        </div>
+        <div className='request-list-card card2'>
+          <p className='request-list-msg'>{ requestList.paymentStatus }</p>
         </div>
         <div className='request-list-card card4'>
           <select

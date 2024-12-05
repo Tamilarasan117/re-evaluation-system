@@ -264,7 +264,7 @@ export const createCheckoutSession = async (request, response) => {
       line_items: lineItems,
       mode: 'payment',
       success_url: `${ URL }/student/request-payment-success`,
-			cancel_url: `${ URL }//student/request-payment-cancel`,
+			cancel_url: `${ URL }/student/request-payment-cancel`,
       metadata: {
         userId: request.user._id.toString(),
         requestsItem: JSON.stringify(
