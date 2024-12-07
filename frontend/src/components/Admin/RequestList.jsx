@@ -37,8 +37,6 @@ const RequestList = (props) => {
     handleDeleteRequest(requestList._id)
   }
 
-  const isPaid = requestList.paymentStatus === 'Paid' ? 'is-active' : 'is-inactive'
-
   return (
     <>
       <li className='request-list-header-cont'>
@@ -58,7 +56,7 @@ const RequestList = (props) => {
           <p className='request-list-msg'>{ dateFormat(requestList.createdAt) }</p>
         </div>
         <div className='request-list-card card2'>
-          <p className={`request-list-msg ${ isPaid }`}>{ requestList.paymentStatus }</p>
+          <p className='request-list-msg'>{ requestList.paymentStatus }</p>
         </div>
         <div className='request-list-card card4'>
           <select

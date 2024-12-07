@@ -130,7 +130,7 @@ const RevaluationForm = () => {
         </div>
         <div className='revaluation-input-group'>
           <div className='pro-in-box'>
-            <label htmlFor='course' className='profile-label'>Course:</label>
+            <label htmlFor='sem' className='profile-label'>Semester:</label>
             <select
               className='profile-input-field'
               value={ semester }

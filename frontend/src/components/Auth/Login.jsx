@@ -68,9 +68,6 @@ const Login = () => {
               value={ password }
               onChange={ (e) => setPassword(e.target.value) }
             />
-            <div className='redirect-card'>
-              <Link to='#' className='auth-redirect-link'>Forgot Password?</Link>
-            </div>
             <motion.button 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
